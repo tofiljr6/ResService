@@ -6,17 +6,62 @@
 //
 
 import SwiftUI
+import Firebase
+
+var conter = 0
+var presentValue : String = "50"
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        NavigationView {
+            VStack {
+                Text("Restaurant Serivce")
+                    .font(.title)
+                
+                Spacer()
+                
+                VStack {
+                    Spacer()
+                    Text("3 orders").padding(.top).foregroundColor(.green)
+                    Text("37 min").padding().foregroundColor(.yellow)
+                    Text("12 Tables").padding(.bottom).foregroundColor(.red)
+                    Spacer()
+                }.font(.system(size: 35))
+    
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    NavigationLink(destination: WaiterOrderView()) {
+                        Text("iPhone")
+                        Image(systemName: "iphone")
+                    }
+                    Spacer()
+                    NavigationLink(destination: KitchenView()) {
+                        Text("iPad")
+                        Image(systemName: "ipad")
+                    }
+                    Spacer()
+                }
+            }
+        }.navigationTitle("title")
     }
+}
+
+func firedata() {
+    let ref = Database.database(url: "https://resservice-f26c6-default-rtdb.europe-west1.firebasedatabase.app/").reference().child("testCollection")
+    
+    ref.child("setter").getData(completion:  { error, snapshot in
+        guard error == nil else {
+            print(error!.localizedDescription)
+            return;
+        }
+        presentValue = snapshot?.value as? String ?? "Unknown";
+    });
+    
+    print(presentValue)
+    
+    ref.child("getter").setValue("100")
 }
 
 struct ContentView_Previews: PreviewProvider {

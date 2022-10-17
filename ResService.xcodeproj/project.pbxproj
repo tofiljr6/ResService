@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */; };
 		F253267828F5E45A002F5F36 /* ResServiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253267728F5E45A002F5F36 /* ResServiceApp.swift */; };
 		F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253267928F5E45A002F5F36 /* ContentView.swift */; };
 		F253267C28F5E45A002F5F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F253267B28F5E45A002F5F36 /* Assets.xcassets */; };
@@ -14,6 +15,14 @@
 		F253268928F5E45A002F5F36 /* ResServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253268828F5E45A002F5F36 /* ResServiceTests.swift */; };
 		F253269328F5E45A002F5F36 /* ResServiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253269228F5E45A002F5F36 /* ResServiceUITests.swift */; };
 		F253269528F5E45A002F5F36 /* ResServiceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253269428F5E45A002F5F36 /* ResServiceUITestsLaunchTests.swift */; };
+		F25326A428F5E9E6002F5F36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F25326A328F5E9E6002F5F36 /* GoogleService-Info.plist */; };
+		F25326A728F5EAB8002F5F36 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F25326A628F5EAB8002F5F36 /* FirebaseAnalytics */; };
+		F25326A928F5EAB8002F5F36 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F25326A828F5EAB8002F5F36 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		F25326AB28F5EAB8002F5F36 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F25326AA28F5EAB8002F5F36 /* FirebaseDatabase */; };
+		F25326AD28F72266002F5F36 /* WaiterOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326AC28F72266002F5F36 /* WaiterOrderView.swift */; };
+		F25326B028F7290D002F5F36 /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326AF28F7290D002F5F36 /* DishView.swift */; };
+		F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326B128F82A71002F5F36 /* KitchenView.swift */; };
+		F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326B428F87358002F5F36 /* FunctionBoxView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableView.swift; sourceTree = "<group>"; };
 		F253267428F5E45A002F5F36 /* ResService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F253267728F5E45A002F5F36 /* ResServiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResServiceApp.swift; sourceTree = "<group>"; };
 		F253267928F5E45A002F5F36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +54,11 @@
 		F253268E28F5E45A002F5F36 /* ResServiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResServiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F253269228F5E45A002F5F36 /* ResServiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResServiceUITests.swift; sourceTree = "<group>"; };
 		F253269428F5E45A002F5F36 /* ResServiceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResServiceUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F25326A328F5E9E6002F5F36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F25326AC28F72266002F5F36 /* WaiterOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaiterOrderView.swift; sourceTree = "<group>"; };
+		F25326AF28F7290D002F5F36 /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
+		F25326B128F82A71002F5F36 /* KitchenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenView.swift; sourceTree = "<group>"; };
+		F25326B428F87358002F5F36 /* FunctionBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionBoxView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25326AB28F5EAB8002F5F36 /* FirebaseDatabase in Frameworks */,
+				F25326A728F5EAB8002F5F36 /* FirebaseAnalytics in Frameworks */,
+				F25326A928F5EAB8002F5F36 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,10 +112,14 @@
 		F253267628F5E45A002F5F36 /* ResService */ = {
 			isa = PBXGroup;
 			children = (
+				F25326A328F5E9E6002F5F36 /* GoogleService-Info.plist */,
 				F253267728F5E45A002F5F36 /* ResServiceApp.swift */,
 				F253267928F5E45A002F5F36 /* ContentView.swift */,
+				F25326B328F82A78002F5F36 /* KitchenViews */,
+				F25326AE28F728C4002F5F36 /* WaiterViews */,
 				F253267B28F5E45A002F5F36 /* Assets.xcassets */,
 				F253267D28F5E45A002F5F36 /* Preview Content */,
+				F25326B628F87360002F5F36 /* FunctionsViews */,
 			);
 			path = ResService;
 			sourceTree = "<group>";
@@ -127,6 +149,32 @@
 			path = ResServiceUITests;
 			sourceTree = "<group>";
 		};
+		F25326AE28F728C4002F5F36 /* WaiterViews */ = {
+			isa = PBXGroup;
+			children = (
+				F25326AC28F72266002F5F36 /* WaiterOrderView.swift */,
+				F25326AF28F7290D002F5F36 /* DishView.swift */,
+				F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */,
+			);
+			path = WaiterViews;
+			sourceTree = "<group>";
+		};
+		F25326B328F82A78002F5F36 /* KitchenViews */ = {
+			isa = PBXGroup;
+			children = (
+				F25326B128F82A71002F5F36 /* KitchenView.swift */,
+			);
+			path = KitchenViews;
+			sourceTree = "<group>";
+		};
+		F25326B628F87360002F5F36 /* FunctionsViews */ = {
+			isa = PBXGroup;
+			children = (
+				F25326B428F87358002F5F36 /* FunctionBoxView.swift */,
+			);
+			path = FunctionsViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +191,11 @@
 			dependencies = (
 			);
 			name = ResService;
+			packageProductDependencies = (
+				F25326A628F5EAB8002F5F36 /* FirebaseAnalytics */,
+				F25326A828F5EAB8002F5F36 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				F25326AA28F5EAB8002F5F36 /* FirebaseDatabase */,
+			);
 			productName = ResService;
 			productReference = F253267428F5E45A002F5F36 /* ResService.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +268,9 @@
 				Base,
 			);
 			mainGroup = F253266B28F5E45A002F5F36;
+			packageReferences = (
+				F25326A528F5EAB8002F5F36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = F253267528F5E45A002F5F36 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +289,7 @@
 			files = (
 				F253267F28F5E45A002F5F36 /* Preview Assets.xcassets in Resources */,
 				F253267C28F5E45A002F5F36 /* Assets.xcassets in Resources */,
+				F25326A428F5E9E6002F5F36 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +314,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25326B028F7290D002F5F36 /* DishView.swift in Sources */,
 				F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */,
+				F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */,
+				F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */,
+				F25326AD28F72266002F5F36 /* WaiterOrderView.swift in Sources */,
+				F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */,
 				F253267828F5E45A002F5F36 /* ResServiceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +645,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F25326A528F5EAB8002F5F36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F25326A628F5EAB8002F5F36 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F25326A528F5EAB8002F5F36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		F25326A828F5EAB8002F5F36 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F25326A528F5EAB8002F5F36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		F25326AA28F5EAB8002F5F36 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F25326A528F5EAB8002F5F36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F253266C28F5E45A002F5F36 /* Project object */;
 }
