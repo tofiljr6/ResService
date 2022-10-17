@@ -16,22 +16,31 @@ struct DishView: View {
             ZStack{
                 Rectangle()
                     .fill(.red)
-                    .frame(width: 125, height: 125)
                     .cornerRadius(15)
+                    .padding(0)
                 Text(dishName)
                     .font(.system(size: 25))
                     .foregroundColor(.white)
-                    .frame(width: 115)
                     .fixedSize(horizontal: false, vertical: true)
-            }
+            }.frame(width: 125, height: 125)
         }
     }
 }
 
 struct DishView_Previews: PreviewProvider {
     static var previews: some View {
-        DishView(dishName: "Classic Curry Wurst") {
-            print("clicked")
+        VStack {
+            HStack {
+                DishView(dishName: "Classic Curry Wurst") {
+                    print("clicked")
+                }
+                DishView(dishName: "Classic Curry Wurst") {
+                    print("clicked")
+                }
+            }
+            DishView(dishName: "Classic Curry Wurst") {
+                print("clicked")
+            }
         }
     }
 }

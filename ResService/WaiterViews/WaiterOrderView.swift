@@ -14,7 +14,15 @@ let dbURLConnection = "https://resservice-f26c6-default-rtdb.europe-west1.fireba
 var currentOrder: [String: Int] = [:]
 
 struct WaiterOrderView: View {
+    let data : [String] = ["Classic Curry Wurst", "Kult Curry Wurst", "Wild Bradwurst", "Vege Curry Wurst", "Pommes"]
+    let columns = [
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2)
+    ]
+
     @State var tableNumber = 1
+    
     var body: some View {
         VStack {
             HStack {
@@ -25,19 +33,17 @@ struct WaiterOrderView: View {
                     Text("Change")
                 }.padding(.trailing)
             }.font(.title)
-            Spacer()
-            HStack {
-                Spacer()
-                DishView(dishName: "Classic Curry Wurst") {
-                    addToOrder(productName: "Classic Curry Wurst")
+    
+            LazyVGrid(columns: columns, spacing: 2) {
+                ForEach(data, id: \.self) { item in
+                    DishView(dishName: item) {
+                        addToOrder(productName: item)
+                    }
                 }
-                Spacer()
-                DishView(dishName: "Kult Curry Wurst") {
-                    addToOrder(productName: "Kult Curry Wurst")
-                }
-                Spacer()
             }
+            
             Spacer()
+            
             HStack{
                 Text("Current: ")
                 Spacer()
@@ -51,17 +57,9 @@ struct WaiterOrderView: View {
                 FunctionBoxView(functionName: "Pay") {
                     payTable(tableNumber: tableNumber)
                 }
-                FunctionBoxView(functionName: "Test") {
-                    addTest(tableNumber: tableNumber)
-                }
-                Spacer()
             }
         }
     }
-}
-
-func addTest(tableNumber: Int) {
-    let _ = Database.database(url: dbURLConnection ).reference().child("test")
 }
 
 func addToOrder(productName: String) {
