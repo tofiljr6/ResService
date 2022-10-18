@@ -100,11 +100,12 @@ func sendSingleOrder(tablesNumber: Int) {
             return
         }
         
-        // the data is lauched from firebase and is parsered to my struct, which
+        // the data is fetched from firebase and is parsered to my struct, which
         // i had before implemented
         for j in json {
             do {
-                let ordersData = try JSONSerialization.data(withJSONObject: json[j.key]!)
+                let jsondict = json[j.key]! as? [String: Any]
+                let ordersData = try JSONSerialization.data(withJSONObject: jsondict!)
                 let order = try JSONDecoder().decode(Dish.self, from: ordersData)
                 dishStructs.append(Dish(dishName: order.dishName, dishAmount: order.dishAmount))
             } catch let error {
