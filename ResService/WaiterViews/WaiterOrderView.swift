@@ -20,7 +20,7 @@ struct WaiterOrderView: View {
         GridItem(.flexible(), spacing: 2),
         GridItem(.flexible(), spacing: 2)
     ]
-
+    
     @State var tableNumber = 1
     
     var body: some View {
@@ -70,45 +70,69 @@ func addToOrder(productName: String) {
 
 func payTable(tableNumber: Int) {
     let ref = Database.database(url: dbURLConnection ).reference().child(ordersCollectionName)
-    
-    let object: [String: Any] = [:]
-    ref.child("table\(tableNumber)").setValue(object)
-}
-
-struct dish {
-    let name: String
-    let amount: Int
+    ref.child("table\(tableNumber)").child("dishes").removeValue()
 }
 
 func sendSingleOrder(tablesNumber: Int) {
     let ref = Database.database(url: dbURLConnection).reference().child(ordersCollectionName)
-    var dishStructs = [dish]()
-
+    var dishStructs = [Dish]()
+    
     ref.child("table\(tablesNumber)").child("dishes").getData(completion:  { error, snapshot in
         guard error == nil else {
             print(error!.localizedDescription)
             return;
         }
         
-        // get the data from collectionName into dict
-        let alreadyOrdered =  snapshot?.value as? NSDictionary ?? [:]
+        guard let json = snapshot?.value as? [String: Any] else {
+            // the json file has not been loaded so it must be added only existing orders from
+            // the current order. It is usuaully used with first order, where the tables
+            // collection is empty
+            var i = 0
+            for (key, value) in currentOrder {
+                let d = [
+                    "dishName" : key,
+                    "dishAmount" : value
+                ]
+                ref.child("table\(tablesNumber)").child("dishes").child("dish\(i)").setValue(d)
+                i += 1
+            }
+            currentOrder.removeAll()
+            return
+        }
         
-        for key in alreadyOrdered.allKeys {
-            if let x = currentOrder[key as! String] {
-                if let y = alreadyOrdered.value(forKey: key as! String) as? Int {
-                    currentOrder.updateValue(x+y, forKey: key as! String )
-                }
+        // the data is lauched from firebase and is parsered to my struct, which
+        // i had before implemented
+        for j in json {
+            do {
+                let ordersData = try JSONSerialization.data(withJSONObject: json[j.key]!)
+                let order = try JSONDecoder().decode(Dish.self, from: ordersData)
+                dishStructs.append(Dish(dishName: order.dishName, dishAmount: order.dishAmount))
+            } catch let error {
+                print("an error occurred \(error)")
+            }
+        }
+            
+        // make up-to-date orders, in case, the order button was accidentally clicked
+        // allthough the order was not completed. It includes also case, which describes
+        // situtation, where the client wants to order twice.
+        print(currentOrder)
+        for dishStruct in dishStructs {
+            if currentOrder[dishStruct.dishName] != nil {
+                currentOrder[dishStruct.dishName]! += dishStruct.dishAmount
+            } else {
+                currentOrder[dishStruct.dishName] = dishStruct.dishAmount
             }
         }
         
-        for i in currentOrder {
-            dishStructs.append(dish.init(name: i.key, amount: i.value))
-        }
-        
-        if !dishStructs.isEmpty {
-            for i in 0...dishStructs.count-1 {
-                ref.child("table\(tablesNumber)").child("dishes").child(dishStructs[i].name).setValue(dishStructs[i].amount)
-            }
+        // the previos data is synchorinzed with firebase
+        var i = 0
+        for (key, value) in currentOrder {
+            let d = [
+                "dishName" : key,
+                "dishAmount" : value
+            ]
+            ref.child("table\(tablesNumber)").child("dishes").child("dish\(i)").setValue(d)
+            i += 1
         }
         currentOrder.removeAll()
     });
@@ -119,3 +143,11 @@ struct WaiterOrderView_Previews: PreviewProvider {
         WaiterOrderView()
     }
 }
+
+
+struct Dish : Codable {
+    let dishName : String
+    let dishAmount : Int
+}
+
+
