@@ -12,16 +12,18 @@ let ordersCollectionName = "ordersCollection"
 let dbURLConnection = "https://resservice-f26c6-default-rtdb.europe-west1.firebasedatabase.app/"
 
 var currentOrder: [String: Int] = [:]
+var localDishes : [Dish2] = []
 
 struct WaiterOrderView: View {
+    @ObservedObject var progress : OrdersInProgress
+    @State var tableNumber = 1
+    
     let data : [String] = ["Classic Curry Wurst", "Kult Curry Wurst", "Wild Bradwurst", "Vege Curry Wurst", "Pommes"]
     let columns = [
         GridItem(.flexible(), spacing: 2),
         GridItem(.flexible(), spacing: 2),
         GridItem(.flexible(), spacing: 2)
     ]
-    
-    @State var tableNumber = 1
     
     var body: some View {
         VStack {
@@ -38,6 +40,10 @@ struct WaiterOrderView: View {
                 ForEach(data, id: \.self) { item in
                     DishView(dishName: item) {
                         addToOrder(productName: item)
+                        let currentAmount = progress.currentOrder[item] ?? 0
+                        
+                        // up-to-date model view controller
+                        progress.currentOrder.updateValue(currentAmount + 1, forKey: item)
                     }
                 }
             }
@@ -45,18 +51,21 @@ struct WaiterOrderView: View {
             Spacer()
             
             HStack{
-                Text("Current: ")
+                Text("Current")
                 Spacer()
                 Text("XYZ")
             }.padding()
             
             HStack {
                 FunctionBoxView(functionName: "Order") {
-                    sendSingleOrder(tablesNumber: tableNumber)
+                    progress.addDishesToTisch(number: tableNumber)
                 }
                 FunctionBoxView(functionName: "Pay") {
                     payTable(tableNumber: tableNumber)
                 }
+//                FunctionBoxView(functionName: "TEST") {
+//                    progress.addDishesToTisch(number: tableNumber)
+//                }
             }
         }
     }
@@ -65,7 +74,6 @@ struct WaiterOrderView: View {
 func addToOrder(productName: String) {
     let currentAmount = currentOrder[productName] ?? 0
     currentOrder.updateValue(currentAmount + 1, forKey: productName)
-    print(currentOrder)
 }
 
 func payTable(tableNumber: Int) {
@@ -73,75 +81,9 @@ func payTable(tableNumber: Int) {
     ref.child("table\(tableNumber)").child("dishes").removeValue()
 }
 
-func sendSingleOrder(tablesNumber: Int) {
-    let ref = Database.database(url: dbURLConnection).reference().child(ordersCollectionName)
-    var dishStructs = [Dish]()
-    
-    ref.child("table\(tablesNumber)").child("dishes").getData(completion:  { error, snapshot in
-        guard error == nil else {
-            print(error!.localizedDescription)
-            return;
-        }
-        
-        guard let json = snapshot?.value as? [String: Any] else {
-            // the json file has not been loaded so it must be added only existing orders from
-            // the current order. It is usuaully used with first order, where the tables
-            // collection is empty
-            var i = 0
-            for (key, value) in currentOrder {
-                let d = [
-                    "dishName" : key,
-                    "dishAmount" : value
-                ]
-                ref.child("table\(tablesNumber)").child("dishes").child("dish\(i)").setValue(d)
-                i += 1
-            }
-            currentOrder.removeAll()
-            return
-        }
-        
-        // the data is fetched from firebase and is parsered to my struct, which
-        // i had before implemented
-        for j in json {
-            do {
-                let jsondict = json[j.key]! as? [String: Any]
-                let ordersData = try JSONSerialization.data(withJSONObject: jsondict!)
-                let order = try JSONDecoder().decode(Dish.self, from: ordersData)
-                dishStructs.append(Dish(dishName: order.dishName, dishAmount: order.dishAmount))
-            } catch let error {
-                print("an error occurred \(error)")
-            }
-        }
-            
-        // make up-to-date orders, in case, the order button was accidentally clicked
-        // allthough the order was not completed. It includes also case, which describes
-        // situtation, where the client wants to order twice.
-        print(currentOrder)
-        for dishStruct in dishStructs {
-            if currentOrder[dishStruct.dishName] != nil {
-                currentOrder[dishStruct.dishName]! += dishStruct.dishAmount
-            } else {
-                currentOrder[dishStruct.dishName] = dishStruct.dishAmount
-            }
-        }
-        
-        // the previos data is synchorinzed with firebase
-        var i = 0
-        for (key, value) in currentOrder {
-            let d = [
-                "dishName" : key,
-                "dishAmount" : value
-            ]
-            ref.child("table\(tablesNumber)").child("dishes").child("dish\(i)").setValue(d)
-            i += 1
-        }
-        currentOrder.removeAll()
-    });
-}
-
 struct WaiterOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        WaiterOrderView()
+        WaiterOrderView(progress: OrdersInProgress())
     }
 }
 

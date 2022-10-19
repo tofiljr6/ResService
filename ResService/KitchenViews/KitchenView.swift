@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct KitchenView: View {
+    @ObservedObject var progress : OrdersInProgress
+    
     var body: some View {
-        Text("Hello in the kitchen!")
+        ForEach(Array(self.progress.getDishesToTisch(number: 1)), id: \.self) { key in
+            HStack{
+                Text(key.dishName)
+                Spacer()
+                Text("\(key.dishAmount)")
+            }.padding()
+        }
     }
 }
 
 struct KitchenView_Previews: PreviewProvider {
     static var previews: some View {
-        KitchenView()
+        KitchenView(progress: OrdersInProgress())
     }
 }

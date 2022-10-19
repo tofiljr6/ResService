@@ -23,12 +23,30 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>ResService.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>F253267328F5E45A002F5F36</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F253268328F5E45A002F5F36</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F253268D28F5E45A002F5F36</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
