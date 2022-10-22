@@ -12,6 +12,7 @@ class OrdersInKitchen : ObservableObject {
     let OIKcollectionName = "ordersInKitchenCollection"
     let paramCollectionName = "param"
     let dbURLConnection = "https://resservice-f26c6-default-rtdb.europe-west1.firebasedatabase.app/"
+    let paramUniqueOrderNumber = "noorder"
 
     @Published var P_ordersToDo : [OrderCard] = []
     var localOrdersToDo : [OrderCard] = []
@@ -23,8 +24,8 @@ class OrdersInKitchen : ObservableObject {
         let refparam = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
         refparam.observe(DataEventType.value, with: { snaphot in
             guard let paramsinfo = snaphot.value as? [String: Int] else { return }
-            if paramsinfo["noorder"] != nil {
-                self.uniqueOrderNumber = paramsinfo["noorder"]!
+            if paramsinfo[self.paramUniqueOrderNumber] != nil {
+                self.uniqueOrderNumber = paramsinfo[self.paramUniqueOrderNumber]!
             }
         })
         
@@ -65,19 +66,25 @@ class OrdersInKitchen : ObservableObject {
         })
     }
     
+    /**
+        The method add current order to Firebase into collection. The collection represts the orderrs in progress. The orders, which are being made.
+     
+        - Parameter tableNumber: Each table has unique number, which represent a open bill
+        - Parameter currentOrder: A dictionary, where its key is a dish name, and its value is number, how many dishes were ordered
+     */
     func addOrder(tableNumber: Int, currentOrder : [String : Int]) -> Void {
         let ref = Database.database(url: dbURLConnection).reference().child(OIKcollectionName)
         let refparams = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
         
-        // get the unique number from firebase and make it up-to-date
+        // get the unique order number from firebase
         let child = "order\(self.uniqueOrderNumber)"
-        refparams.child("noorder").setValue(self.uniqueOrderNumber + 1)
         
         // default the time zone is another so we had to add two hours
         let order = [
             "dishes" : "dishes",
             "table" : tableNumber,
-            "data" : Date.now.addingTimeInterval(2*60*60).formatted()
+            "data" : Date.now.formatted(),
+            "orderNumber" : self.uniqueOrderNumber
         ] as [String : Any]
         ref.child(child).setValue(order)
         
@@ -89,6 +96,9 @@ class OrdersInKitchen : ObservableObject {
             ] as [String : Any]
             ref.child(child).child("dishes").child("dish\(index)").setValue(o)
         }
+        
+        // up-to-date unique order number in firebase
+        refparams.child(self.paramUniqueOrderNumber).setValue(self.uniqueOrderNumber + 1)
     }
     
     /**
@@ -108,6 +118,7 @@ class OrdersInKitchen : ObservableObject {
 struct Order : Decodable, Hashable {
     var data : String
     var table : Int
+    var orderNumber : Int
 }
 
 struct OrderCard : Hashable, Identifiable {

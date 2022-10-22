@@ -34,14 +34,15 @@ struct KitchenView: View {
             if UIDevice.current.userInterfaceIdiom == .phone {
                 ScrollView {
                     ForEach(OO_orderInKitchen.P_ordersToDo, id: \.id) { item in
-                        OrderCardView(date: item.info.data, orderID: 1, dishes: item.dishes)
+                        OrderCardView(orderInfo: item.info,
+                                      dishes: item.dishes)
                             .onTapGesture(count: 2) {
-                                print("Do usunięcia zamówienie z godziny\(item.info.data)")
+                                print("Do usunięcia zamówienie numer \(item.info.orderNumber) z godziny\(item.info.data)")
                             }
                     }
                 }
             }
-        }
+        }.padding()
 ////            Text("\(OO_orderInKitchen.P_ordersToDo[0].info.data)")
 ////            HStack {
 ////                VStack{

@@ -67,6 +67,7 @@ struct WaiterOrderView: View {
                 FunctionBoxView(functionName: "TEST") {
                     OO_orderInKitchen.addOrder(tableNumber: tableNumber,
                                                currentOrder: progress.currentOrder)
+                    self.progress.currentOrder = [:]
                 }
                 Button("click") {
                     OO_orderInKitchen.getSorted()

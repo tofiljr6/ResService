@@ -8,29 +8,35 @@
 import SwiftUI
 
 struct OrderCardView: View {
-    let date : String
-    let orderID : Int
+    let orderInfo: Order
     let dishes : [Dish2]
+    private let dataString : String
     
-    init(date: String, orderID: Int, dishes: [Dish2]) {
+    init(orderInfo: Order, dishes: [Dish2]) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy, hh:mm a"
-        let dateFromString = dateFormatter.date(from: date)
+        let dateFromString = dateFormatter.date(from: orderInfo.data)
         dateFormatter.dateFormat = "HH:mm"
         let newDate = dateFormatter.string(from: dateFromString!)
         
-        self.date = newDate
-        self.orderID = orderID
+        self.dataString = newDate
         self.dishes = dishes
+        self.orderInfo = orderInfo
     }
     
     var body: some View {
         VStack {
-            HStack{
-                Text("Order #\(orderID)")
-                Spacer()
-                Text("\(date)")
-            }.font(.title)
+            VStack{
+                HStack{
+                    Text("Order #\(self.orderInfo.orderNumber)")
+                    Spacer()
+                    Text("\(self.dataString)")
+                }.font(.title)
+                HStack {
+                    Text("Table: \(self.orderInfo.table)").foregroundColor(.white)
+                    Spacer()
+                }
+            }
             Divider()
             
             ForEach(dishes, id: \.self) { dish in
@@ -40,15 +46,16 @@ struct OrderCardView: View {
                     Text("x\(dish.dishAmount)").padding(.trailing)
                 }.font(.title2)
             }
-        }.padding().background(.green)
+        }.padding()
+            .background(.green)
+            .cornerRadius(10)
     }
 }
 
 struct OrderCardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            OrderCardView(date: Date.now.formatted(),
-                          orderID: 1,
+            OrderCardView(orderInfo: Order(data: Date.now.formatted(), table: 3, orderNumber: 2),
                           dishes: [Dish2(dishName: "classic", dishAmount: 2)])
         }
     }
