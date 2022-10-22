@@ -69,6 +69,12 @@ struct WaiterOrderView: View {
             }
         }
     }
+    
+    func payTable(tableNumber: Int) {
+        let ref = Database.database(url: dbURLConnection ).reference().child(ordersCollectionName)
+        ref.child("table\(tableNumber)").child("dishes").removeValue()
+        self.progress.tabledishesDict.removeValue(forKey: "table\(tableNumber)")
+    }
 }
 
 func addToOrder(productName: String) {
@@ -76,10 +82,7 @@ func addToOrder(productName: String) {
     currentOrder.updateValue(currentAmount + 1, forKey: productName)
 }
 
-func payTable(tableNumber: Int) {
-    let ref = Database.database(url: dbURLConnection ).reference().child(ordersCollectionName)
-    ref.child("table\(tableNumber)").child("dishes").removeValue()
-}
+
 
 struct WaiterOrderView_Previews: PreviewProvider {
     static var previews: some View {

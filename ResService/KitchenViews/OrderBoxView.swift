@@ -8,23 +8,21 @@
 import SwiftUI
 
 struct OrderBoxView: View {
+    var tableNumber : Int
     var listOfNames : [String]
     
     var body: some View {
-        VStack {
-            ForEach(listOfNames, id: \.self) { item in
-                HStack {
-                    Text(item)
-                    Spacer()
-                }.padding()
-                    .border(.purple)
+        VStack{
+            ForEach(listOfNames, id: \.self) {
+                Text($0)
+                
             }
-        }.background(.cyan)
+        }
     }
 }
 
 struct OrderBoxView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderBoxView(listOfNames: ["classic", "kult", "vergan", "pommmes"])
+        OrderBoxView(tableNumber: 1, listOfNames: ["classic", "kult", "vergan", "pommmes"])
     }
 }

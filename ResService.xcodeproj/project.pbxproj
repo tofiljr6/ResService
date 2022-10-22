@@ -25,6 +25,7 @@
 		F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326B128F82A71002F5F36 /* KitchenView.swift */; };
 		F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326B428F87358002F5F36 /* FunctionBoxView.swift */; };
 		F2FA16E728FF48B000844C79 /* OrderBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FA16E628FF48AF00844C79 /* OrderBoxView.swift */; };
+		F2FA16EA2900141800844C79 /* TestObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FA16E92900141800844C79 /* TestObservableObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		F25326B128F82A71002F5F36 /* KitchenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenView.swift; sourceTree = "<group>"; };
 		F25326B428F87358002F5F36 /* FunctionBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionBoxView.swift; sourceTree = "<group>"; };
 		F2FA16E628FF48AF00844C79 /* OrderBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBoxView.swift; sourceTree = "<group>"; };
+		F2FA16E92900141800844C79 /* TestObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestObservableObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		F253267628F5E45A002F5F36 /* ResService */ = {
 			isa = PBXGroup;
 			children = (
+				F2FA16E8290013E900844C79 /* Test */,
 				F25326A328F5E9E6002F5F36 /* GoogleService-Info.plist */,
 				F253267728F5E45A002F5F36 /* ResServiceApp.swift */,
 				F253267928F5E45A002F5F36 /* ContentView.swift */,
@@ -179,6 +182,14 @@
 				F25326B428F87358002F5F36 /* FunctionBoxView.swift */,
 			);
 			path = FunctionsViews;
+			sourceTree = "<group>";
+		};
+		F2FA16E8290013E900844C79 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				F2FA16E92900141800844C79 /* TestObservableObject.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +334,7 @@
 				F25326B028F7290D002F5F36 /* DishView.swift in Sources */,
 				F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */,
 				F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */,
+				F2FA16EA2900141800844C79 /* TestObservableObject.swift in Sources */,
 				F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */,
 				F2268FD428FD755A0096F35C /* OrdersInProgress.swift in Sources */,
 				F25326AD28F72266002F5F36 /* WaiterOrderView.swift in Sources */,
@@ -495,6 +507,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -524,6 +537,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
