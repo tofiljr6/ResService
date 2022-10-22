@@ -13,6 +13,7 @@ var presentValue : String = "50"
 
 struct ContentView: View {
     @StateObject var progress = OrdersInProgress()
+    @StateObject var SO_orderInKitchen = OrdersInKitchen()
     
     var body: some View {
         NavigationView {
@@ -34,12 +35,12 @@ struct ContentView: View {
                 
                 HStack {
                     Spacer()
-                    NavigationLink(destination: WaiterOrderView(progress: progress)) {
+                    NavigationLink(destination: WaiterOrderView(progress: progress, OO_orderInKitchen: SO_orderInKitchen)) {
                         Text("iPhone")
                         Image(systemName: "iphone")
                     }
                     Spacer()
-                    NavigationLink(destination: KitchenView(progress: progress)) {
+                    NavigationLink(destination: KitchenView(progress: progress, OO_orderInKitchen: SO_orderInKitchen)) {
                         Text("iPad")
                         Image(systemName: "ipad")
                     }

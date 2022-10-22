@@ -32,7 +32,7 @@ class OrdersInProgress : ObservableObject {
             for table in tablesInfo {
                 do {
                     let singleTableInfo = tablesInfo[table.key]! as? [String: Any]
-                    print(table.key)
+//                    print(table.key)
                     for j in singleTableInfo! {
                         if j.key == "dishes" {
                             let dishes = singleTableInfo![j.key]! as? [String: Any]
@@ -46,7 +46,7 @@ class OrdersInProgress : ObservableObject {
                         }
                     }
                     self.tabledishesDict[table.key] = self.singleTableOrders
-                    print(self.tabledishesDict)
+//                    print(self.tabledishesDict)
                     self.singleTableOrders.removeAll()
                 } catch let error {
                     print(error)
@@ -87,7 +87,7 @@ class OrdersInProgress : ObservableObject {
             }
         }
         
-        print(tmp)
+//        print(tmp)
         
         var counter = 0
         for t in tmp {

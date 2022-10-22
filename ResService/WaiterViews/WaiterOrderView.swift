@@ -16,6 +16,7 @@ var localDishes : [Dish2] = []
 
 struct WaiterOrderView: View {
     @ObservedObject var progress : OrdersInProgress
+    @ObservedObject var OO_orderInKitchen : OrdersInKitchen
     @State var tableNumber = 1
     
     let data : [String] = ["Classic Curry Wurst", "Kult Curry Wurst", "Wild Bradwurst", "Vege Curry Wurst", "Pommes"]
@@ -63,9 +64,13 @@ struct WaiterOrderView: View {
                 FunctionBoxView(functionName: "Pay") {
                     payTable(tableNumber: tableNumber)
                 }
-//                FunctionBoxView(functionName: "TEST") {
-//                    progress.addDishesToTisch(number: tableNumber)
-//                }
+                FunctionBoxView(functionName: "TEST") {
+                    OO_orderInKitchen.addOrder(tableNumber: tableNumber,
+                                               currentOrder: progress.currentOrder)
+                }
+                Button("click") {
+                    OO_orderInKitchen.getSorted()
+                } 
             }
         }
     }
@@ -86,7 +91,8 @@ func addToOrder(productName: String) {
 
 struct WaiterOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        WaiterOrderView(progress: OrdersInProgress())
+        WaiterOrderView(progress: OrdersInProgress(),
+                        OO_orderInKitchen: OrdersInKitchen())
     }
 }
 
