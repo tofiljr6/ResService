@@ -70,8 +70,7 @@ struct WaiterOrderView: View {
                     self.progress.currentOrder = [:]
                 }
                 Button("click") {
-                    OO_orderInKitchen.getSorted()
-                } 
+                }
             }
         }
     }

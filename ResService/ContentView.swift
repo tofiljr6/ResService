@@ -25,7 +25,7 @@ struct ContentView: View {
                 
                 VStack {
                     Spacer()
-                    Text("3 orders").padding(.top).foregroundColor(.green)
+                    Text("\(SO_orderInKitchen.P_ordersToDo.count) orders").padding(.top).foregroundColor(.green)
                     Text("37 min").padding().foregroundColor(.yellow)
                     Text("12 Tables").padding(.bottom).foregroundColor(.red)
                     Spacer()

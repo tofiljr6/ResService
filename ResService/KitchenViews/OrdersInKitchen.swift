@@ -79,11 +79,20 @@ class OrdersInKitchen : ObservableObject {
         // get the unique order number from firebase
         let child = "order\(self.uniqueOrderNumber)"
         
+        print("->>>",Date.now.formatted(.iso8601))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // "2017-01-23T10:12:31.484Z"
+        let dateFromString = dateFormatter.date(from: Date.now.formatted(.iso8601))
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        let newDate = dateFormatter.string(from: dateFromString!)
+        print(newDate)
+        
+        
         // default the time zone is another so we had to add two hours
         let order = [
             "dishes" : "dishes",
             "table" : tableNumber,
-            "data" : Date.now.formatted(),
+            "data" : newDate, // Date.now.formatted()
             "orderNumber" : self.uniqueOrderNumber
         ] as [String : Any]
         ref.child(child).setValue(order)
@@ -109,9 +118,14 @@ class OrdersInKitchen : ObservableObject {
     func getSorted() -> Void {
         self.P_ordersToDo =  self.P_ordersToDo.sorted(by: {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy, hh:mm a"
+            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
             return dateFormatter.date(from: $0.info.data)! < dateFormatter.date(from: $1.info.data)!
         })
+    }
+    
+    func removeOrderFromList(order: Int) -> Void {
+        let ref = Database.database(url: dbURLConnection).reference().child(OIKcollectionName)
+        ref.child("order\(order)").removeValue()
     }
 }
 
