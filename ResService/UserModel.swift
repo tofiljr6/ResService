@@ -8,13 +8,6 @@
 import Foundation
 import Firebase
 
-enum Role : String {
-    case unknown = "unknown"
-    case client = "client"
-    case waiter = "waiter"
-    case kitchen = "kitchen"
-    case boss = "boss"
-}
 
 class UserModel : ObservableObject {
     let usersCollection = "users"

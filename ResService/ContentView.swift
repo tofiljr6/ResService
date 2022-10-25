@@ -33,6 +33,8 @@ struct ContentView: View {
                     }
                 }
             }
+        } else if SO_user.role == Role.boss.rawValue {
+            BossMainView()
         }
         else {
             // TODO: the view for client and another role in db
