@@ -79,14 +79,11 @@ class OrdersInKitchen : ObservableObject {
         // get the unique order number from firebase
         let child = "order\(self.uniqueOrderNumber)"
         
-        print("->>>",Date.now.formatted(.iso8601))
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // "2017-01-23T10:12:31.484Z"
         let dateFromString = dateFormatter.date(from: Date.now.formatted(.iso8601))
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         let newDate = dateFormatter.string(from: dateFromString!)
-        print(newDate)
-        
         
         // default the time zone is another so we had to add two hours
         let order = [
@@ -98,7 +95,6 @@ class OrdersInKitchen : ObservableObject {
         ref.child(child).setValue(order)
         
         for (index, order) in currentOrder.enumerated() {
-            print(index, order)
             let o = [
                 "dishName" : order.key,
                 "dishAmount" : order.value
@@ -126,6 +122,11 @@ class OrdersInKitchen : ObservableObject {
     func removeOrderFromList(order: Int) -> Void {
         let ref = Database.database(url: dbURLConnection).reference().child(OIKcollectionName)
         ref.child("order\(order)").removeValue()
+        
+        // in case, there is only one order "in progress" and we should check whether this is not last
+        if self.P_ordersToDo.count == 1 {
+            self.P_ordersToDo = []
+        }
     }
 }
 

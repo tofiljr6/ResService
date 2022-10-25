@@ -85,6 +85,12 @@ struct SignInView: View {
 //                        }
 //                    }
 //                }
+            
+            Button("waiter") {
+                email = "tester@gmail.com"
+                password = "123456"
+                login()
+            }.offset(y: -60)
         }.ignoresSafeArea()
     }
     

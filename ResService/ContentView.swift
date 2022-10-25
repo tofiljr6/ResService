@@ -21,7 +21,8 @@ struct ContentView: View {
         if SO_user.role == Role.waiter.rawValue {
             VStack {
                 NavigationView {
-                    NavigationLink(destination: WaiterOrderView(progress: progress, OO_orderInKitchen: SO_orderInKitchen)) {
+//                    NavigationLink(destination: WaiterOrderView(progress: progress, OO_orderInKitchen: SO_orderInKitchen)) {
+                    NavigationLink(destination: WaiterOrderView()) {
                         Text("iPhone")
                         Image(systemName: "iphone")
                     }

@@ -98,7 +98,7 @@ class OrdersInProgress : ObservableObject {
             ref.child("table\(number)").child("dishes").child("dish\(counter)").setValue(d)
             counter += 1
         }
-        self.currentOrder.removeAll()
+//        self.currentOrder.removeAll()
     }
     
     // TODO: lazy? read about this !!!

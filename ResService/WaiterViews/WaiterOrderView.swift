@@ -19,6 +19,11 @@ struct WaiterOrderView: View {
     @ObservedObject var OO_orderInKitchen : OrdersInKitchen
     @State var tableNumber = 1
     
+    init() {
+        self.progress = OrdersInProgress()
+        self.OO_orderInKitchen = OrdersInKitchen()
+    }
+    
     let data : [String] = ["Classic Curry Wurst", "Kult Curry Wurst", "Wild Bradwurst", "Vege Curry Wurst", "Pommes"]
     let columns = [
         GridItem(.flexible(), spacing: 2),
@@ -60,16 +65,12 @@ struct WaiterOrderView: View {
             HStack {
                 FunctionBoxView(functionName: "Order") {
                     progress.addDishesToTisch(number: tableNumber)
-                }
-                FunctionBoxView(functionName: "Pay") {
-                    payTable(tableNumber: tableNumber)
-                }
-                FunctionBoxView(functionName: "TEST") {
                     OO_orderInKitchen.addOrder(tableNumber: tableNumber,
                                                currentOrder: progress.currentOrder)
                     self.progress.currentOrder = [:]
                 }
-                Button("click") {
+                FunctionBoxView(functionName: "Pay") {
+                    payTable(tableNumber: tableNumber)
                 }
             }
         }
@@ -80,19 +81,19 @@ struct WaiterOrderView: View {
         ref.child("table\(tableNumber)").child("dishes").removeValue()
         self.progress.tabledishesDict.removeValue(forKey: "table\(tableNumber)")
     }
+    
+    func addToOrder(productName: String) {
+        let currentAmount = currentOrder[productName] ?? 0
+        currentOrder.updateValue(currentAmount + 1, forKey: productName)
+    }
 }
-
-func addToOrder(productName: String) {
-    let currentAmount = currentOrder[productName] ?? 0
-    currentOrder.updateValue(currentAmount + 1, forKey: productName)
-}
-
 
 
 struct WaiterOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        WaiterOrderView(progress: OrdersInProgress(),
-                        OO_orderInKitchen: OrdersInKitchen())
+//        WaiterOrderView(progress: OrdersInProgress(),
+//                        OO_orderInKitchen: OrdersInKitchen())
+        WaiterOrderView()
     }
 }
 
