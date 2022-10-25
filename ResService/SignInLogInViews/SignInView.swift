@@ -11,6 +11,7 @@ import Firebase
 struct SignInView: View {
     @State private var email : String = ""
     @State private var password : String = ""
+    @State private var name : String = ""
     @State private var userIsLoggedIn : Bool = false
     
     var body: some View {
@@ -21,35 +22,37 @@ struct SignInView: View {
         }
     }
     
-    var testview : some View {
-        Text("zalogowany!")
-    }
-    
     var content : some View {
         ZStack {
             RoundedRectangle(cornerRadius: 30, style: .continuous)
                 .foregroundStyle(.linearGradient(colors: [.green, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
                 .frame(width: 1000, height: 400)
                 .rotationEffect(.degrees(155))
-                .offset(y: -400)
+                .offset(y: -350)
             
-            VStack(spacing: 30) {
+            VStack(spacing: 20) {
                 Text("Welcome")
                     .foregroundColor(.white)
                     .font(.system(size: 50, weight: .bold, design: .monospaced))
                     .offset(x: -50, y: -150)
-                
-                TextField("Email", text: $email)
-                    .foregroundColor(.black)
-                    .textFieldStyle(.plain)
-                
-                Rectangle()
-                    .frame(width: 350, height: 1)
-                    .foregroundColor(.blue)
-                
-                SecureField("Password", text: $password)
-                    .foregroundColor(.black)
-                    .textFieldStyle(.plain)
+                Group {
+                    TextField("Name", text: $name)
+                        .textFieldStyle(.plain)
+                    
+                    Rectangle()
+                        .frame(width: 350, height: 1)
+                        .foregroundColor(.blue)
+                    
+                    TextField("Email", text: $email)
+                        .textFieldStyle(.plain)
+                    
+                    Rectangle()
+                        .frame(width: 350, height: 1)
+                        .foregroundColor(.blue)
+                    
+                    SecureField("Password", text: $password)
+                        .textFieldStyle(.plain)
+                }.offset(y: 70)
                 
                 Button {
                     register()
@@ -66,7 +69,6 @@ struct SignInView: View {
                 
                 
                 Button {
-                    // login
                     login()
                 } label: {
                     Text("Already have an account? Login")
@@ -91,6 +93,16 @@ struct SignInView: View {
             if error != nil {
                 print(error!.localizedDescription)
             }
+            
+            // add additinal information about user to firebase collection
+            guard let userID = Auth.auth().currentUser?.uid else { return }
+            let ref = Database.database(url: dbURLConnection ).reference()
+            
+            let userinfo = [
+                "username" : name,
+                "role" : "client"
+            ]
+            ref.child("users").child(userID).setValue(userinfo)
         }
     }
     
