@@ -17,6 +17,10 @@ struct KitchenView: View {
         GridItem(.flexible(), spacing: 2)
     ]
     
+    init() {
+        progress = OrdersInProgress()
+        OO_orderInKitchen = OrdersInKitchen()
+    }
     
     var body: some View {
             if UIDevice.current.userInterfaceIdiom == .phone {
@@ -61,18 +65,22 @@ struct KitchenView_Previews: PreviewProvider {
         // mocking orders in progress object, it does not exist another way
         // to represent @observedobject, because in the preview view, is not used
         // connection with firebase
-        let progress = OrdersInProgress()
-        let OO_orderInKitchen = OrdersInKitchen()
+//        let progress = OrdersInProgress()
+//        let OO_orderInKitchen = OrdersInKitchen()
         //        progress.tabledishesDict["table1"] = [Dish2(dishName: "Classic Curry Wurst", dishAmount: 2),
         //                                              Dish2(dishName: "Kult Curry Wurst", dishAmount: 1),
         //                                              Dish2(dishName: "Pommes", dishAmount: 3)]
         //        progress.tabledishesDict["table2"] = [Dish2(dishName: "Wild Bradwurst", dishAmount: 1)]
         
         Group {
-            KitchenView(progress: progress, OO_orderInKitchen: OO_orderInKitchen)
+            KitchenView()
                 .previewDevice("iPhone SE (3rd generation)").previewDisplayName("iPhone SE 3rd")
-            KitchenView(progress: progress, OO_orderInKitchen: OO_orderInKitchen)
+            KitchenView()
                 .previewDevice("iPad Pro (12.9-inch) (4th generation)").previewDisplayName("iPad Pro 12.9")
+//            KitchenView(progress: progress, OO_orderInKitchen: OO_orderInKitchen)
+//                .previewDevice("iPhone SE (3rd generation)").previewDisplayName("iPhone SE 3rd")
+//            KitchenView(progress: progress, OO_orderInKitchen: OO_orderInKitchen)
+//                .previewDevice("iPad Pro (12.9-inch) (4th generation)").previewDisplayName("iPad Pro 12.9")
         }
     }
     

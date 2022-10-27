@@ -15,9 +15,10 @@ struct BossMainView: View {
                                     MenuSection(id: UUID(), name: "Manage restauratn", items: [MenuItem(id: UUID(), name: "Add new dishes"),
                                                                                                MenuItem(id: UUID(), name: "Employee new")])]
     
-    enum BossSection : String {
+    private enum BossSection : String {
         case previewWaiter = "Preview Waiter"
         case previewKitchen = "Preview Kitchen"
+        case addNewDishes = "Add new dishes"
     }
     
     var body: some View {
@@ -26,34 +27,28 @@ struct BossMainView: View {
                 ForEach(sections, id: \.id) { section in
                     Section(header: Text(section.name)) {
                         ForEach(section.items, id: \.id) { item in
-//                            Text(item.name).onTapGesture {
                             NavigationLink(destination: self.getDestination(itemText: item.name)) {
                                 Text(item.name)
                             }
-//                            }
                         }
                     }
                 }
-            }.navigationTitle("Menu")
+            }.navigationTitle("Restaurant settings")
         }
     }
     
-    var test : some View {
-        Text("Siema")
-    }
-    
-    func getDestination(itemText: String) -> AnyView {
+    private func getDestination(itemText: String) -> AnyView {
         let val = BossSection(rawValue: itemText)
         
         switch val {
-        case .some(.previewKitchen): return AnyView(Text("Siema kitchen"))
-        case .some(.previewWaiter): return AnyView(Text("Siema waiter"))
+        case .some(.previewKitchen): return AnyView(KitchenView())
+        case .some(.previewWaiter): return AnyView(WaiterOrderView())
+        case .some(.addNewDishes): return AnyView(MenuView())
         case .none:
             return AnyView(Text("Nieznazny bład"))
         }
     }
 }
-
 
 struct MenuSection : Codable, Identifiable {
     var id : UUID

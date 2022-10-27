@@ -30,7 +30,8 @@ struct ContentView: View {
                     .toolbar {
                         Button(action: { showPopup.toggle() }, label:  { Image(systemName: "eye.circle") } )
                     }.sheet(isPresented: $showPopup) {
-                        KitchenView(progress: self.progress, OO_orderInKitchen: SO_orderInKitchen)
+//                        KitchenView(progress: self.progress, OO_orderInKitchen: SO_orderInKitchen)
+                        KitchenView()
                     }
                 }
             }

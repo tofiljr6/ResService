@@ -18,7 +18,8 @@ struct SignInView: View {
         if userIsLoggedIn {
             ContentView()
         } else {
-            content
+             content
+//            BossMainView()
         }
     }
     
@@ -85,9 +86,8 @@ struct SignInView: View {
 //                        }
 //                    }
 //                }
-            
-            Button("waiter") {
-                email = "tester@gmail.com"
+            Button("boss") {
+                email = "boss@gmail.com"
                 password = "123456"
                 login()
             }.offset(y: -60)
