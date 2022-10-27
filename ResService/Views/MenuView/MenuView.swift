@@ -15,7 +15,10 @@ struct MenuView: View {
         VStack {
             List {
                 ForEach(menuViewModel.menuDishes, id: \.dishID) { dish in
-                    Text(dish.dishName)
+                    HStack {
+                        Text(dish.dishID).foregroundColor(.gray)                
+                        Text(dish.dishName)
+                    }
                 }
             }.navigationBarTitle("Menu", displayMode: .inline)
             .toolbar {

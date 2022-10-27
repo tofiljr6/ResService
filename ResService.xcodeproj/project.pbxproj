@@ -36,7 +36,6 @@
 		F29B1C372908503800303829 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C362908503800303829 /* MenuView.swift */; };
 		F29B1C3929085C7E00303829 /* AddDishToMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C3829085C7E00303829 /* AddDishToMenuView.swift */; };
 		F2FA16E728FF48B000844C79 /* OrderBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FA16E628FF48AF00844C79 /* OrderBoxView.swift */; };
-		F2FA16EA2900141800844C79 /* TestObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FA16E92900141800844C79 /* TestObservableObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +84,6 @@
 		F29B1C362908503800303829 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		F29B1C3829085C7E00303829 /* AddDishToMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishToMenuView.swift; sourceTree = "<group>"; };
 		F2FA16E628FF48AF00844C79 /* OrderBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBoxView.swift; sourceTree = "<group>"; };
-		F2FA16E92900141800844C79 /* TestObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestObservableObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +126,11 @@
 		F23D0AD82909A211005C84F3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F25326B628F87360002F5F36 /* FunctionsViews */,
+				F25326AE28F728C4002F5F36 /* WaiterViews */,
+				F25326B328F82A78002F5F36 /* KitchenViews */,
+				F237CB9329055E1B003C1007 /* SignInLogInViews */,
+				F29B1C302908264500303829 /* BossViews */,
 				F23D0AD92909A226005C84F3 /* MenuView */,
 			);
 			path = Views;
@@ -146,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				F23D0ADD290A9B0E005C84F3 /* MenuModel.swift */,
+				F29B1C2E2905C69500303829 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,18 +180,11 @@
 				F23D0ADC290A9AE7005C84F3 /* Model */,
 				F23D0AD82909A211005C84F3 /* Views */,
 				F29B1C3329082A1A00303829 /* Enums */,
-				F29B1C302908264500303829 /* BossViews */,
-				F237CB9329055E1B003C1007 /* SignInLogInViews */,
-				F2FA16E8290013E900844C79 /* Test */,
 				F25326A328F5E9E6002F5F36 /* GoogleService-Info.plist */,
 				F253267728F5E45A002F5F36 /* ResServiceApp.swift */,
 				F253267928F5E45A002F5F36 /* ContentView.swift */,
-				F25326B328F82A78002F5F36 /* KitchenViews */,
-				F25326AE28F728C4002F5F36 /* WaiterViews */,
 				F253267B28F5E45A002F5F36 /* Assets.xcassets */,
 				F253267D28F5E45A002F5F36 /* Preview Content */,
-				F25326B628F87360002F5F36 /* FunctionsViews */,
-				F29B1C2E2905C69500303829 /* UserModel.swift */,
 			);
 			path = ResService;
 			sourceTree = "<group>";
@@ -221,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				F25326AC28F72266002F5F36 /* WaiterOrderView.swift */,
-				F25326AF28F7290D002F5F36 /* DishView.swift */,
 				F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */,
 			);
 			path = WaiterViews;
@@ -243,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				F25326B428F87358002F5F36 /* FunctionBoxView.swift */,
+				F25326AF28F7290D002F5F36 /* DishView.swift */,
 			);
 			path = FunctionsViews;
 			sourceTree = "<group>";
@@ -262,14 +259,6 @@
 				F29B1C3429082A2F00303829 /* RoleEnum.swift */,
 			);
 			path = Enums;
-			sourceTree = "<group>";
-		};
-		F2FA16E8290013E900844C79 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				F2FA16E92900141800844C79 /* TestObservableObject.swift */,
-			);
-			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,7 +406,6 @@
 				F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */,
 				F23D0ADB2909A287005C84F3 /* MenuViewModel.swift in Sources */,
 				F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */,
-				F2FA16EA2900141800844C79 /* TestObservableObject.swift in Sources */,
 				F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */,
 				F29B1C322908265700303829 /* BossMainView.swift in Sources */,
 				F2268FD428FD755A0096F35C /* OrdersInProgress.swift in Sources */,

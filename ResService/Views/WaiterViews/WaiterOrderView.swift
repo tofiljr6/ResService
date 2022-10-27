@@ -17,14 +17,17 @@ var localDishes : [Dish2] = []
 struct WaiterOrderView: View {
     @ObservedObject var progress : OrdersInProgress
     @ObservedObject var OO_orderInKitchen : OrdersInKitchen
+    @ObservedObject var menu : MenuViewModel
+    
     @State var tableNumber = 1
     
     init() {
         self.progress = OrdersInProgress()
         self.OO_orderInKitchen = OrdersInKitchen()
+        self.menu = MenuViewModel()
     }
     
-    let data : [String] = ["Classic Curry Wurst", "Kult Curry Wurst", "Wild Bradwurst", "Vege Curry Wurst", "Pommes"]
+//    let data : [String] = ["Classic Curry Wurst", "Kult Curry Wurst", "Wild Bradwurst", "Vege Curry Wurst", "Pommes"]
     let columns = [
         GridItem(.flexible(), spacing: 2),
         GridItem(.flexible(), spacing: 2),
@@ -43,13 +46,13 @@ struct WaiterOrderView: View {
             }.font(.title)
     
             LazyVGrid(columns: columns, spacing: 2) {
-                ForEach(data, id: \.self) { item in
-                    DishView(dishName: item) {
-                        addToOrder(productName: item)
-                        let currentAmount = progress.currentOrder[item] ?? 0
+                ForEach(self.menu.menuDishes, id: \.dishID) { item in
+                    DishView(dishName: item.dishName) {
+                        addToOrder(productName: item.dishName)
+                        let currentAmount = progress.currentOrder[item.dishName] ?? 0
                         
                         // up-to-date model view controller
-                        progress.currentOrder.updateValue(currentAmount + 1, forKey: item)
+                        progress.currentOrder.updateValue(currentAmount + 1, forKey: item.dishName)
                     }
                 }
             }

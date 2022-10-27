@@ -46,8 +46,18 @@ final class MenuViewModel : ObservableObject {
                     print(error.localizedDescription)
                 }
             }
+        
+            // sorted local array according by dishID
+            self.sortedById() // TODO: the boss should decide where dish box is placed
+            
             self.menuDishes = self.menuDishhesLocal
             self.menuDishhesLocal = []
+        })
+    }
+    
+    private func sortedById() -> Void {
+        self.menuDishhesLocal = self.menuDishhesLocal.sorted(by: { m1, m2 in
+            return m1.dishID < m2.dishID
         })
     }
     
