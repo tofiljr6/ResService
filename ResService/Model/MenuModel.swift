@@ -8,10 +8,10 @@
 import Foundation
 
 struct Menu : Codable {
-    var dishID : String
+    var dishID : Int
     var dishDescription : String
     var dishName : String
-    var dishPrice : String
+    var dishPrice : Double
     var dishProducts : String
-    var dishOrderInMenu : String
+    var dishOrderInMenu : Int
 }

@@ -56,7 +56,7 @@ struct AddDishToMenuView: View {
             
             Button {
                 // Save
-                menuViewModel.addNewDishToMenu(newDishName: newDishName, newDishPrice: newDishPrice, newDishDescription: newDishDescription, newDishProducts: newDishProducts)
+                menuViewModel.addNewDishToMenu(newDishName: newDishName, newDishPrice: Double(newDishPrice)!, newDishDescription: newDishDescription, newDishProducts: newDishProducts)
                 
                 // Exit the view
                 self.showingSheet?.wrappedValue = false
