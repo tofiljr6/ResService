@@ -34,7 +34,7 @@ final class MenuViewModel : ObservableObject {
         // load menus dishes to array
         let ref = Database.database(url: dbURLConnection).reference().child(menuCollectionName)
         ref.observe(DataEventType.value, with: { snapshot in
-            print("nowe danie w bazie, pobieram!")
+//            print("nowe danie w bazie, pobieram!")
             guard let menu = snapshot.value as? [String: Any] else { print("exit"); return }
             for dish in menu {
                 let json = dish.value as? [String : Any]
@@ -57,7 +57,7 @@ final class MenuViewModel : ObservableObject {
     
     private func sortedById() -> Void {
         self.menuDishhesLocal = self.menuDishhesLocal.sorted(by: { m1, m2 in
-            return m1.dishID < m2.dishID
+            return m1.dishOrderInMenu < m2.dishOrderInMenu
         })
     }
     
@@ -69,7 +69,8 @@ final class MenuViewModel : ObservableObject {
             "dishName" : newDishName,
             "dishPrice" : newDishPrice,
             "dishDescription" : newDishDescription,
-            "dishProducts" : newDishProducts
+            "dishProducts" : newDishProducts,
+            "dishOrderInMenu" : self.uniqueNewDishID.description
         ] as [String : String]
         
         ref.child("dishmenu\(self.uniqueNewDishID.description)").setValue(newDish)
@@ -78,10 +79,17 @@ final class MenuViewModel : ObservableObject {
         incrementUniqueID()
     }
     
+    func setNewOrderInMenu() -> Void {
+        let ref = Database.database(url: dbURLConnection).reference().child(menuCollectionName)
+        var i = 0
+        for menu in menuDishes {
+            ref.child("dishmenu\(menu.dishID)").updateChildValues(["dishOrderInMenu" : i.description])
+            i += 1
+        }
+    }
+    
     private func incrementUniqueID() {
         let paramref = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
         paramref.child(self.menuUniqueName).setValue(self.uniqueNewDishID + 1)
     }
-    
 }
-

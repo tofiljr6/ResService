@@ -15,18 +15,21 @@ struct MenuView: View {
         VStack {
             List {
                 ForEach(menuViewModel.menuDishes, id: \.dishID) { dish in
-                    HStack {
-                        Text(dish.dishID).foregroundColor(.gray)                
-                        Text(dish.dishName)
-                    }
-                }
+                    Text(dish.dishName)
+                }.onMove(perform: move)
             }.navigationBarTitle("Menu", displayMode: .inline)
             .toolbar {
+                EditButton()
                 Button(action: { showPopup.toggle() }, label: { Image(systemName: "plus.circle") })
             }.sheet(isPresented: $showPopup) {
                 AddDishToMenuView(menuViewModel: menuViewModel).environment(\.showingSheet, self.$showPopup)
             }
         }
+    }
+    
+    private func move(from source: IndexSet, to destination: Int) {
+        menuViewModel.menuDishes.move(fromOffsets: source, toOffset: destination)
+        menuViewModel.setNewOrderInMenu()
     }
 }
 
