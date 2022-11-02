@@ -9,21 +9,26 @@ import SwiftUI
 
 struct SelectTableView: View {
     @Binding var currentTable : Int
+    
+    let columns = [
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2)
+    ]
+    
     var body: some View {
         VStack {
             Spacer()
             Text("\(currentTable)").font(.system(size: 70))
             Spacer()
             HStack {
-                Spacer()
-                FunctionBoxView(functionName: "1") {
-                    currentTable = 1
+                LazyVGrid(columns: columns) {
+                    ForEach((1...9), id: \.self) { tableNumber in
+                        FunctionBoxView(functionName: "\(tableNumber)") {
+                            currentTable = tableNumber
+                        }
+                    }
                 }
-                Spacer()
-                FunctionBoxView(functionName: "2") {
-                    currentTable = 2
-                }
-                Spacer()
             }
         }
         

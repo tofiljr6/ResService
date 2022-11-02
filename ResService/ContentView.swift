@@ -12,41 +12,46 @@ var conter = 0
 var presentValue : String = "50"
 
 struct ContentView: View {
-    @StateObject var progress = OrdersInProgress()
+    @StateObject private var SO_user = UserModel()
+    @StateObject private var progress = OrdersInProgress()
+    @StateObject private var SO_orderInKitchen = OrdersInKitchen()
+    @State private var showPopup : Bool = false
     
     var body: some View {
-        NavigationView {
+        if SO_user.role == Role.waiter.rawValue {
             VStack {
-                Text("Restaurant Serivce")
-                    .font(.title)
-                
-                Spacer()
-                
-                VStack {
-                    Spacer()
-                    Text("3 orders").padding(.top).foregroundColor(.green)
-                    Text("37 min").padding().foregroundColor(.yellow)
-                    Text("12 Tables").padding(.bottom).foregroundColor(.red)
-                    Spacer()
-                }.font(.system(size: 35))
-    
-                Spacer()
-                
-                HStack {
-                    Spacer()
-                    NavigationLink(destination: WaiterOrderView(progress: progress)) {
+                NavigationView {
+//                    NavigationLink(destination: WaiterOrderView(progress: progress, OO_orderInKitchen: SO_orderInKitchen)) {
+                    NavigationLink(destination: WaiterOrderView()) {
                         Text("iPhone")
                         Image(systemName: "iphone")
                     }
-                    Spacer()
-                    NavigationLink(destination: KitchenView(progress: progress)) {
-                        Text("iPad")
-                        Image(systemName: "ipad")
+                    .navigationTitle("Waiter")
+                    .toolbar {
+                        Button(action: { showPopup.toggle() }, label:  { Image(systemName: "eye.circle") } )
+                    }.sheet(isPresented: $showPopup) {
+//                        KitchenView(progress: self.progress, OO_orderInKitchen: SO_orderInKitchen)
+                        KitchenView()
                     }
-                    Spacer()
                 }
             }
-        }.navigationTitle("title")
+        } else if SO_user.role == Role.boss.rawValue {
+            BossMainView()
+        }
+        else {
+            // TODO: the view for client and another role in db
+            VStack{
+                Spacer()
+                Image(systemName: "timelapse")
+                    .resizable()
+                    .frame(width: 250, height: 250)
+                    .scaledToFit()
+                Spacer()
+                Text("Hello \(SO_user.username)!")
+                    .font(.title)
+                Text("The views for your role: \(SO_user.role)")
+            }
+        }
     }
 }
 
