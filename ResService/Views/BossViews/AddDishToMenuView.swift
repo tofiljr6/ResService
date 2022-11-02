@@ -55,11 +55,16 @@ struct AddDishToMenuView: View {
             Spacer()
             
             Button {
-                // Save
-                menuViewModel.addNewDishToMenu(newDishName: newDishName, newDishPrice: Double(newDishPrice)!, newDishDescription: newDishDescription, newDishProducts: newDishProducts)
-                
-                // Exit the view
-                self.showingSheet?.wrappedValue = false
+                if let price = Double(newDishPrice.replacingOccurrences(of: ",", with: ".")) {
+                    // Save
+                    menuViewModel.addNewDishToMenu(newDishName: newDishName, newDishPrice: price, newDishDescription: newDishDescription, newDishProducts: newDishProducts)
+                    
+                    // Exit the view
+                    self.showingSheet?.wrappedValue = false
+                } else {
+                    // error was occured
+                    print("bład")
+                }
             } label: {
                 Text("Save")
                     .bold()
