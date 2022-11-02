@@ -19,7 +19,6 @@ struct SignInView: View {
             ContentView()
         } else {
              content
-//            BossMainView()
         }
     }
     

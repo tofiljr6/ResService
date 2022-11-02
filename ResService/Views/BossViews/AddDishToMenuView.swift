@@ -73,10 +73,6 @@ struct AddDishToMenuView: View {
             Spacer()
         }.padding()
     }
-    
-//    func saveDish() {
-//        let ref = Database.database(url: dbURLConnection).reference().child(menuCollectionName)
-//    }
 }
 
 struct AddDishToMenuView_Previews: PreviewProvider {

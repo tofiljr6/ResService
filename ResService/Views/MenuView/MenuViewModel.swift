@@ -9,32 +9,25 @@ import Foundation
 import Firebase
 
 final class MenuViewModel : ObservableObject {
-    private let menuCollectionName = "menuCollection"
-    private let paramCollectionName = "param"
-    private var menuUniqueName = "menuUniqueID"
-    private let dbURLConnection = "https://resservice-f26c6-default-rtdb.europe-west1.firebasedatabase.app/"
-    
     private var uniqueNewDishID : Int = -1
     private var menuDishhesLocal: [Menu] = []
     
     @Published var menuDishes: [Menu] = []
 
     init() {
-        print("MenuViewModel is initialized")
-        
+        print("MenuViewModel - connect")
         // load unique param to new dish
         let paramref = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
         paramref.observe(DataEventType.value, with: { snaphot in
             guard let paramsinfo = snaphot.value as? [String: Int] else { return }
-            if paramsinfo[self.menuUniqueName] != nil {
-                self.uniqueNewDishID = paramsinfo[self.menuUniqueName]!
+            if paramsinfo[menuUniqueName] != nil {
+                self.uniqueNewDishID = paramsinfo[menuUniqueName]!
             }
         })
         
         // load menus dishes to array
         let ref = Database.database(url: dbURLConnection).reference().child(menuCollectionName)
         ref.observe(DataEventType.value, with: { snapshot in
-//            print("nowe danie w bazie, pobieram!")
             guard let menu = snapshot.value as? [String: Any] else { print("exit"); return }
             for dish in menu {
                 let json = dish.value as? [String : Any]
@@ -90,6 +83,6 @@ final class MenuViewModel : ObservableObject {
     
     private func incrementUniqueID() {
         let paramref = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
-        paramref.child(self.menuUniqueName).setValue(self.uniqueNewDishID + 1)
+        paramref.child(menuUniqueName).setValue(self.uniqueNewDishID + 1)
     }
 }

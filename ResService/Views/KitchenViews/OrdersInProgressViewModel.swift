@@ -10,53 +10,51 @@ import Foundation
 import Firebase
 
 
-class OrdersInProgress : ObservableObject {
-    let ordersCollectionName = "ordersCollection"
-    let dbURLConnection = "https://resservice-f26c6-default-rtdb.europe-west1.firebasedatabase.app/"
-
-    @Published var tabledishesDict : [String: [Dish2]] = [:]
-    var singleTableOrders : [Dish2] = []
+class OrdersInProgressViewModel : ObservableObject {
+    @Published var tabledishesDict : [String: [Dish]] = [:]
+    
+    var singleTableOrders : [Dish] = []
     var currentOrder : [String : Int] = [:]
     
     private let decoder = JSONDecoder()
     
     init() {
-        #if PREVIEW
-        self.tabledishesDict["table1"] =  [Dish2(dishName: "Curry", dishAmount: 3)]
-        self.progress.getDishesToTisch(number: 1) = [Dish2(dishName: "Curry", dishAmount: 3)]
-        #else
-        print("listening")
+        print("OrdersInProgressViewModel - connect")
         let ref = Database.database(url: dbURLConnection).reference().child(ordersCollectionName)
         ref.observe(DataEventType.value, with: { snapshot in
             guard let tablesInfo = snapshot.value as? [String: Any] else { return}
             for table in tablesInfo {
                 do {
                     let singleTableInfo = tablesInfo[table.key]! as? [String: Any]
-//                    print(table.key)
                     for j in singleTableInfo! {
                         if j.key == "dishes" {
                             let dishes = singleTableInfo![j.key]! as? [String: Any]
                             for dish in dishes! {
                                 let jsonDishData = dishes![dish.key]! as? [String: Any]
                                 let dishData =  try JSONSerialization.data(withJSONObject: jsonDishData!)
-                                let dish = try JSONDecoder().decode(Dish2.self, from: dishData)
+                                let dish = try JSONDecoder().decode(Dish.self, from: dishData)
                                 
                                 self.singleTableOrders.append(dish)
                             }
                         }
                     }
                     self.tabledishesDict[table.key] = self.singleTableOrders
-//                    print(self.tabledishesDict)
                     self.singleTableOrders.removeAll()
                 } catch let error {
                     print(error)
                 }
             }
         })
-        #endif
     }
     
-    func getDishesToTisch(number: Int) -> [Dish2] {
+    /**
+        Get all dish, which are asossiated with choosen tableNumber
+     
+     - Parameter number : the unique number of the table from which we want to get dishes
+     
+     - Return : the current dish, which were added to the table
+     */
+    func getDishesToTisch(number: Int) -> [Dish] {
         return self.tabledishesDict["table\(number)"]!
     }
     
@@ -67,13 +65,12 @@ class OrdersInProgress : ObservableObject {
      */
     func addDishesToTisch(number: Int) -> Void {
         // number -> number stolika do którego będziemy przypisuwać
-        
         let ref = Database.database(url: dbURLConnection).reference().child(ordersCollectionName)
         
         var tmp : [String: Int] = [:]
         
         // old -> tabledischesDict
-        let ds : [Dish2] = self.tabledishesDict["table\(number)"] ?? [] // in case, the table's orders are empty, it is nothing to fetch from firebase
+        let ds : [Dish] = self.tabledishesDict["table\(number)"] ?? [] // in case, the table's orders are empty, it is nothing to fetch from firebase
         for d in ds {
             tmp[d.dishName] = d.dishAmount
         }
@@ -86,9 +83,7 @@ class OrdersInProgress : ObservableObject {
                 tmp[c.key] = c.value
             }
         }
-        
-//        print(tmp)
-        
+
         var counter = 0
         for t in tmp {
             let d = [
@@ -98,17 +93,35 @@ class OrdersInProgress : ObservableObject {
             ref.child("table\(number)").child("dishes").child("dish\(counter)").setValue(d)
             counter += 1
         }
-//        self.currentOrder.removeAll()
     }
     
-    // TODO: lazy? read about this !!!
-////    private lazy var databasePath: DatabaseReference? = {
-////        let ref = Database.database().reference().child("ordersCollection")
-////        return ref
-////    }()
+    /**
+        Update a value of dishname. If a dish does not yet exist, add new dish. Otherwise, update the current value to new value
+     
+    - Parameter dishName : Name of dish, which we want to synchonized
+     */
+    func updateOrder(dishName : String) -> Void {
+        let currentAmount = self.currentOrder[dishName] ?? 0
+        // up-to-date MVVM
+        self.currentOrder.updateValue(currentAmount + 1, forKey: dishName)
+    }
+    
+    /**
+        Clear current open order
+     */
+    func clearCurrentOrderState() -> Void {
+        self.currentOrder = [:]
+    }
+    
+    /**
+        Remove all orders from table's order and pay from dishes
+
+     - Parameter tableNumber : the unique number of table, from which we want to delete dishes and simulate paying
+     */
+    func payTable(tableNumber : Int) -> Void {
+        let ref = Database.database(url: dbURLConnection ).reference().child(ordersCollectionName)
+        ref.child("table\(tableNumber)").child("dishes").removeValue()
+        tabledishesDict.removeValue(forKey: "table\(tableNumber)")
+    }
 }
 
-struct Dish2 : Codable, Hashable {
-    let dishName : String
-    let dishAmount : Int
-}

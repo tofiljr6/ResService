@@ -50,17 +50,6 @@ struct BossMainView: View {
     }
 }
 
-struct MenuSection : Codable, Identifiable {
-    var id : UUID
-    var name : String
-    var items : [MenuItem]
-}
-
-struct MenuItem : Codable, Identifiable {
-    var id : UUID
-    var name: String
-}
-
 struct BossMainView_Previews: PreviewProvider {
     static var previews: some View {
         BossMainView()

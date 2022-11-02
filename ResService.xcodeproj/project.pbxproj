@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */; };
-		F2268FD428FD755A0096F35C /* OrdersInProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2268FD328FD755A0096F35C /* OrdersInProgress.swift */; };
-		F235591C2903F52A002AEF80 /* OrdersInKitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F235591B2903F52A002AEF80 /* OrdersInKitchen.swift */; };
+		F2268FD428FD755A0096F35C /* OrdersInProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */; };
+		F235591C2903F52A002AEF80 /* OrdersInKitchenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */; };
 		F235591E29045587002AEF80 /* OrderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F235591D29045587002AEF80 /* OrderCardView.swift */; };
 		F237CB9529055E5D003C1007 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F237CB9429055E5D003C1007 /* SignInView.swift */; };
 		F23D0ADB2909A287005C84F3 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D0ADA2909A287005C84F3 /* MenuViewModel.swift */; };
@@ -35,7 +35,11 @@
 		F29B1C3529082A2F00303829 /* RoleEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C3429082A2F00303829 /* RoleEnum.swift */; };
 		F29B1C372908503800303829 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C362908503800303829 /* MenuView.swift */; };
 		F29B1C3929085C7E00303829 /* AddDishToMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C3829085C7E00303829 /* AddDishToMenuView.swift */; };
-		F2FA16E728FF48B000844C79 /* OrderBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FA16E628FF48AF00844C79 /* OrderBoxView.swift */; };
+		F2D41C922912ACBE001B8230 /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C912912ACBE001B8230 /* DishModel.swift */; };
+		F2D41C942912AEB2001B8230 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C932912AEB2001B8230 /* OrderModel.swift */; };
+		F2D41C962912AEC8001B8230 /* OrderCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C952912AEC8001B8230 /* OrderCardModel.swift */; };
+		F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */; };
+		F2D41C9A2912B1A2001B8230 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C992912B1A2001B8230 /* Const.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +61,8 @@
 
 /* Begin PBXFileReference section */
 		F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableView.swift; sourceTree = "<group>"; };
-		F2268FD328FD755A0096F35C /* OrdersInProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInProgress.swift; sourceTree = "<group>"; };
-		F235591B2903F52A002AEF80 /* OrdersInKitchen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInKitchen.swift; sourceTree = "<group>"; };
+		F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInProgressViewModel.swift; sourceTree = "<group>"; };
+		F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInKitchenViewModel.swift; sourceTree = "<group>"; };
 		F235591D29045587002AEF80 /* OrderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCardView.swift; sourceTree = "<group>"; };
 		F237CB9429055E5D003C1007 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F23D0ADA2909A287005C84F3 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -83,7 +87,11 @@
 		F29B1C3429082A2F00303829 /* RoleEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleEnum.swift; sourceTree = "<group>"; };
 		F29B1C362908503800303829 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		F29B1C3829085C7E00303829 /* AddDishToMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishToMenuView.swift; sourceTree = "<group>"; };
-		F2FA16E628FF48AF00844C79 /* OrderBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBoxView.swift; sourceTree = "<group>"; };
+		F2D41C912912ACBE001B8230 /* DishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
+		F2D41C932912AEB2001B8230 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		F2D41C952912AEC8001B8230 /* OrderCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCardModel.swift; sourceTree = "<group>"; };
+		F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionAndItemModel.swift; sourceTree = "<group>"; };
+		F2D41C992912B1A2001B8230 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,10 @@
 			children = (
 				F23D0ADD290A9B0E005C84F3 /* MenuModel.swift */,
 				F29B1C2E2905C69500303829 /* UserModel.swift */,
+				F2D41C912912ACBE001B8230 /* DishModel.swift */,
+				F2D41C932912AEB2001B8230 /* OrderModel.swift */,
+				F2D41C952912AEC8001B8230 /* OrderCardModel.swift */,
+				F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +197,7 @@
 				F253267928F5E45A002F5F36 /* ContentView.swift */,
 				F253267B28F5E45A002F5F36 /* Assets.xcassets */,
 				F253267D28F5E45A002F5F36 /* Preview Content */,
+				F2D41C992912B1A2001B8230 /* Const.swift */,
 			);
 			path = ResService;
 			sourceTree = "<group>";
@@ -227,9 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				F25326B128F82A71002F5F36 /* KitchenView.swift */,
-				F2268FD328FD755A0096F35C /* OrdersInProgress.swift */,
-				F2FA16E628FF48AF00844C79 /* OrderBoxView.swift */,
-				F235591B2903F52A002AEF80 /* OrdersInKitchen.swift */,
+				F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */,
+				F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */,
 				F235591D29045587002AEF80 /* OrderCardView.swift */,
 			);
 			path = KitchenViews;
@@ -405,21 +417,25 @@
 				F25326B028F7290D002F5F36 /* DishView.swift in Sources */,
 				F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */,
 				F23D0ADB2909A287005C84F3 /* MenuViewModel.swift in Sources */,
+				F2D41C9A2912B1A2001B8230 /* Const.swift in Sources */,
 				F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */,
 				F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */,
 				F29B1C322908265700303829 /* BossMainView.swift in Sources */,
-				F2268FD428FD755A0096F35C /* OrdersInProgress.swift in Sources */,
+				F2D41C962912AEC8001B8230 /* OrderCardModel.swift in Sources */,
+				F2D41C922912ACBE001B8230 /* DishModel.swift in Sources */,
+				F2268FD428FD755A0096F35C /* OrdersInProgressViewModel.swift in Sources */,
 				F25326AD28F72266002F5F36 /* WaiterOrderView.swift in Sources */,
 				F235591E29045587002AEF80 /* OrderCardView.swift in Sources */,
 				F29B1C3929085C7E00303829 /* AddDishToMenuView.swift in Sources */,
+				F2D41C942912AEB2001B8230 /* OrderModel.swift in Sources */,
 				F23D0ADE290A9B0F005C84F3 /* MenuModel.swift in Sources */,
 				F29B1C2F2905C69500303829 /* UserModel.swift in Sources */,
-				F2FA16E728FF48B000844C79 /* OrderBoxView.swift in Sources */,
 				F29B1C372908503800303829 /* MenuView.swift in Sources */,
 				F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */,
 				F253267828F5E45A002F5F36 /* ResServiceApp.swift in Sources */,
-				F235591C2903F52A002AEF80 /* OrdersInKitchen.swift in Sources */,
+				F235591C2903F52A002AEF80 /* OrdersInKitchenViewModel.swift in Sources */,
 				F237CB9529055E5D003C1007 /* SignInView.swift in Sources */,
+				F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

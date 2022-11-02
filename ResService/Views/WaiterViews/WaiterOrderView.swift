@@ -8,26 +8,22 @@
 import SwiftUI
 import Firebase
 
-let ordersCollectionName = "ordersCollection"
-let dbURLConnection = "https://resservice-f26c6-default-rtdb.europe-west1.firebasedatabase.app/"
-
 var currentOrder: [String: Int] = [:]
-var localDishes : [Dish2] = []
+var localDishes : [Dish] = []
 
 struct WaiterOrderView: View {
-    @ObservedObject var progress : OrdersInProgress
-    @ObservedObject var OO_orderInKitchen : OrdersInKitchen
+    @ObservedObject var ordersInProgress : OrdersInProgressViewModel
+    @ObservedObject var ordersInKitchen : OrdersInKitchenViewModel
     @ObservedObject var menu : MenuViewModel
     
     @State var tableNumber = 1
     
     init() {
-        self.progress = OrdersInProgress()
-        self.OO_orderInKitchen = OrdersInKitchen()
+        self.ordersInProgress = OrdersInProgressViewModel()
+        self.ordersInKitchen = OrdersInKitchenViewModel()
         self.menu = MenuViewModel()
     }
     
-//    let data : [String] = ["Classic Curry Wurst", "Kult Curry Wurst", "Wild Bradwurst", "Vege Curry Wurst", "Pommes"]
     let columns = [
         GridItem(.flexible(), spacing: 2),
         GridItem(.flexible(), spacing: 2),
@@ -48,11 +44,7 @@ struct WaiterOrderView: View {
             LazyVGrid(columns: columns, spacing: 2) {
                 ForEach(self.menu.menuDishes, id: \.dishID) { item in
                     DishView(dishName: item.dishName) {
-                        addToOrder(productName: item.dishName)
-                        let currentAmount = progress.currentOrder[item.dishName] ?? 0
-                        
-                        // up-to-date model view controller
-                        progress.currentOrder.updateValue(currentAmount + 1, forKey: item.dishName)
+                        ordersInProgress.updateOrder(dishName: item.dishName)
                     }
                 }
             }
@@ -67,43 +59,22 @@ struct WaiterOrderView: View {
             
             HStack {
                 FunctionBoxView(functionName: "Order") {
-                    progress.addDishesToTisch(number: tableNumber)
-                    OO_orderInKitchen.addOrder(tableNumber: tableNumber,
-                                               currentOrder: progress.currentOrder)
-                    self.progress.currentOrder = [:]
+                    ordersInProgress.addDishesToTisch(number: tableNumber)
+                    ordersInKitchen.addOrder(tableNumber: tableNumber,
+                                               currentOrder: ordersInProgress.currentOrder)
+                    ordersInProgress.clearCurrentOrderState()
                 }
                 FunctionBoxView(functionName: "Pay") {
-                    payTable(tableNumber: tableNumber)
+                    ordersInProgress.payTable(tableNumber: tableNumber)
                 }
             }
         }
-    }
-    
-    func payTable(tableNumber: Int) {
-        let ref = Database.database(url: dbURLConnection ).reference().child(ordersCollectionName)
-        ref.child("table\(tableNumber)").child("dishes").removeValue()
-        self.progress.tabledishesDict.removeValue(forKey: "table\(tableNumber)")
-    }
-    
-    func addToOrder(productName: String) {
-        let currentAmount = currentOrder[productName] ?? 0
-        currentOrder.updateValue(currentAmount + 1, forKey: productName)
     }
 }
 
 
 struct WaiterOrderView_Previews: PreviewProvider {
     static var previews: some View {
-//        WaiterOrderView(progress: OrdersInProgress(),
-//                        OO_orderInKitchen: OrdersInKitchen())
         WaiterOrderView()
     }
 }
-
-
-struct Dish : Codable {
-    let dishName : String
-    let dishAmount : Int
-}
-
-
