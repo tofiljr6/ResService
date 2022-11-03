@@ -13,12 +13,14 @@ struct BossMainView: View {
     var sections : [MenuSection] = [MenuSection(id: UUID(), name: "Role", items: [MenuItem(id: UUID(), name: "Preview Waiter"),
                                                                                   MenuItem(id: UUID(), name: "Preview Kitchen")]),
                                     MenuSection(id: UUID(), name: "Manage restauratn", items: [MenuItem(id: UUID(), name: "Add new dishes"),
-                                                                                               MenuItem(id: UUID(), name: "Employee new")])]
+                                                                                               MenuItem(id: UUID(), name: "Employee new"),
+                                                                                               MenuItem(id: UUID(), name: "Manage tables")])]
     
     private enum BossSection : String {
-        case previewWaiter = "Preview Waiter"
+        case previewWaiter  = "Preview Waiter"
         case previewKitchen = "Preview Kitchen"
-        case addNewDishes = "Add new dishes"
+        case addNewDishes   = "Add new dishes"
+        case manageTables   = "Manage tables"
     }
     
     var body: some View {
@@ -41,11 +43,13 @@ struct BossMainView: View {
         let val = BossSection(rawValue: itemText)
         
         switch val {
-        case .some(.previewKitchen): return AnyView(KitchenView())
-        case .some(.previewWaiter): return AnyView(WaiterOrderView())
+        case .some(.previewKitchen): return AnyView(KitchenView().navigationBarTitleDisplayMode(.inline))
+        case .some(.previewWaiter): return AnyView(WaiterOrderView().navigationBarTitleDisplayMode(.inline))
         case .some(.addNewDishes): return AnyView(MenuView())
+        case .some(.manageTables): return AnyView(ManageTablesView().navigationBarTitleDisplayMode(.inline))
         case .none:
             return AnyView(Text("Nieznazny bład"))
+            
         }
     }
 }

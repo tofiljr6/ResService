@@ -19,6 +19,7 @@ struct SignInView: View {
             ContentView()
         } else {
              content
+//            ManageTablesView()
         }
     }
     
@@ -85,11 +86,19 @@ struct SignInView: View {
 //                        }
 //                    }
 //                }
-            Button("boss") {
-                email = "boss@gmail.com"
-                password = "123456"
-                login()
-            }.offset(y: -60)
+            Group {
+                    Button("boss") {
+                        email = "boss@gmail.com"
+                        password = "123456"
+                        login()
+                    }.offset(x: -50, y: -60)
+                    Button("tester") {
+                        email = "tester@gmail.com"
+                        password = "123456"
+                        login()
+                    }.offset(x: 50, y: -60)
+            }
+            
         }.ignoresSafeArea()
     }
     

@@ -17,36 +17,45 @@ struct ContentView: View {
     
     var body: some View {
         if user.role == Role.waiter.rawValue {
-            VStack {
-                NavigationView {
-                    NavigationLink(destination: WaiterOrderView()) {
-                        Text("iPhone")
-                        Image(systemName: "iphone")
-                    }
-                    .navigationTitle("Waiter")
-                    .toolbar {
-                        Button(action: { showPopup.toggle() }, label:  { Image(systemName: "eye.circle") } )
-                    }.sheet(isPresented: $showPopup) {
-                        KitchenView()
-                    }
-                }
-            }
+            waiterUserRole
         } else if user.role == Role.boss.rawValue {
             BossMainView()
         }
         else {
-            // TODO: the view for client and another role in db
-            VStack{
-                Spacer()
-                Image(systemName: "timelapse")
-                    .resizable()
-                    .frame(width: 250, height: 250)
-                    .scaledToFit()
-                Spacer()
-                Text("Hello \(user.username)!")
-                    .font(.title)
-                Text("The views for your role: \(user.role)")
+            noUserRole
+//            waiterUserRole
+        }
+    }
+    
+    var waiterUserRole : some View {
+        NavigationView {
+            NavigationLink(destination: WaiterOrderView().navigationBarTitleDisplayMode(.inline)) {
+//                Text("iPhone")
+//                Image(systemName: "iphone")
+                ManageTablesView()
             }
+            .navigationTitle("Waiter")
+            .toolbar {
+                Button(action: { showPopup.toggle() }, label:  { Image(systemName: "eye.circle") } )
+            }.sheet(isPresented: $showPopup) {
+                KitchenView()
+            }
+
+        }
+    }
+    
+    var noUserRole : some View {
+        // TODO: the view for client and another role in db
+        VStack{
+            Spacer()
+            Image(systemName: "timelapse")
+                .resizable()
+                .frame(width: 250, height: 250)
+                .scaledToFit()
+            Spacer()
+            Text("Hello \(user.username)!")
+                .font(.title)
+            Text("The views for your role: \(user.role)")
         }
     }
 }
