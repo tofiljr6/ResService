@@ -17,30 +17,12 @@ struct ContentView: View {
     
     var body: some View {
         if user.role == Role.waiter.rawValue {
-            waiterUserRole
+            DiningRoomView(diningRoom: DiningRoomViewModel())
         } else if user.role == Role.boss.rawValue {
             BossMainView()
         }
         else {
             noUserRole
-//            waiterUserRole
-        }
-    }
-    
-    var waiterUserRole : some View {
-        NavigationView {
-            NavigationLink(destination: WaiterOrderView().navigationBarTitleDisplayMode(.inline)) {
-//                Text("iPhone")
-//                Image(systemName: "iphone")
-                ManageTablesView()
-            }
-            .navigationTitle("Waiter")
-            .toolbar {
-                Button(action: { showPopup.toggle() }, label:  { Image(systemName: "eye.circle") } )
-            }.sheet(isPresented: $showPopup) {
-                KitchenView()
-            }
-
         }
     }
     

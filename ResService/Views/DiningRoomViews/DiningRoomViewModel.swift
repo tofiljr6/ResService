@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class ManageTablesViewModel : ObservableObject {
+class DiningRoomViewModel : ObservableObject {
     @Published var tablesInfo : [TableInfo] = []
     
     init() {

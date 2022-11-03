@@ -10,6 +10,8 @@ import SwiftUI
 
 
 struct BossMainView: View {
+    @ObservedObject var diningRoom : DiningRoomViewModel = DiningRoomViewModel()
+    
     var sections : [MenuSection] = [MenuSection(id: UUID(), name: "Role", items: [MenuItem(id: UUID(), name: "Preview Waiter"),
                                                                                   MenuItem(id: UUID(), name: "Preview Kitchen")]),
                                     MenuSection(id: UUID(), name: "Manage restauratn", items: [MenuItem(id: UUID(), name: "Add new dishes"),
@@ -44,9 +46,13 @@ struct BossMainView: View {
         
         switch val {
         case .some(.previewKitchen): return AnyView(KitchenView().navigationBarTitleDisplayMode(.inline))
-        case .some(.previewWaiter): return AnyView(WaiterOrderView().navigationBarTitleDisplayMode(.inline))
+        case .some(.previewWaiter): return AnyView(DiningRoomView(diningRoom: diningRoom).navigationBarTitleDisplayMode(.inline))
         case .some(.addNewDishes): return AnyView(MenuView())
-        case .some(.manageTables): return AnyView(ManageTablesView().navigationBarTitleDisplayMode(.inline))
+        case .some(.manageTables): return AnyView(ManageDiningRoomView(diningRoom: diningRoom)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(content: {
+                Button(action: { diningRoom.addNewTable() }, label: { Image(systemName: "plus.circle") })
+            }))
         case .none:
             return AnyView(Text("Nieznazny bład"))
             

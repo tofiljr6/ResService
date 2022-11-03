@@ -16,12 +16,13 @@ struct WaiterOrderView: View {
     @ObservedObject var ordersInKitchen : OrdersInKitchenViewModel
     @ObservedObject var menu : MenuViewModel
     
-    @State var tableNumber = 1
+    @State var tableNumber : Int
     
-    init() {
+    init(tableNumber : Int) {
         self.ordersInProgress = OrdersInProgressViewModel()
         self.ordersInKitchen = OrdersInKitchenViewModel()
         self.menu = MenuViewModel()
+        self.tableNumber = tableNumber
     }
     
     let columns = [
@@ -36,9 +37,9 @@ struct WaiterOrderView: View {
                 Text("Table number: \(tableNumber)")
                     .padding(.leading)
                 Spacer()
-                NavigationLink(destination: SelectTableView(currentTable: $tableNumber)) {
-                    Text("Change")
-                }.padding(.trailing)
+//                NavigationLink(destination: SelectTableView(currentTable: $tableNumber)) {
+//                    Text("Change")
+//                }.padding(.trailing)
             }.font(.title)
     
             LazyVGrid(columns: columns, spacing: 2) {
@@ -74,7 +75,9 @@ struct WaiterOrderView: View {
 
 
 struct WaiterOrderView_Previews: PreviewProvider {
+    @State static var tableNumber : Int = 1
+    
     static var previews: some View {
-        WaiterOrderView()
+        WaiterOrderView(tableNumber: tableNumber)
     }
 }

@@ -35,14 +35,16 @@
 		F29B1C3529082A2F00303829 /* RoleEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C3429082A2F00303829 /* RoleEnum.swift */; };
 		F29B1C372908503800303829 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C362908503800303829 /* MenuView.swift */; };
 		F29B1C3929085C7E00303829 /* AddDishToMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C3829085C7E00303829 /* AddDishToMenuView.swift */; };
+		F2C14386291418180043CB32 /* TableInManageDiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */; };
+		F2C143882914191A0043CB32 /* ManageDiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C143872914191A0043CB32 /* ManageDiningRoomView.swift */; };
 		F2D41C922912ACBE001B8230 /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C912912ACBE001B8230 /* DishModel.swift */; };
 		F2D41C942912AEB2001B8230 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C932912AEB2001B8230 /* OrderModel.swift */; };
 		F2D41C962912AEC8001B8230 /* OrderCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C952912AEC8001B8230 /* OrderCardModel.swift */; };
 		F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */; };
 		F2D41C9A2912B1A2001B8230 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C992912B1A2001B8230 /* Const.swift */; };
-		F2EC9FC82912C99F00493A27 /* ManageTablesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FC72912C99F00493A27 /* ManageTablesView.swift */; };
+		F2EC9FC82912C99F00493A27 /* DiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FC72912C99F00493A27 /* DiningRoomView.swift */; };
 		F2EC9FCA2912CA1E00493A27 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FC92912CA1E00493A27 /* TableView.swift */; };
-		F2EC9FCC2913CEA700493A27 /* ManageTablesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FCB2913CEA700493A27 /* ManageTablesViewModel.swift */; };
+		F2EC9FCC2913CEA700493A27 /* DiningRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,14 +92,16 @@
 		F29B1C3429082A2F00303829 /* RoleEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleEnum.swift; sourceTree = "<group>"; };
 		F29B1C362908503800303829 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		F29B1C3829085C7E00303829 /* AddDishToMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishToMenuView.swift; sourceTree = "<group>"; };
+		F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInManageDiningRoomView.swift; sourceTree = "<group>"; };
+		F2C143872914191A0043CB32 /* ManageDiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDiningRoomView.swift; sourceTree = "<group>"; };
 		F2D41C912912ACBE001B8230 /* DishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
 		F2D41C932912AEB2001B8230 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		F2D41C952912AEC8001B8230 /* OrderCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCardModel.swift; sourceTree = "<group>"; };
 		F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionAndItemModel.swift; sourceTree = "<group>"; };
 		F2D41C992912B1A2001B8230 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		F2EC9FC72912C99F00493A27 /* ManageTablesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageTablesView.swift; sourceTree = "<group>"; };
+		F2EC9FC72912C99F00493A27 /* DiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningRoomView.swift; sourceTree = "<group>"; };
 		F2EC9FC92912CA1E00493A27 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
-		F2EC9FCB2913CEA700493A27 /* ManageTablesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageTablesViewModel.swift; sourceTree = "<group>"; };
+		F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningRoomViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +144,8 @@
 		F23D0AD82909A211005C84F3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F2EC9FC62912C98E00493A27 /* ManageTable */,
+				F2C14384291417D50043CB32 /* ManageDiningRoomViews */,
+				F2EC9FC62912C98E00493A27 /* DiningRoomViews */,
 				F25326B628F87360002F5F36 /* FunctionsViews */,
 				F25326AE28F728C4002F5F36 /* WaiterViews */,
 				F25326B328F82A78002F5F36 /* KitchenViews */,
@@ -280,14 +285,23 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		F2EC9FC62912C98E00493A27 /* ManageTable */ = {
+		F2C14384291417D50043CB32 /* ManageDiningRoomViews */ = {
 			isa = PBXGroup;
 			children = (
-				F2EC9FC72912C99F00493A27 /* ManageTablesView.swift */,
-				F2EC9FC92912CA1E00493A27 /* TableView.swift */,
-				F2EC9FCB2913CEA700493A27 /* ManageTablesViewModel.swift */,
+				F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */,
+				F2C143872914191A0043CB32 /* ManageDiningRoomView.swift */,
 			);
-			path = ManageTable;
+			path = ManageDiningRoomViews;
+			sourceTree = "<group>";
+		};
+		F2EC9FC62912C98E00493A27 /* DiningRoomViews */ = {
+			isa = PBXGroup;
+			children = (
+				F2EC9FC72912C99F00493A27 /* DiningRoomView.swift */,
+				F2EC9FC92912CA1E00493A27 /* TableView.swift */,
+				F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */,
+			);
+			path = DiningRoomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,7 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2EC9FCC2913CEA700493A27 /* ManageTablesViewModel.swift in Sources */,
+				F2EC9FCC2913CEA700493A27 /* DiningRoomViewModel.swift in Sources */,
 				F29B1C3529082A2F00303829 /* RoleEnum.swift in Sources */,
 				F25326B028F7290D002F5F36 /* DishView.swift in Sources */,
 				F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */,
@@ -445,6 +459,7 @@
 				F2268FD428FD755A0096F35C /* OrdersInProgressViewModel.swift in Sources */,
 				F25326AD28F72266002F5F36 /* WaiterOrderView.swift in Sources */,
 				F235591E29045587002AEF80 /* OrderCardView.swift in Sources */,
+				F2C143882914191A0043CB32 /* ManageDiningRoomView.swift in Sources */,
 				F29B1C3929085C7E00303829 /* AddDishToMenuView.swift in Sources */,
 				F2D41C942912AEB2001B8230 /* OrderModel.swift in Sources */,
 				F23D0ADE290A9B0F005C84F3 /* MenuModel.swift in Sources */,
@@ -452,9 +467,10 @@
 				F29B1C372908503800303829 /* MenuView.swift in Sources */,
 				F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */,
 				F253267828F5E45A002F5F36 /* ResServiceApp.swift in Sources */,
-				F2EC9FC82912C99F00493A27 /* ManageTablesView.swift in Sources */,
+				F2EC9FC82912C99F00493A27 /* DiningRoomView.swift in Sources */,
 				F235591C2903F52A002AEF80 /* OrdersInKitchenViewModel.swift in Sources */,
 				F237CB9529055E5D003C1007 /* SignInView.swift in Sources */,
+				F2C14386291418180043CB32 /* TableInManageDiningRoomView.swift in Sources */,
 				F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
