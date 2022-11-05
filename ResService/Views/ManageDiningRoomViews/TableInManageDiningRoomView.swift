@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-struct TableInManageDiningRoomView: View {
-    var id : Int
-    var color : Color
-    @State var location : CGPoint
+struct TableInManageDiningRoomView: Table {
+    @State var tableInfo : TableInfo
     @Binding var manageTableViewWidth  : CGFloat
     @Binding var manageTableViewHeight : CGFloat
     @Binding var editMode : Bool
@@ -24,58 +22,58 @@ struct TableInManageDiningRoomView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(color)
+                .fill(tableInfo.status)
                 .frame(width: boxsize, height: boxsize)
                 .cornerRadius(4)
-                .position(location)
+                .position(tableInfo.location)
                 .gesture(
                     DragGesture()
                         .onChanged { value in
-                                location = value.location
-                                print(location, UIScreen.main.bounds.width, UIScreen.main.bounds.height, manageTableViewWidth, manageTableViewHeight)
+                                tableInfo.location = value.location
                         }
                         .onEnded { value in
-                                print("do zapisania loc stolika nr \(id)")
+                                print("do zapisania loc stolika nr \(tableInfo.id)")
                                 
                                 if value.location.x < 0 {
-                                    location.x = boxsize / 2
+                                    tableInfo.location.x = boxsize / 2
                                 } else if value.location.x > manageTableViewWidth {
-                                    location.x = manageTableViewWidth -  0.5 * boxsize
+                                    tableInfo.location.x = manageTableViewWidth -  0.5 * boxsize
                                 }
                                 
                                 if value.location.y < 0 {
-                                    location.y = boxsize / 2
+                                    tableInfo.location.y = boxsize / 2
                                 } else if value.location.y > manageTableViewHeight {
-                                    location.y = manageTableViewHeight - 0.5 * boxsize
+                                    tableInfo.location.y = manageTableViewHeight - 0.5 * boxsize
                                 }
                                 
-                                diningRoom.updateLocationForTableNumber(number: id, location: location)
+                            diningRoom.updateLocationForTableNumber(number: tableInfo.id, location: tableInfo.location)
                         }
                 )
-//                .gesture(
-//                    TapGesture().onEnded({ value in
-//                        showingTableDetail.toggle()
-//                    })
-//                )
                 .gesture(
                     LongPressGesture().onEnded({ value in
                         showingAlert = true
                     })
                 )
                 .border(.red)
-                .alert("Do you want to delete table number \(id)", isPresented: $showingAlert) {
-                    Button("Yes") { diningRoom.deleteTable(number: id) }
+                .alert("Do you want to delete table number \(tableInfo.id)", isPresented: $showingAlert) {
+                    Button("Yes") { diningRoom.deleteTable(number: tableInfo.id) }
                     Button("No") { }
                 }
-            Text("\(id)")
-                .position(location)
+            Text("\(tableInfo.id)")
+                .position(tableInfo.location)
                 .foregroundColor(.black)
         }
     }
 }
 
-//struct ManageDiningRoomView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ManageDiningRoomView()
-//    }
-//}
+struct TableInManageDiningRoomView_Previews: PreviewProvider {
+    @State static var manageTableViewHeight = UIScreen.main.bounds.height * 0.8
+    @State static var manageTableViewWidth = UIScreen.main.bounds.width * 0.8
+    @State static var editMode : Bool = false
+    @ObservedObject static var manageTable = DiningRoomViewModel()
+
+
+    static var previews: some View {
+        TableInManageDiningRoomView(tableInfo: TableInfo(id: 1, status: .green, location: CGPoint(x: 30, y: 30)), manageTableViewWidth: $manageTableViewWidth, manageTableViewHeight: $manageTableViewHeight, editMode: $editMode, diningRoom: manageTable)
+    }
+}

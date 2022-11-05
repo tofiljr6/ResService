@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-struct TableView: View {
-    var id : Int
-    var color : Color
-    @State var location : CGPoint
+struct TableView: Table {
+    @State var tableInfo : TableInfo
     @Binding var manageTableViewWidth  : CGFloat
     @Binding var manageTableViewHeight : CGFloat
     @Binding var editMode : Bool
@@ -20,16 +18,16 @@ struct TableView: View {
     private let paddingconst = CGFloat(10)
     
     var body: some View {
-        NavigationLink(destination: { WaiterOrderView(tableNumber: id) }) {
+        NavigationLink(destination: { WaiterOrderView(tableNumber: tableInfo.id)}) {
             ZStack {
                 Rectangle()
-                    .fill(color)
+                    .fill(.green)
                     .frame(width: boxsize, height: boxsize)
                     .cornerRadius(4)
-                Text(id.description)
+                Text(tableInfo.id.description)
                     .foregroundColor(.black)
             }
-        }.position(location)
+        }.position(tableInfo.location)
     }
 }
 
@@ -38,11 +36,9 @@ struct TableView_Previews: PreviewProvider {
     @State static var manageTableViewWidth = UIScreen.main.bounds.width * 0.8
     @State static var editMode : Bool = false
     @ObservedObject static var manageTable = DiningRoomViewModel()
-    
+
     static var previews: some View {
-        TableView(id: 1,
-                  color: .brown,
-                  location: CGPoint(x: 50, y: 50),
+        TableView(tableInfo: TableInfo(id: 1, status: .brown, location: CGPoint(x: 50, y: 50)),
                   manageTableViewWidth: $manageTableViewWidth,
                   manageTableViewHeight: $manageTableViewHeight, editMode: $editMode,
                   diningRoom: manageTable)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */; };
+		F2091E702916F6DB00FFAFD0 /* TableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2091E6F2916F6DB00FFAFD0 /* TableProtocol.swift */; };
 		F2268FD428FD755A0096F35C /* OrdersInProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */; };
 		F227C2192916992D00184384 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F227C2182916992D00184384 /* TableModel.swift */; };
 		F235591C2903F52A002AEF80 /* OrdersInKitchenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */; };
@@ -67,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableView.swift; sourceTree = "<group>"; };
+		F2091E6F2916F6DB00FFAFD0 /* TableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
 		F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInProgressViewModel.swift; sourceTree = "<group>"; };
 		F227C2182916992D00184384 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
 		F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInKitchenViewModel.swift; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F2091E6E2916F6CC00FFAFD0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F2091E6F2916F6DB00FFAFD0 /* TableProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		F237CB9329055E1B003C1007 /* SignInLogInViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +214,7 @@
 		F253267628F5E45A002F5F36 /* ResService */ = {
 			isa = PBXGroup;
 			children = (
+				F2091E6E2916F6CC00FFAFD0 /* Protocols */,
 				F23D0ADC290A9AE7005C84F3 /* Model */,
 				F23D0AD82909A211005C84F3 /* Views */,
 				F29B1C3329082A1A00303829 /* Enums */,
@@ -465,6 +476,7 @@
 				F235591E29045587002AEF80 /* OrderCardView.swift in Sources */,
 				F2C143882914191A0043CB32 /* ManageDiningRoomView.swift in Sources */,
 				F29B1C3929085C7E00303829 /* AddDishToMenuView.swift in Sources */,
+				F2091E702916F6DB00FFAFD0 /* TableProtocol.swift in Sources */,
 				F2D41C942912AEB2001B8230 /* OrderModel.swift in Sources */,
 				F23D0ADE290A9B0F005C84F3 /* MenuModel.swift in Sources */,
 				F29B1C2F2905C69500303829 /* UserModel.swift in Sources */,
