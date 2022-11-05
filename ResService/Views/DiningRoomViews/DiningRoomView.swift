@@ -21,7 +21,7 @@ struct DiningRoomView: View {
                     //                    NavigationLink(destination: { Text(item.id.description)}) {
                     //                        Text(item.id.description).padding().border(.orange)
                     //                    }.position(item.location)
-                    TableView(id: item.id, color: item.color, location: item.location,
+                    TableView(id: item.id, color: item.status, location: item.location,
                               manageTableViewWidth: $diningRoomViewWidth,
                               manageTableViewHeight: $diningRoomViewHeight, editMode: $editMode,
                               diningRoom: diningRoom)

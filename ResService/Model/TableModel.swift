@@ -10,23 +10,23 @@ import SwiftUI
 
 struct TableInfoDB : Codable {
     var id : Int
-    var color : String
+    var status : String
     var x : Float
     var y : Float
 }
 
 struct TableInfo {
     var id : Int
-    var color : Color
+    var status : Color
     var location : CGPoint
     
     var tablejson : [String : Any] {
         get {
             return [
                 "id" : id,
-                "color" : color.description,
+                "status" : status.description,
                 "x" : location.x,
-                "y" : location.y
+                "y" : location.y,
             ]
         }
     }

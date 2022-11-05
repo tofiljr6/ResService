@@ -19,6 +19,8 @@ struct TableInManageDiningRoomView: View {
     private let boxsize = CGFloat(50)
     private let paddingconst = CGFloat(10)
     
+    @State private var showingAlert : Bool = false
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -50,12 +52,21 @@ struct TableInManageDiningRoomView: View {
                                 diningRoom.updateLocationForTableNumber(number: id, location: location)
                         }
                 )
-                .gesture(TapGesture().onEnded({ value in
-                    print("Wybrano stolik numer: \(id)")
-                }))
+//                .gesture(
+//                    TapGesture().onEnded({ value in
+//                        showingTableDetail.toggle()
+//                    })
+//                )
+                .gesture(
+                    LongPressGesture().onEnded({ value in
+                        showingAlert = true
+                    })
+                )
                 .border(.red)
-            
-            
+                .alert("Do you want to delete table number \(id)", isPresented: $showingAlert) {
+                    Button("Yes") { diningRoom.deleteTable(number: id) }
+                    Button("No") { }
+                }
             Text("\(id)")
                 .position(location)
                 .foregroundColor(.black)

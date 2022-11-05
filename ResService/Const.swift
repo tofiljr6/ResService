@@ -12,7 +12,9 @@ let dbURLConnection = "https://resservice-f26c6-default-rtdb.europe-west1.fireba
 let ordersCollectionName = "ordersCollection"
 let OIKcollectionName = "ordersInKitchenCollection"
 let diningRoomCollectionName = "diningRoomCollection"
-let paramCollectionName = "param"
-let paramUniqueOrderNumber = "noorder"
 let menuCollectionName = "menuCollection"
+let paramCollectionName = "param"
+
+let paramUniqueOrderNumber = "noorder"
 let menuUniqueName = "menuUniqueID"
+let tableUniqueID = "tableUniqueID"
