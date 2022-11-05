@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ManageDiningRoomView: View {
     @ObservedObject var diningRoom : DiningRoomViewModel
-    @State var diningRoomViewWidth  = UIScreen.main.bounds.width * 0.8
-    @State var diningRoomViewHeight = UIScreen.main.bounds.height * 0.8
+    @State var diningRoomViewWidth  = UIScreen.main.bounds.width
+    @State var diningRoomViewHeight = UIScreen.main.bounds.height * 0.90
     @State var editMode : Bool = false
     @State var editModeInfo : String = "Edit"
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */; };
 		F2268FD428FD755A0096F35C /* OrdersInProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */; };
+		F227C2192916992D00184384 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F227C2182916992D00184384 /* TableModel.swift */; };
 		F235591C2903F52A002AEF80 /* OrdersInKitchenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */; };
 		F235591E29045587002AEF80 /* OrderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F235591D29045587002AEF80 /* OrderCardView.swift */; };
 		F237CB9529055E5D003C1007 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F237CB9429055E5D003C1007 /* SignInView.swift */; };
@@ -67,6 +68,7 @@
 /* Begin PBXFileReference section */
 		F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableView.swift; sourceTree = "<group>"; };
 		F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInProgressViewModel.swift; sourceTree = "<group>"; };
+		F227C2182916992D00184384 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
 		F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInKitchenViewModel.swift; sourceTree = "<group>"; };
 		F235591D29045587002AEF80 /* OrderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCardView.swift; sourceTree = "<group>"; };
 		F237CB9429055E5D003C1007 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				F2D41C932912AEB2001B8230 /* OrderModel.swift */,
 				F2D41C952912AEC8001B8230 /* OrderCardModel.swift */,
 				F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */,
+				F227C2182916992D00184384 /* TableModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,8 +291,8 @@
 		F2C14384291417D50043CB32 /* ManageDiningRoomViews */ = {
 			isa = PBXGroup;
 			children = (
-				F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */,
 				F2C143872914191A0043CB32 /* ManageDiningRoomView.swift */,
+				F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */,
 			);
 			path = ManageDiningRoomViews;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F227C2192916992D00184384 /* TableModel.swift in Sources */,
 				F2EC9FCC2913CEA700493A27 /* DiningRoomViewModel.swift in Sources */,
 				F29B1C3529082A2F00303829 /* RoleEnum.swift in Sources */,
 				F25326B028F7290D002F5F36 /* DishView.swift in Sources */,
