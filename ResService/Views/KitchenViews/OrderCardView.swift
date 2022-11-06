@@ -58,7 +58,7 @@ struct OrderCardView: View {
 struct OrderCardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            OrderCardView(orderInfo: Order(data: Date.now.formatted(), table: 3, orderNumber: 2),
+            OrderCardView(orderInfo: Order(data: Date.now.formatted(), table: "3", orderNumber: 2),
                           dishes: [Dish(dishName: "classic", dishAmount: 2)], color: .green)
         }
     }

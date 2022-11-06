@@ -18,13 +18,13 @@ struct TableView: Table {
     private let paddingconst = CGFloat(10)
     
     var body: some View {
-        NavigationLink(destination: { WaiterOrderView(tableNumber: tableInfo.id)}) {
+        NavigationLink(destination: { WaiterOrderView(tableInfo: tableInfo)}) {
             ZStack {
                 Rectangle()
                     .fill(.green)
                     .frame(width: boxsize, height: boxsize)
                     .cornerRadius(4)
-                Text(tableInfo.id.description)
+                Text(tableInfo.description)
                     .foregroundColor(.black)
             }
         }.position(tableInfo.location)

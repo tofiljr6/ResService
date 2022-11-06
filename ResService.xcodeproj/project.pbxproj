@@ -172,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				F29B1C362908503800303829 /* MenuView.swift */,
-				F23D0ADA2909A287005C84F3 /* MenuViewModel.swift */,
 			);
 			path = MenuView;
 			sourceTree = "<group>";
@@ -214,6 +213,7 @@
 		F253267628F5E45A002F5F36 /* ResService */ = {
 			isa = PBXGroup;
 			children = (
+				F29BC14E2917F3A500557956 /* ViewModels */,
 				F2091E6E2916F6CC00FFAFD0 /* Protocols */,
 				F23D0ADC290A9AE7005C84F3 /* Model */,
 				F23D0AD82909A211005C84F3 /* Views */,
@@ -266,8 +266,6 @@
 			isa = PBXGroup;
 			children = (
 				F25326B128F82A71002F5F36 /* KitchenView.swift */,
-				F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */,
-				F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */,
 				F235591D29045587002AEF80 /* OrderCardView.swift */,
 			);
 			path = KitchenViews;
@@ -299,6 +297,17 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		F29BC14E2917F3A500557956 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */,
+				F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */,
+				F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */,
+				F23D0ADA2909A287005C84F3 /* MenuViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		F2C14384291417D50043CB32 /* ManageDiningRoomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,7 +322,6 @@
 			children = (
 				F2EC9FC72912C99F00493A27 /* DiningRoomView.swift */,
 				F2EC9FC92912CA1E00493A27 /* TableView.swift */,
-				F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */,
 			);
 			path = DiningRoomViews;
 			sourceTree = "<group>";

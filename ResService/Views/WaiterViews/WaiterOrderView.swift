@@ -15,14 +15,13 @@ struct WaiterOrderView: View {
     @ObservedObject var ordersInProgress : OrdersInProgressViewModel
     @ObservedObject var ordersInKitchen : OrdersInKitchenViewModel
     @ObservedObject var menu : MenuViewModel
+    @State var tableInfo : TableInfo
     
-    @State var tableNumber : Int
-    
-    init(tableNumber : Int) {
+    init(tableInfo : TableInfo) {
         self.ordersInProgress = OrdersInProgressViewModel()
         self.ordersInKitchen = OrdersInKitchenViewModel()
         self.menu = MenuViewModel()
-        self.tableNumber = tableNumber
+        self.tableInfo = tableInfo
     }
     
     let columns = [
@@ -34,7 +33,7 @@ struct WaiterOrderView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Table number: \(tableNumber)")
+                Text("Table number: \(tableInfo.description)")
                     .padding(.leading)
                 Spacer()
 //                NavigationLink(destination: SelectTableView(currentTable: $tableNumber)) {
@@ -60,13 +59,13 @@ struct WaiterOrderView: View {
             
             HStack {
                 FunctionBoxView(functionName: "Order") {
-                    ordersInProgress.addDishesToTisch(number: tableNumber)
-                    ordersInKitchen.addOrder(tableNumber: tableNumber,
+                    ordersInProgress.addDishesToTisch(number: tableInfo.id)
+                    ordersInKitchen.addOrder(tableNumber: tableInfo.id,
                                                currentOrder: ordersInProgress.currentOrder)
                     ordersInProgress.clearCurrentOrderState()
                 }
                 FunctionBoxView(functionName: "Pay") {
-                    ordersInProgress.payTable(tableNumber: tableNumber)
+                    ordersInProgress.payTable(tableNumber: tableInfo.id)
                 }
             }
         }
@@ -78,6 +77,10 @@ struct WaiterOrderView_Previews: PreviewProvider {
     @State static var tableNumber : Int = 1
     
     static var previews: some View {
-        WaiterOrderView(tableNumber: tableNumber)
+        WaiterOrderView(
+            tableInfo: TableInfo(id: 1,
+                                 status: .green,
+                                 location: CGPoint(x: 40, y: 40),
+                                 description: "D"))
     }
 }

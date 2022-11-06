@@ -9,6 +9,6 @@ import Foundation
 
 struct Order : Decodable, Hashable {
     var data : String
-    var table : Int
+    var table : String
     var orderNumber : Int
 }

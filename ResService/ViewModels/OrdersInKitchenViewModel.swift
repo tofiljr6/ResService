@@ -50,7 +50,7 @@ class OrdersInKitchenViewModel : ObservableObject {
                     // two diffrent orders can belong to the same table
                     self.localOrdersToDo.append(OrderCard(id: UUID(), info: info, dishes: dishesArray))
                 } else {
-                    print("NO DISHES!")
+//                    print("NO DISHES!")
                 }
             }
             
@@ -72,35 +72,52 @@ class OrdersInKitchenViewModel : ObservableObject {
     func addOrder(tableNumber: Int, currentOrder : [String : Int]) -> Void {
         let ref = Database.database(url: dbURLConnection).reference().child(OIKcollectionName)
         let refparams = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
+        let reftables = Database.database(url: dbURLConnection).reference()
         
-        // get the unique order number from firebase
-        let child = "order\(self.uniqueOrderNumber)"
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // "2017-01-23T10:12:31.484Z"
-        let dateFromString = dateFormatter.date(from: Date.now.formatted(.iso8601))
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        let newDate = dateFormatter.string(from: dateFromString!)
-        
-        // default the time zone is another so we had to add two hours
-        let order = [
-            "dishes" : "dishes",
-            "table" : tableNumber,
-            "data" : newDate, // Date.now.formatted()
-            "orderNumber" : self.uniqueOrderNumber
-        ] as [String : Any]
-        ref.child(child).setValue(order)
-        
-        for (index, order) in currentOrder.enumerated() {
-            let o = [
-                "dishName" : order.key,
-                "dishAmount" : order.value
+        reftables.child(diningRoomCollectionName).child("table\(tableNumber)").getData(completion:  { error, snapshot in
+            var tableDesc = ""
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return;
+            }
+            if snapshot != nil {
+                let snap = snapshot!.value as? [String : Any] ?? [:]
+                let table = snap["table\(tableNumber)"]
+                let tableJSON = try! JSONSerialization.data(withJSONObject: table!)
+                let tableStruct = try! JSONDecoder().decode(TableInfoDB.self, from: tableJSON)
+                tableDesc = tableStruct.description
+
+            }
+            
+            // get the unique order number from firebase
+            let child = "order\(self.uniqueOrderNumber)"
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // "2017-01-23T10:12:31.484Z"
+            let dateFromString = dateFormatter.date(from: Date.now.formatted(.iso8601))
+            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+            let newDate = dateFormatter.string(from: dateFromString!)
+            
+            // default the time zone is another so we had to add two hours
+            let order = [
+                "dishes" : "dishes",
+                "table" : tableDesc,
+                "data" : newDate, // Date.now.formatted()
+                "orderNumber" : self.uniqueOrderNumber
             ] as [String : Any]
-            ref.child(child).child("dishes").child("dish\(index)").setValue(o)
-        }
-        
-        // up-to-date unique order number in firebase
-        refparams.child(paramUniqueOrderNumber).setValue(self.uniqueOrderNumber + 1)
+            ref.child(child).setValue(order)
+            
+            for (index, order) in currentOrder.enumerated() {
+                let o = [
+                    "dishName" : order.key,
+                    "dishAmount" : order.value
+                ] as [String : Any]
+                ref.child(child).child("dishes").child("dish\(index)").setValue(o)
+            }
+            
+            // up-to-date unique order number in firebase
+            refparams.child(paramUniqueOrderNumber).setValue(self.uniqueOrderNumber + 1)
+        });
     }
     
     /**
