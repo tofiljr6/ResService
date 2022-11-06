@@ -18,6 +18,9 @@ struct TableInManageDiningRoomView: Table {
     private let paddingconst = CGFloat(10)
     
     @State private var showingAlert : Bool = false
+    @State private var showingTableDetail : Bool = false
+    
+    @State private var newTableName : String = ""
     
     var body: some View {
         ZStack {
@@ -54,12 +57,26 @@ struct TableInManageDiningRoomView: Table {
                         showingAlert = true
                     })
                 )
+                .gesture(
+                    TapGesture().onEnded({ value in
+                        showingTableDetail = true
+                    })
+                )
                 .border(.red)
                 .alert("Do you want to delete table number \(tableInfo.id)", isPresented: $showingAlert) {
                     Button("Yes") { diningRoom.deleteTable(number: tableInfo.id) }
                     Button("No") { }
                 }
-            Text("\(tableInfo.id)")
+                .sheet(isPresented: $showingTableDetail) {
+                    TextField("New table Name", text: $newTableName)
+                    
+                    Button("Save") {
+                        diningRoom.updateTableDescription(number: tableInfo.id, description: newTableName)
+                        tableInfo.description = newTableName
+                        showingTableDetail = false
+                    }
+                }
+            Text("\(tableInfo.description)")
                 .position(tableInfo.location)
                 .foregroundColor(.black)
         }
@@ -74,6 +91,10 @@ struct TableInManageDiningRoomView_Previews: PreviewProvider {
 
 
     static var previews: some View {
-        TableInManageDiningRoomView(tableInfo: TableInfo(id: 1, status: .green, location: CGPoint(x: 30, y: 30)), manageTableViewWidth: $manageTableViewWidth, manageTableViewHeight: $manageTableViewHeight, editMode: $editMode, diningRoom: manageTable)
+        TableInManageDiningRoomView(tableInfo: TableInfo(id: 1, status: .green, location: CGPoint(x: 30, y: 30), description: "A"),
+                                    manageTableViewWidth: $manageTableViewWidth,
+                                    manageTableViewHeight: $manageTableViewHeight,
+                                    editMode: $editMode,
+                                    diningRoom: manageTable)
     }
 }

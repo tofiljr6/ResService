@@ -13,12 +13,14 @@ struct TableInfoDB : Codable {
     var status : String
     var x : Float
     var y : Float
+    var description : String
 }
 
 struct TableInfo {
     var id : Int
     var status : Color
     var location : CGPoint
+    var description : String
     
     var tablejson : [String : Any] {
         get {
@@ -27,6 +29,7 @@ struct TableInfo {
                 "status" : status.description,
                 "x" : location.x,
                 "y" : location.y,
+                "description" : description
             ]
         }
     }

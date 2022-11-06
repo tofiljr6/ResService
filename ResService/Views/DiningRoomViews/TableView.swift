@@ -38,7 +38,10 @@ struct TableView_Previews: PreviewProvider {
     @ObservedObject static var manageTable = DiningRoomViewModel()
 
     static var previews: some View {
-        TableView(tableInfo: TableInfo(id: 1, status: .brown, location: CGPoint(x: 50, y: 50)),
+        TableView(tableInfo: TableInfo(id: 1,
+                                       status: .brown,
+                                       location: CGPoint(x: 50, y: 50),
+                                       description: "A"),
                   manageTableViewWidth: $manageTableViewWidth,
                   manageTableViewHeight: $manageTableViewHeight, editMode: $editMode,
                   diningRoom: manageTable)

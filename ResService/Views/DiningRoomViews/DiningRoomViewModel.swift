@@ -41,7 +41,8 @@ class DiningRoomViewModel : ObservableObject {
                     
                     self.tablesInfoLocal.append(TableInfo(id: dt.id,
                                                           status: self.getTableStatus(forColor: dt.status),
-                                                          location: CGPoint(x: CGFloat(dt.x), y: CGFloat(dt.y))))
+                                                          location: CGPoint(x: CGFloat(dt.x), y: CGFloat(dt.y)),
+                                                          description: dt.description))
                 } catch let error {
                     print(error.localizedDescription)
                 }
@@ -49,6 +50,12 @@ class DiningRoomViewModel : ObservableObject {
             self.tablesInfo = self.tablesInfoLocal
             self.tablesInfoLocal = []
         })
+    }
+    
+    
+    func updateTableDescription(number : Int, description : String) -> Void {
+        let ref = Database.database(url: dbURLConnection).reference().child(diningRoomCollectionName)
+        ref.child("table\(number)").updateChildValues(["description" : description])
     }
     
     /**
@@ -114,7 +121,10 @@ class DiningRoomViewModel : ObservableObject {
     func addNewTable() -> Void {
         let ref = Database.database(url: dbURLConnection).reference().child(diningRoomCollectionName)
         let uid = getUniqueID()
-        let newTable = TableInfo(id: uid, status: self.getTableStatus(forColor: "green"), location: CGPoint(x: 50, y: 50))
+        let newTable = TableInfo(id: uid,
+                                 status: self.getTableStatus(forColor: "green"),
+                                 location: CGPoint(x: 50, y: 50),
+                                 description: uid.description)
         ref.child("table\(uid)").setValue(newTable.tablejson)
     }
     
