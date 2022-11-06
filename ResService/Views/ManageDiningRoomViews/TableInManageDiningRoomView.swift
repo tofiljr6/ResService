@@ -9,20 +9,21 @@ import SwiftUI
 
 struct TableInManageDiningRoomView: Table {
     @State var tableInfo : TableInfo
-    @Binding var manageTableViewWidth  : CGFloat
-    @Binding var manageTableViewHeight : CGFloat
     @Binding var editMode : Bool
     @ObservedObject var diningRoom : DiningRoomViewModel
     
+    @State private var showingAlert : Bool = false
+    @State private var showingTableDetail : Bool = false
+    @State private var newTableName : String = ""
+    
+    var manageTableViewWidth  : CGFloat = UIScreen.main.bounds.width
+    var manageTableViewHeight : CGFloat = UIScreen.main.bounds.height * 0.90
     private let boxsize = CGFloat(50)
     private let paddingconst = CGFloat(10)
     
-    @State private var showingAlert : Bool = false
-    @State private var showingTableDetail : Bool = false
-    
-    @State private var newTableName : String = ""
-    
     var body: some View {
+        
+        
         ZStack {
             Rectangle()
                 .fill(tableInfo.status)
@@ -32,23 +33,23 @@ struct TableInManageDiningRoomView: Table {
                 .gesture(
                     DragGesture()
                         .onChanged { value in
-                                tableInfo.location = value.location
+                            tableInfo.location = value.location
                         }
                         .onEnded { value in
-                                print("do zapisania loc stolika nr \(tableInfo.id)")
-                                
-                                if value.location.x < 0 {
-                                    tableInfo.location.x = boxsize / 2
-                                } else if value.location.x > manageTableViewWidth {
-                                    tableInfo.location.x = manageTableViewWidth -  0.5 * boxsize
-                                }
-                                
-                                if value.location.y < 0 {
-                                    tableInfo.location.y = boxsize / 2
-                                } else if value.location.y > manageTableViewHeight {
-                                    tableInfo.location.y = manageTableViewHeight - 0.5 * boxsize
-                                }
-                                
+                            print("do zapisania loc stolika nr \(tableInfo.id)")
+                            
+                            if value.location.x < 0 {
+                                tableInfo.location.x = boxsize / 2
+                            } else if value.location.x > manageTableViewWidth {
+                                tableInfo.location.x = manageTableViewWidth -  0.5 * boxsize
+                            }
+                            
+                            if value.location.y < 0 {
+                                tableInfo.location.y = boxsize / 2
+                            } else if value.location.y > manageTableViewHeight {
+                                tableInfo.location.y = manageTableViewHeight - 0.5 * boxsize
+                            }
+                            
                             diningRoom.updateLocationForTableNumber(number: tableInfo.id, location: tableInfo.location)
                         }
                 )
@@ -84,16 +85,12 @@ struct TableInManageDiningRoomView: Table {
 }
 
 struct TableInManageDiningRoomView_Previews: PreviewProvider {
-    @State static var manageTableViewHeight = UIScreen.main.bounds.height * 0.8
-    @State static var manageTableViewWidth = UIScreen.main.bounds.width * 0.8
     @State static var editMode : Bool = false
     @ObservedObject static var manageTable = DiningRoomViewModel()
 
 
     static var previews: some View {
         TableInManageDiningRoomView(tableInfo: TableInfo(id: 1, status: .green, location: CGPoint(x: 30, y: 30), description: "A"),
-                                    manageTableViewWidth: $manageTableViewWidth,
-                                    manageTableViewHeight: $manageTableViewHeight,
                                     editMode: $editMode,
                                     diningRoom: manageTable)
     }

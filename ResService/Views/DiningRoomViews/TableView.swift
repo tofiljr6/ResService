@@ -9,11 +9,11 @@ import SwiftUI
 
 struct TableView: Table {
     @State var tableInfo : TableInfo
-    @Binding var manageTableViewWidth  : CGFloat
-    @Binding var manageTableViewHeight : CGFloat
     @Binding var editMode : Bool
     @ObservedObject var diningRoom : DiningRoomViewModel
     
+    var manageTableViewWidth  : CGFloat = UIScreen.main.bounds.width * 0.8
+    var manageTableViewHeight : CGFloat =  UIScreen.main.bounds.height * 0.8
     private let boxsize = CGFloat(50)
     private let paddingconst = CGFloat(10)
     
@@ -32,8 +32,6 @@ struct TableView: Table {
 }
 
 struct TableView_Previews: PreviewProvider {
-    @State static var manageTableViewHeight = UIScreen.main.bounds.height * 0.8
-    @State static var manageTableViewWidth = UIScreen.main.bounds.width * 0.8
     @State static var editMode : Bool = false
     @ObservedObject static var manageTable = DiningRoomViewModel()
 
@@ -42,8 +40,7 @@ struct TableView_Previews: PreviewProvider {
                                        status: .brown,
                                        location: CGPoint(x: 50, y: 50),
                                        description: "A"),
-                  manageTableViewWidth: $manageTableViewWidth,
-                  manageTableViewHeight: $manageTableViewHeight, editMode: $editMode,
+                  editMode: $editMode,
                   diningRoom: manageTable)
     }
 }

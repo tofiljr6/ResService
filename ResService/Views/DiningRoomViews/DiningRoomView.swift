@@ -9,8 +9,6 @@ import SwiftUI
 
 struct DiningRoomView: View {
     @ObservedObject var diningRoom : DiningRoomViewModel
-    @State var diningRoomViewWidth  = UIScreen.main.bounds.width * 0.8
-    @State var diningRoomViewHeight = UIScreen.main.bounds.height * 0.8
     @State var editMode : Bool = false
     @State var editModeInfo : String = "Edit"
         
@@ -18,10 +16,7 @@ struct DiningRoomView: View {
         NavigationView {
             ZStack {
                 ForEach(diningRoom.tablesInfo, id: \.id) { item in
-                    TableView(tableInfo: item,
-                              manageTableViewWidth: $diningRoomViewWidth,
-                              manageTableViewHeight: $diningRoomViewHeight, editMode: $editMode,
-                              diningRoom: diningRoom)
+                    TableView(tableInfo: item, editMode: $editMode, diningRoom: diningRoom)
                 }
             }
         }

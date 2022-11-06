@@ -17,9 +17,7 @@ struct ManageDiningRoomView: View {
     var body: some View {
         ZStack {
             ForEach(diningRoom.tablesInfo, id: \.id) { item in
-                TableInManageDiningRoomView(tableInfo: item,
-                                            manageTableViewWidth: $diningRoomViewWidth, manageTableViewHeight: $diningRoomViewHeight,
-                                            editMode: $editMode, diningRoom: diningRoom)
+                TableInManageDiningRoomView(tableInfo: item, editMode: $editMode, diningRoom: diningRoom)
             }
         }
     }
