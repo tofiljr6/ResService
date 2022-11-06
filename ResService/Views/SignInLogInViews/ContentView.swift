@@ -20,6 +20,8 @@ struct ContentView: View {
             DiningRoomView(diningRoom: DiningRoomViewModel())
         } else if user.role == Role.boss.rawValue {
             BossMainView()
+        } else if user.role == Role.client.rawValue {
+            MainConsumerView(userModel: user)
         }
         else {
             noUserRole

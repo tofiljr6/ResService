@@ -15,6 +15,15 @@ struct AddDishToMenuView: View {
     @State private var newDishPrice : String = ""
     @State private var newDishDescription : String = ""
     @State private var newDishProducts : String = ""
+    @State private var newDishCategory : Category = Category.starter
+    
+    enum Category : String, CaseIterable {
+        case starter
+        case maincourse
+        case deserts
+        case drinks
+        case spirits
+    }
     
     @Environment(\.showingSheet) var showingSheet
     
@@ -36,6 +45,12 @@ struct AddDishToMenuView: View {
             }.padding()
             
             Group {
+                Picker("Pick a category of new dish", selection: $newDishCategory) {
+                    ForEach(Category.allCases, id: \.self) { item in
+                        Text(item.rawValue)
+                    }
+                }
+                
                 TextField("Name", text: $newDishName)
                     .textFieldStyle(.plain)
                 
