@@ -54,7 +54,18 @@ final class MenuViewModel : ObservableObject {
         })
     }
     
-    func addNewDishToMenu(newDishName : String, newDishPrice : Double, newDishDescription : String, newDishProducts : String) -> Void {
+    func getDishesOfCategory(category: DishCategory) -> [Menu] {
+        var categoryMenu : [Menu] = []
+        
+        for dish in menuDishes {
+            if dish.dishCategory == category.rawValue {
+                categoryMenu.append(dish)
+            }
+        }
+        return categoryMenu
+    }
+    
+    func addNewDishToMenu(newDishName : String, newDishPrice : Double, newDishDescription : String, newDishProducts : String, newDishCategory: DishCategory) -> Void {
         let ref = Database.database(url: dbURLConnection).reference().child(menuCollectionName)
         
         let newDish = [
@@ -63,7 +74,8 @@ final class MenuViewModel : ObservableObject {
             "dishPrice" : newDishPrice,
             "dishDescription" : newDishDescription,
             "dishProducts" : newDishProducts,
-            "dishOrderInMenu" : self.uniqueNewDishID
+            "dishOrderInMenu" : self.uniqueNewDishID,
+            "dishCategory" : newDishCategory.rawValue
         ] as [String : Any]
         
         ref.child("dishmenu\(self.uniqueNewDishID.description)").setValue(newDish)

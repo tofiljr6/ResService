@@ -11,10 +11,13 @@ struct ConsumerMenuView: View {
     @ObservedObject var menuModel : MenuViewModel
     
     var body: some View {
-        ScrollView {
-            ConsumerMenuSectionView(sectionName: "Wurst", dishesInSection: menuModel.menuDishes)
-            ConsumerMenuSectionView(sectionName: "Wurst", dishesInSection: menuModel.menuDishes)
-            ConsumerMenuSectionView(sectionName: "Wurst", dishesInSection: menuModel.menuDishes)
+        NavigationView {
+            ScrollView {
+                ConsumerMenuSectionView(sectionName: "Starters", dishesInSection: menuModel.getDishesOfCategory(category: .starter))
+                ConsumerMenuSectionView(sectionName: "Main Course", dishesInSection: menuModel.getDishesOfCategory(category: .maincourse))
+                ConsumerMenuSectionView(sectionName: "Deserts", dishesInSection: menuModel.getDishesOfCategory(category: .deserts))
+                ConsumerMenuSectionView(sectionName: "Drinks", dishesInSection: menuModel.getDishesOfCategory(category: .drinks))
+            }
         }
     }
 }

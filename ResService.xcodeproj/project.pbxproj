@@ -41,6 +41,7 @@
 		F29BC155291820CC00557956 /* MenuSingleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29BC154291820CC00557956 /* MenuSingleCardView.swift */; };
 		F29BC1572918256400557956 /* ConsumerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29BC1562918256400557956 /* ConsumerMenuView.swift */; };
 		F29BC1592918260200557956 /* ConsumerMenuSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29BC1582918260200557956 /* ConsumerMenuSectionView.swift */; };
+		F2ABE0B229183735005D4EBD /* ConsumerMenuDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ABE0B129183735005D4EBD /* ConsumerMenuDetailView.swift */; };
 		F2C14386291418180043CB32 /* TableInManageDiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */; };
 		F2C143882914191A0043CB32 /* ManageDiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C143872914191A0043CB32 /* ManageDiningRoomView.swift */; };
 		F2D41C922912ACBE001B8230 /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C912912ACBE001B8230 /* DishModel.swift */; };
@@ -104,6 +105,7 @@
 		F29BC154291820CC00557956 /* MenuSingleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSingleCardView.swift; sourceTree = "<group>"; };
 		F29BC1562918256400557956 /* ConsumerMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerMenuView.swift; sourceTree = "<group>"; };
 		F29BC1582918260200557956 /* ConsumerMenuSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerMenuSectionView.swift; sourceTree = "<group>"; };
+		F2ABE0B129183735005D4EBD /* ConsumerMenuDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerMenuDetailView.swift; sourceTree = "<group>"; };
 		F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInManageDiningRoomView.swift; sourceTree = "<group>"; };
 		F2C143872914191A0043CB32 /* ManageDiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDiningRoomView.swift; sourceTree = "<group>"; };
 		F2D41C912912ACBE001B8230 /* DishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				F29BC154291820CC00557956 /* MenuSingleCardView.swift */,
 				F29BC1562918256400557956 /* ConsumerMenuView.swift */,
 				F29BC1582918260200557956 /* ConsumerMenuSectionView.swift */,
+				F2ABE0B129183735005D4EBD /* ConsumerMenuDetailView.swift */,
 			);
 			path = ConsumerViews;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				F2D41C922912ACBE001B8230 /* DishModel.swift in Sources */,
 				F2268FD428FD755A0096F35C /* OrdersInProgressViewModel.swift in Sources */,
 				F25326AD28F72266002F5F36 /* WaiterOrderView.swift in Sources */,
+				F2ABE0B229183735005D4EBD /* ConsumerMenuDetailView.swift in Sources */,
 				F235591E29045587002AEF80 /* OrderCardView.swift in Sources */,
 				F2C143882914191A0043CB32 /* ManageDiningRoomView.swift in Sources */,
 				F29B1C3929085C7E00303829 /* AddDishToMenuView.swift in Sources */,

@@ -20,19 +20,27 @@ struct MainConsumerView: View {
 //            }.padding()
 //            Spacer()
 //        }
-        TabView {
-            ConsumerMenuView(menuModel : menuModel)
-                .tabItem {
-                    Label("Menu", systemImage: "menucard")
-                }
-            Text("2")
-                .tabItem {
-                    Label("View 2", systemImage: "photo")
-                }
-            Text("3")
-                .tabItem {
-                    Label("View 2", systemImage: "photo")
-                }
+        VStack {
+            HStack {
+                Text("Hello \(userModel.username)!")
+                    .font(.title)
+                    .padding(.leading)
+                Spacer()
+            }
+            TabView {
+                ConsumerMenuView(menuModel : menuModel)
+                    .tabItem {
+                        Label("Menu", systemImage: "menucard")
+                    }
+                Text("2")
+                    .tabItem {
+                        Label("View 2", systemImage: "photo")
+                    }
+                Text("3")
+                    .tabItem {
+                        Label("View 2", systemImage: "photo")
+                    }
+            }
         }
     }
 }

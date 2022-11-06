@@ -21,7 +21,7 @@ struct MenuSingleCardView: View {
                 Text(menu.dishName)
                 Spacer()
                 Text(menu.dishPrice.description)
-            }
+            }.foregroundColor(.primary)
         }.padding(.leading, 15)
     }
 }
@@ -32,7 +32,8 @@ struct MenuSingleCardView_Previews: PreviewProvider {
                            dishName: "Curry Wurst Classic",
                            dishPrice: 9.90,
                            dishProducts: "A, X, X",
-                           dishOrderInMenu: 2)
+                           dishOrderInMenu: 2,
+                           dishCategory: "starter")
     
     static var previews: some View {
         ScrollView(.horizontal) {

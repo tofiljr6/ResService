@@ -8,6 +8,14 @@
 import SwiftUI
 import Firebase
 
+enum DishCategory : String, CaseIterable {
+    case starter = "starter"
+    case maincourse = "maincouse"
+    case deserts = "deserts"
+    case drinks = "drinks"
+    case spirits = "spirits"
+}
+
 struct AddDishToMenuView: View {
     @StateObject var menuViewModel : MenuViewModel
     
@@ -15,15 +23,7 @@ struct AddDishToMenuView: View {
     @State private var newDishPrice : String = ""
     @State private var newDishDescription : String = ""
     @State private var newDishProducts : String = ""
-    @State private var newDishCategory : Category = Category.starter
-    
-    enum Category : String, CaseIterable {
-        case starter
-        case maincourse
-        case deserts
-        case drinks
-        case spirits
-    }
+    @State private var newDishCategory : DishCategory = DishCategory.starter
     
     @Environment(\.showingSheet) var showingSheet
     
@@ -46,7 +46,7 @@ struct AddDishToMenuView: View {
             
             Group {
                 Picker("Pick a category of new dish", selection: $newDishCategory) {
-                    ForEach(Category.allCases, id: \.self) { item in
+                    ForEach(DishCategory.allCases, id: \.self) { item in
                         Text(item.rawValue)
                     }
                 }
@@ -72,7 +72,11 @@ struct AddDishToMenuView: View {
             Button {
                 if let price = Double(newDishPrice.replacingOccurrences(of: ",", with: ".")) {
                     // Save
-                    menuViewModel.addNewDishToMenu(newDishName: newDishName, newDishPrice: price, newDishDescription: newDishDescription, newDishProducts: newDishProducts)
+                    menuViewModel.addNewDishToMenu(newDishName: newDishName,
+                                                   newDishPrice: price,
+                                                   newDishDescription: newDishDescription,
+                                                   newDishProducts: newDishProducts,
+                                                   newDishCategory: newDishCategory)
                     
                     // Exit the view
                     self.showingSheet?.wrappedValue = false

@@ -98,7 +98,7 @@ struct SignInView: View {
 //                        login()
 //                    }.offset(x: 50, y: -60)
                     Button("consumer") {
-                        email = "ziomek1@gmail.com"
+                        email = "user1@gmail.com"
                         password = "123456"
                         login()
                     }.offset(x: 50, y: -60)
