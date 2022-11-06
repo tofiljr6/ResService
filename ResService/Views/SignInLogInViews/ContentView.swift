@@ -21,7 +21,7 @@ struct ContentView: View {
         } else if user.role == Role.boss.rawValue {
             BossMainView()
         } else if user.role == Role.client.rawValue {
-            MainConsumerView(userModel: user)
+            ConsumerMainView(userModel: user)
         }
         else {
             noUserRole

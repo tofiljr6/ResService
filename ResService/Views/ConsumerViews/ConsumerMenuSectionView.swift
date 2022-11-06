@@ -24,8 +24,8 @@ struct ConsumerMenuSectionView: View {
                     HStack(alignment: .top, spacing: 0) {
                         ForEach(dishesInSection, id: \.dishID) { dish in
 //                            MenuSingleCardView(menu: dish)
-                            NavigationLink(destination: ConsumerMenuDetailView()) {
-                                MenuSingleCardView(menu: dish)
+                            NavigationLink(destination: ConsumerMenuDetailView(dishDetail: dish)) {
+                                ConsumerMenuSingleCardView(menu: dish)
                             }
                         }
                     }

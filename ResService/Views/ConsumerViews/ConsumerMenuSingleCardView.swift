@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MenuSingleCardView: View {
+struct ConsumerMenuSingleCardView: View {
     var menu : Menu
     
     var cardWidth  : CGFloat = 200
@@ -39,7 +39,7 @@ struct MenuSingleCardView_Previews: PreviewProvider {
         ScrollView(.horizontal) {
             HStack(spacing: 10) {
                 ForEach(0..<3) {_ in
-                    MenuSingleCardView(menu: menu)
+                    ConsumerMenuSingleCardView(menu: menu)
                 }
             }
         }.padding(.leading)

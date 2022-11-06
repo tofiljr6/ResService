@@ -7,26 +7,12 @@
 
 import SwiftUI
 
-struct MainConsumerView: View {
+struct ConsumerMainView: View {
     @ObservedObject var userModel : UserModel
     @ObservedObject var menuModel : MenuViewModel = MenuViewModel()
     
     var body: some View {
-//        VStack {
-//            HStack {
-//                Text("Cześć, \(userModel.username)")
-//                    .font(.title)
-//                Spacer()
-//            }.padding()
-//            Spacer()
-//        }
         VStack {
-            HStack {
-                Text("Hello \(userModel.username)!")
-                    .font(.title)
-                    .padding(.leading)
-                Spacer()
-            }
             TabView {
                 ConsumerMenuView(menuModel : menuModel)
                     .tabItem {
@@ -49,6 +35,6 @@ struct MainConsumerView_Previews: PreviewProvider {
     @ObservedObject static var userModel : UserModel = UserModel()
     
     static var previews: some View {
-        MainConsumerView(userModel: userModel)
+        ConsumerMainView(userModel: userModel)
     }
 }
