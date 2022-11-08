@@ -11,74 +11,68 @@ struct ConsumerListOfOrders: View {
     @EnvironmentObject var userModel : UserModel
     @EnvironmentObject var menuModel : MenuViewModel
     @ObservedObject var ordersInKitchenModel : OrdersInKitchenViewModel = OrdersInKitchenViewModel()
+    @StateObject var diningRoomModel : DiningRoomViewModel = DiningRoomViewModel()
+    @State var isActive : Bool = false
     
     @State var isDiningRoomShowing : Bool = false
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("Your order:")
-                    .font(.title)
-                    .padding([.leading, .top])
-                Spacer()
-            }
-            Spacer()
-            if userModel.listofOrder.count == 0 {
-                Text("Select dishes to see your order")
-                    .foregroundColor(.gray)
-                Spacer()
-            } else {
-                List {
-                    ForEach(userModel.listofOrder.sorted(by: >), id: \.key) { key, value in
-                        HStack {
-                            Text(menuModel.getMenuByID(id: key)!.dishName)
-                            Spacer()
-                            Text("\(value.description) x \(String(format: "%.2f", menuModel.getMenuByID(id: key)!.dishPrice))")
+        NavigationView {
+            VStack {
+                if userModel.listofOrder.count == 0 {
+                    Text("Select dishes to see your order")
+                        .foregroundColor(.gray)
+                    Spacer()
+                } else {
+                    List {
+                        ForEach(userModel.listofOrder.sorted(by: >), id: \.key) { key, value in
+                            HStack {
+                                Text(menuModel.getMenuByID(id: key)!.dishName)
+                                Spacer()
+                                Text("\(value.description) x \(String(format: "%.2f", menuModel.getMenuByID(id: key)!.dishPrice))")
+                            }
                         }
                     }
-                }
-                
-                VStack {
-                    HStack {
-                        Text("Total")
-                        Spacer()
-                        Text("\(String(format: "%.2f", countTotal()))")
-                    }.font(Font.body.bold()).padding()
                     
-                    HStack {
-                        Button {
-                            // TODO: cancel the order
-                            print("cancel")
-                        } label: {
-                            ZStack {
-                                Rectangle()
-                                    .cornerRadius(8)
-                                    .foregroundColor(.red)
-                                    .frame(height: 50)
-                                .padding()
-                                Text("Cancel")
-                                    .foregroundColor(.white)
-                                    .font(Font.body.bold())
+                    VStack {
+                        HStack {
+                            Text("Total")
+                            Spacer()
+                            Text("\(String(format: "%.2f", countTotal()))")
+                        }.font(Font.body.bold()).padding()
+                        
+                        HStack {
+                            Button {
+                                // TODO: cancel the order
+                                print("cancel")
+                            } label: {
+                                ZStack {
+                                    Rectangle()
+                                        .cornerRadius(8)
+                                        .foregroundColor(.red)
+                                        .frame(height: 50)
+                                        .padding()
+                                    Text("Cancel")
+                                        .foregroundColor(.white)
+                                        .font(Font.body.bold())
+                                }
                             }
-                        }
-                        Spacer()
-                        Button {
-                            // selecting table
+                            Spacer()
                             
-                            // check a users localization
-                            
-                            // send order to the kitchen
-                        } label: {
-                            ZStack() {
-                                Rectangle()
-                                    .cornerRadius(8)
-                                    .foregroundColor(.green)
-                                    .frame(height: 50)
-                                    .padding()
-                                Text("Take order")
-                                    .foregroundColor(.white)
-                                    .font(Font.body.bold())
-                            }
+                            // root
+                            NavigationLink(destination: ConsumerDiningRoomView(rootIsActive: self.$isActive).environmentObject(diningRoomModel), isActive: self.$isActive) {
+                                ZStack() {
+                                    Rectangle()
+                                        .cornerRadius(8)
+                                        .foregroundColor(.green)
+                                        .frame(height: 50)
+                                        .padding()
+                                    Text("Take order")
+                                        .foregroundColor(.white)
+                                        .font(Font.body.bold())
+                                }
+                            }.isDetailLink(false)
+                            .navigationTitle("Your order")
                         }
                     }
                 }
@@ -100,7 +94,9 @@ struct ConsumerListOfOrders: View {
 
 struct ConsumerListOfOrders_Previews: PreviewProvider {
     static var previews: some View {
-        ConsumerListOfOrders().environmentObject(UserModel())
-        
+        NavigationView {
+            ConsumerListOfOrders().environmentObject(UserModel())
+                .navigationTitle("Your order")
+        }
     }
 }

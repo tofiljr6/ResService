@@ -20,12 +20,8 @@ struct ConsumerMainView: View {
                     }
                 ConsumerListOfOrders().environmentObject(self.userModel).environmentObject(self.menuModel)
                     .tabItem {
-                        Label("View 2", systemImage: "cart.circle.fill")
+                        Label("Order", systemImage: "cart.circle.fill")
                     }
-//                Text("3")
-//                    .tabItem {
-//                        Label("View 2", systemImage: "photo")
-//                    }
             }.onAppear {
                 // ios 15 bug - transparent tabview - fixed
                 let tabBarAppearance = UITabBarAppearance()
@@ -36,10 +32,10 @@ struct ConsumerMainView: View {
     }
 }
 
-//struct MainConsumerView_Previews: PreviewProvider {
-//    @StateObject  var userModel : UserModel = UserModel()
-//
-//    static var previews: some View {
-//        ConsumerMainView().environmentObject(userModel)
-//    }
-//}
+struct MainConsumerView_Previews: PreviewProvider {
+    @StateObject var userModel : UserModel = UserModel()
+
+    static var previews: some View {
+        ConsumerMainView()
+    }
+}
