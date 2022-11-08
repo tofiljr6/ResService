@@ -15,4 +15,5 @@ struct Menu : Codable {
     var dishProducts : String
     var dishOrderInMenu : Int
     var dishCategory : String
+    var dishPhotoURL : String
 }

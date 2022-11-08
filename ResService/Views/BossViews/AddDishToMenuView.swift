@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import FirebaseStorage
+import FirebaseFirestore
 
 enum DishCategory : String, CaseIterable {
     case starter = "starter"
@@ -25,6 +27,10 @@ struct AddDishToMenuView: View {
     @State private var newDishProducts : String = ""
     @State private var newDishCategory : DishCategory = DishCategory.starter
     
+    @State var selectedImage : UIImage?
+    @State var isPickerShowing : Bool = false
+    @State var retrivedImages = [UIImage]()
+    
     @Environment(\.showingSheet) var showingSheet
     
     var body: some View {
@@ -34,15 +40,40 @@ struct AddDishToMenuView: View {
             
             Spacer()
             
-            ZStack {
-                Circle()
+            
+            VStack {
                 
-                Image(systemName: "camera")
-                    .resizable()
-                    .frame(width: 200, height: 150)
-                    .scaledToFit()
-                    .foregroundColor(.blue)
-            }.padding()
+                if selectedImage != nil {
+                    Image(uiImage: selectedImage!)
+                        .resizable()
+                        .frame(width: 250, height: 250)
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .frame(width: 250, height: 250)
+                        .scaledToFit()
+                }
+                
+                Button {
+                    isPickerShowing = true
+                } label: {
+                    Text("Select a  photo")
+                }
+                
+                Divider()
+                
+                HStack {
+                    ForEach(retrivedImages, id: \.self) { image in
+                        Image(uiImage: image)
+                            .resizable()
+                            .frame(width: 75, height: 75)
+                    }
+                }
+                
+                
+            }.sheet(isPresented: $isPickerShowing) {
+                ImagePicker(selectedImage: $selectedImage, isPickerShowing: $isPickerShowing)
+            }
             
             Group {
                 Picker("Pick a category of new dish", selection: $newDishCategory) {
@@ -71,12 +102,19 @@ struct AddDishToMenuView: View {
             
             Button {
                 if let price = Double(newDishPrice.replacingOccurrences(of: ",", with: ".")) {
+                    let newDishPhotoUUID = UUID().uuidString
+                    
                     // Save
                     menuViewModel.addNewDishToMenu(newDishName: newDishName,
                                                    newDishPrice: price,
                                                    newDishDescription: newDishDescription,
                                                    newDishProducts: newDishProducts,
-                                                   newDishCategory: newDishCategory)
+                                                   newDishCategory: newDishCategory,
+                                                   newDishPhotoURL: newDishPhotoUUID)
+                    // Upload photo to FBStorage
+                    uploadPhoto(fileNameWithoutExtension: newDishPhotoUUID)
+                    
+                    
                     
                     // Exit the view
                     self.showingSheet?.wrappedValue = false
@@ -96,6 +134,37 @@ struct AddDishToMenuView: View {
             
             Spacer()
         }.padding()
+    }
+    
+    func uploadPhoto(fileNameWithoutExtension: String) {
+        guard selectedImage != nil else { return }
+        let storageRef = Storage.storage().reference()
+        
+        // Data in memory
+        let imageData = selectedImage!.jpegData(compressionQuality: 0.05) // 0.8
+        guard imageData != nil else { return }
+        
+        let path = "imagesOfDishes/\(fileNameWithoutExtension).jpg"
+        
+        let fileRef = storageRef.child(path)
+        
+        _ = fileRef.putData(imageData!, metadata: nil) { metadata, error in
+            if error == nil && metadata != nil { }
+        }
+    }
+    
+    func showPhotoFromStorageFB(photoURL : String) { // only for testing
+        let storageRef = Storage.storage().reference()
+        let fileRef = storageRef.child("imagesOfDishes/\(photoURL).jpg")
+        fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+            if error == nil && data != nil {
+                if let image = UIImage(data: data!) {
+                    DispatchQueue.main.async {
+                        self.retrivedImages.append(image)
+                    }
+                }
+            }
+        }
     }
 }
 

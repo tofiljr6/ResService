@@ -9,12 +9,21 @@ import SwiftUI
 
 struct ConsumerMenuDetailView: View {
     var dishDetail : Menu
+    var menuViewModel : MenuViewModel
     
     var body: some View {
         ScrollView {
-            Image("currywurst")
-                .resizable()
-                .scaledToFit()
+            if menuViewModel.menuPhotos[dishDetail.dishID] != nil {
+                Image(uiImage: menuViewModel.menuPhotos[dishDetail.dishID]!)
+                    .resizable()
+                    .frame(height: 250)
+                    .scaledToFit()
+            } else {
+                Image(systemName: "xmark.octagon.fill")
+                    .resizable()
+                    .frame(height: 250)
+                    .scaledToFit()
+            }
             
             Spacer()
             
@@ -35,7 +44,7 @@ struct ConsumerMenuDetailView: View {
                 .padding()
                 .multilineTextAlignment(.leading)
             
-        }.ignoresSafeArea()
+        }
     }
 }
 
@@ -46,9 +55,11 @@ struct ConsumerMenuDetailView_Previews: PreviewProvider {
                                         dishPrice: 4.90,
                                         dishProducts: "da",
                                         dishOrderInMenu: 1,
-                                        dishCategory: "starter")
+                                        dishCategory: "starter",
+                                        dishPhotoURL: UUID().uuidString)
+    static var menuViewModel : MenuViewModel = MenuViewModel()
     
     static var previews: some View {
-        ConsumerMenuDetailView(dishDetail: dishDetail)
+        ConsumerMenuDetailView(dishDetail: dishDetail, menuViewModel: menuViewModel)
     }
 }
