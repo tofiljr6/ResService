@@ -45,6 +45,7 @@
 		F2B7FD5C2919700700840E68 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F2B7FD5B2919700700840E68 /* FirebaseDatabase */; };
 		F2B7FD5E2919700700840E68 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F2B7FD5D2919700700840E68 /* FirebaseFirestore */; };
 		F2B7FD602919700700840E68 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F2B7FD5F2919700700840E68 /* FirebaseStorage */; };
+		F2B7FD62291AA07100840E68 /* ConsumerListOfOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7FD61291AA07100840E68 /* ConsumerListOfOrders.swift */; };
 		F2C14386291418180043CB32 /* TableInManageDiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */; };
 		F2C143882914191A0043CB32 /* ManageDiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C143872914191A0043CB32 /* ManageDiningRoomView.swift */; };
 		F2D41C922912ACBE001B8230 /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C912912ACBE001B8230 /* DishModel.swift */; };
@@ -110,6 +111,7 @@
 		F29BC1582918260200557956 /* ConsumerMenuSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerMenuSectionView.swift; sourceTree = "<group>"; };
 		F2ABE0B129183735005D4EBD /* ConsumerMenuDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerMenuDetailView.swift; sourceTree = "<group>"; };
 		F2B7FD522919678E00840E68 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F2B7FD61291AA07100840E68 /* ConsumerListOfOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerListOfOrders.swift; sourceTree = "<group>"; };
 		F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInManageDiningRoomView.swift; sourceTree = "<group>"; };
 		F2C143872914191A0043CB32 /* ManageDiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDiningRoomView.swift; sourceTree = "<group>"; };
 		F2D41C912912ACBE001B8230 /* DishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				F29BC1562918256400557956 /* ConsumerMenuView.swift */,
 				F29BC1582918260200557956 /* ConsumerMenuSectionView.swift */,
 				F2ABE0B129183735005D4EBD /* ConsumerMenuDetailView.swift */,
+				F2B7FD61291AA07100840E68 /* ConsumerListOfOrders.swift */,
 			);
 			path = ConsumerViews;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				F29B1C322908265700303829 /* BossMainView.swift in Sources */,
 				F29BC1592918260200557956 /* ConsumerMenuSectionView.swift in Sources */,
 				F2D41C962912AEC8001B8230 /* OrderCardModel.swift in Sources */,
+				F2B7FD62291AA07100840E68 /* ConsumerListOfOrders.swift in Sources */,
 				F2D41C922912ACBE001B8230 /* DishModel.swift in Sources */,
 				F2268FD428FD755A0096F35C /* OrdersInProgressViewModel.swift in Sources */,
 				F25326AD28F72266002F5F36 /* WaiterOrderView.swift in Sources */,

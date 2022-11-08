@@ -17,6 +17,7 @@ class UserModel : ObservableObject {
     
     @Published var username : String = ""
     @Published var role : String = ""
+    @Published var listofOrder : [Int : Int] = [:]
     
     init() {
         let ref = Database.database(url: dbURLConnection).reference()
@@ -35,4 +36,22 @@ class UserModel : ObservableObject {
             }
         });
     }
+    
+    func addToOrder(menu : Int, amount : Int) -> Void {
+        self.listofOrder[menu] = amount
+    }
+    
+    func deleteOrder(menu : Int) -> Void {
+        self.listofOrder.removeValue(forKey: menu)
+    }
+    
+    func getAmountToOrder(menu : Int) -> Int {
+        return listofOrder[menu] ?? 0
+    }
+    
+    func deleteFromCurrentOrder(menu : Menu) -> Void {
+        
+    }
+    
+    
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConsumerMenuSectionView: View {
-    
+    @EnvironmentObject var userModel : UserModel
     var sectionName : String
     var dishesInSection : [Menu]
     var menuViewModel : MenuViewModel
@@ -25,8 +25,12 @@ struct ConsumerMenuSectionView: View {
                     HStack(alignment: .top, spacing: 0) {
                         ForEach(dishesInSection, id: \.dishID) { dish in
 //                            MenuSingleCardView(menu: dish)
-                            NavigationLink(destination: ConsumerMenuDetailView(dishDetail: dish, menuViewModel: menuViewModel)) {
+                            NavigationLink(destination: ConsumerMenuDetailView(dishDetail: dish, menuViewModel: menuViewModel)
+                                .environmentObject(self.userModel)
+                                .environmentObject(self.menuViewModel)
+                            ) {
                                 ConsumerMenuSingleCardView(menu: dish, menuViewModel: menuViewModel)
+//                                    .navigationViewStyle(.stack)
                             }
                         }
                     }
@@ -38,7 +42,7 @@ struct ConsumerMenuSectionView: View {
 
 struct ConsumerMenuSectionView_Previews: PreviewProvider {
     static var menuViewModel = MenuViewModel()
-    
+
     static var previews: some View {
         ConsumerMenuSectionView(sectionName: "Wurst", dishesInSection: [
             Menu(dishID: 1, dishDescription: "Lorem Impsum", dishName: "Curry Wurst", dishPrice: 4.90, dishProducts: "da", dishOrderInMenu: 1, dishCategory: "starter", dishPhotoURL: UUID().uuidString),
@@ -46,6 +50,6 @@ struct ConsumerMenuSectionView_Previews: PreviewProvider {
             Menu(dishID: 3, dishDescription: "Lorem Impsum", dishName: "Wild Bradwurst", dishPrice: 4.90, dishProducts: "da", dishOrderInMenu: 1, dishCategory: "starter", dishPhotoURL: UUID().uuidString),
             Menu(dishID: 4, dishDescription: "Lorem Impsum", dishName: "Vege", dishPrice: 4.90, dishProducts: "da", dishOrderInMenu: 1, dishCategory: "starter", dishPhotoURL: UUID().uuidString)
         ], menuViewModel: menuViewModel
-        )
+        ).environmentObject(menuViewModel)
     }
 }

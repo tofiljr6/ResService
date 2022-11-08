@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ConsumerMenuDetailView: View {
+    @EnvironmentObject var userModel : UserModel
+    
+    @State var dishAmount : Int = 0
+    
     var dishDetail : Menu
     var menuViewModel : MenuViewModel
-    
+        
     var body: some View {
         ScrollView {
             if menuViewModel.menuPhotos[dishDetail.dishID] != nil {
@@ -35,6 +39,27 @@ struct ConsumerMenuDetailView: View {
                     .font(.title)
                     .foregroundColor(.gray)
             }.padding()
+            
+            HStack {
+                Button(action: {
+                    // decresae dishes amount in order
+                    dishAmount -= 1
+                    userModel.addToOrder(menu: dishDetail.dishID, amount: dishAmount)
+                    if dishAmount <= 0 {
+                        dishAmount = 0
+                        userModel.deleteOrder(menu: dishDetail.dishID)
+                    }
+                }){ Image(systemName: "minus.circle").font(.title) }
+                
+                // display current amount of dishes
+                Text(userModel.getAmountToOrder(menu: dishDetail.dishID).description)
+                
+                Button(action: {
+                    // increase dishes amount in order
+                    dishAmount += 1
+                    userModel.addToOrder(menu: dishDetail.dishID, amount: dishAmount)
+                }){ Image(systemName: "plus.circle").font(.title) }
+            }
             
             Divider()
             

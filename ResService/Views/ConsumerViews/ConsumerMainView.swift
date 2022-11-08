@@ -8,33 +8,38 @@
 import SwiftUI
 
 struct ConsumerMainView: View {
-    @ObservedObject var userModel : UserModel
+    @StateObject var userModel = UserModel()
     @ObservedObject var menuModel : MenuViewModel = MenuViewModel()
     
     var body: some View {
         VStack {
             TabView {
-                ConsumerMenuView(menuModel : menuModel)
+                ConsumerMenuView(menuModel : menuModel).environmentObject(self.userModel)
                     .tabItem {
                         Label("Menu", systemImage: "menucard")
                     }
-                Text("2")
+                ConsumerListOfOrders().environmentObject(self.userModel).environmentObject(self.menuModel)
                     .tabItem {
-                        Label("View 2", systemImage: "photo")
+                        Label("View 2", systemImage: "cart.circle.fill")
                     }
-                Text("3")
-                    .tabItem {
-                        Label("View 2", systemImage: "photo")
-                    }
+//                Text("3")
+//                    .tabItem {
+//                        Label("View 2", systemImage: "photo")
+//                    }
+            }.onAppear {
+                // ios 15 bug - transparent tabview - fixed
+                let tabBarAppearance = UITabBarAppearance()
+                tabBarAppearance.configureWithOpaqueBackground()
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             }
         }
     }
 }
 
-struct MainConsumerView_Previews: PreviewProvider {
-    @ObservedObject static var userModel : UserModel = UserModel()
-    
-    static var previews: some View {
-        ConsumerMainView(userModel: userModel)
-    }
-}
+//struct MainConsumerView_Previews: PreviewProvider {
+//    @StateObject  var userModel : UserModel = UserModel()
+//
+//    static var previews: some View {
+//        ConsumerMainView().environmentObject(userModel)
+//    }
+//}

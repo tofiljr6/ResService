@@ -12,7 +12,7 @@ var conter = 0
 var presentValue : String = "50"
 
 struct ContentView: View {
-    @StateObject private var user = UserModel()
+    @StateObject  var user = UserModel()
     @State private var showPopup : Bool = false
     
     var body: some View {
@@ -21,7 +21,7 @@ struct ContentView: View {
         } else if user.role == Role.boss.rawValue {
             BossMainView()
         } else if user.role == Role.client.rawValue {
-            ConsumerMainView(userModel: user)
+            ConsumerMainView().environmentObject(self.user)
         }
         else {
             noUserRole

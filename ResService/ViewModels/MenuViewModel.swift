@@ -79,6 +79,16 @@ final class MenuViewModel : ObservableObject {
         })
     }
     
+    
+    func getMenuByID(id : Int) -> Menu? {
+        for menu in self.menuDishes {
+            if menu.dishID == id {
+                return menu
+            }
+        }
+        return nil
+    }
+    
     func getDishesOfCategory(category: DishCategory) -> [Menu] {
         var categoryMenu : [Menu] = []
         
