@@ -79,6 +79,18 @@ final class MenuViewModel : ObservableObject {
         })
     }
     
+    func convertIntDict(dict : [Int: Int]) -> [String : Int] {
+        var stringDict : [String : Int] = [:]
+        
+        for d in dict {
+            if let menu = getMenuByID(id: d.key) {
+                stringDict[menu.dishName] = d.value
+            }
+        }
+        
+        return stringDict
+    }
+    
     
     func getMenuByID(id : Int) -> Menu? {
         for menu in self.menuDishes {

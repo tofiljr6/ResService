@@ -60,7 +60,10 @@ struct ConsumerListOfOrders: View {
                             Spacer()
                             
                             // root
-                            NavigationLink(destination: ConsumerDiningRoomView(rootIsActive: self.$isActive).environmentObject(diningRoomModel), isActive: self.$isActive) {
+                            NavigationLink(destination: ConsumerDiningRoomView(rootIsActive: self.$isActive)
+                                .environmentObject(diningRoomModel)
+                                .environmentObject(userModel)
+                                .environmentObject(menuModel), isActive: self.$isActive) {
                                 ZStack() {
                                     Rectangle()
                                         .cornerRadius(8)

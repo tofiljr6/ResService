@@ -49,6 +49,7 @@
 		F2B7FDA0291AEF6100840E68 /* ConsumerDiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7FD9F291AEF6100840E68 /* ConsumerDiningRoomView.swift */; };
 		F2B7FDA2291AF03800840E68 /* ConsumerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7FDA1291AF03800840E68 /* ConsumerTableView.swift */; };
 		F2B7FDA4291AF32900840E68 /* ConsumerConfirmOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7FDA3291AF32900840E68 /* ConsumerConfirmOrderView.swift */; };
+		F2B7FDA8291B107400840E68 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7FDA7291B107400840E68 /* LocationManager.swift */; };
 		F2C14386291418180043CB32 /* TableInManageDiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */; };
 		F2C143882914191A0043CB32 /* ManageDiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C143872914191A0043CB32 /* ManageDiningRoomView.swift */; };
 		F2D41C922912ACBE001B8230 /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C912912ACBE001B8230 /* DishModel.swift */; };
@@ -118,6 +119,7 @@
 		F2B7FD9F291AEF6100840E68 /* ConsumerDiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerDiningRoomView.swift; sourceTree = "<group>"; };
 		F2B7FDA1291AF03800840E68 /* ConsumerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerTableView.swift; sourceTree = "<group>"; };
 		F2B7FDA3291AF32900840E68 /* ConsumerConfirmOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerConfirmOrderView.swift; sourceTree = "<group>"; };
+		F2B7FDA7291B107400840E68 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		F2C14385291418180043CB32 /* TableInManageDiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInManageDiningRoomView.swift; sourceTree = "<group>"; };
 		F2C143872914191A0043CB32 /* ManageDiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDiningRoomView.swift; sourceTree = "<group>"; };
 		F2D41C912912ACBE001B8230 /* DishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				F2B7FD9F291AEF6100840E68 /* ConsumerDiningRoomView.swift */,
 				F2B7FDA1291AF03800840E68 /* ConsumerTableView.swift */,
 				F2B7FDA3291AF32900840E68 /* ConsumerConfirmOrderView.swift */,
+				F2B7FDA7291B107400840E68 /* LocationManager.swift */,
 			);
 			path = ConsumerViews;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				F29B1C3929085C7E00303829 /* AddDishToMenuView.swift in Sources */,
 				F2B7FD532919678E00840E68 /* ImagePicker.swift in Sources */,
 				F2091E702916F6DB00FFAFD0 /* TableProtocol.swift in Sources */,
+				F2B7FDA8291B107400840E68 /* LocationManager.swift in Sources */,
 				F2D41C942912AEB2001B8230 /* OrderModel.swift in Sources */,
 				F2B7FDA4291AF32900840E68 /* ConsumerConfirmOrderView.swift in Sources */,
 				F23D0ADE290A9B0F005C84F3 /* MenuModel.swift in Sources */,
@@ -711,6 +715,7 @@
 				DEVELOPMENT_TEAM = YKV2G5YRAW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ffssfd;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -741,6 +746,7 @@
 				DEVELOPMENT_TEAM = YKV2G5YRAW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ffssfd;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

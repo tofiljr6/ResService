@@ -27,10 +27,8 @@ struct ConsumerMenuSectionView: View {
 //                            MenuSingleCardView(menu: dish)
                             NavigationLink(destination: ConsumerMenuDetailView(dishDetail: dish, menuViewModel: menuViewModel)
                                 .environmentObject(self.userModel)
-                                .environmentObject(self.menuViewModel)
-                            ) {
+                                .environmentObject(self.menuViewModel)) {
                                 ConsumerMenuSingleCardView(menu: dish, menuViewModel: menuViewModel)
-//                                    .navigationViewStyle(.stack)
                             }
                         }
                     }

@@ -52,6 +52,4 @@ class UserModel : ObservableObject {
     func deleteFromCurrentOrder(menu : Menu) -> Void {
         
     }
-    
-    
 }

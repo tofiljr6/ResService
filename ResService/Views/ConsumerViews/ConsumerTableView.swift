@@ -10,6 +10,9 @@ import SwiftUI
 struct ConsumerTableView: View {
     @State var tableInfo : TableInfo
     @Binding var shouldPopToRootView : Bool
+    @EnvironmentObject var userModel : UserModel
+    @EnvironmentObject var menuModel : MenuViewModel
+    @EnvironmentObject var diningRoom : DiningRoomViewModel
     
     var manageTableViewWidth  : CGFloat = UIScreen.main.bounds.width * 0.8
     var manageTableViewHeight : CGFloat =  UIScreen.main.bounds.height * 0.8
@@ -17,7 +20,7 @@ struct ConsumerTableView: View {
     private let paddingconst = CGFloat(10)
     
     var body: some View {
-        NavigationLink(destination: { ConsumerConfirmOrderView(shouldPopToRootView : self.$shouldPopToRootView) }) {
+        NavigationLink(destination: { ConsumerConfirmOrderView(shouldPopToRootView : self.$shouldPopToRootView, tableID : $tableInfo.id).environmentObject(userModel).environmentObject(menuModel).environmentObject(diningRoom) }) {
             ZStack {
                 Rectangle()
                     .fill(.green)
@@ -39,6 +42,7 @@ struct ConsumerTableView_Previews: PreviewProvider {
                                                status: .brown,
                                                location: CGPoint(x: 50, y: 50),
                                                description: "A"), shouldPopToRootView: $shouldPopToRootView)
+            .environmentObject(UserModel()).environmentObject(MenuViewModel()).environmentObject(DiningRoomViewModel())
             .navigationTitle("Select table:")
         }
     }
