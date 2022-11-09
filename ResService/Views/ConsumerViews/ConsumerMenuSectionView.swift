@@ -24,8 +24,7 @@ struct ConsumerMenuSectionView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: 0) {
                         ForEach(menuViewMode.getDishesOfCategory(category: category), id: \.dishID) { dish in
-                            NavigationLink(destination: ConsumerMenuDetailView(dishDetail: dish)
-                                .environmentObject(self.userModel)) {
+                            NavigationLink(destination: ConsumerMenuDetailView(dishDetail: dish).environmentObject(self.userModel)) {
                                 ConsumerMenuSingleCardView(menu: dish)
                             }
                         }
@@ -37,9 +36,7 @@ struct ConsumerMenuSectionView: View {
 }
 
 struct ConsumerMenuSectionView_Previews: PreviewProvider {
-    static var menuViewModel = MenuViewModel()
-
     static var previews: some View {
-        ConsumerMenuSectionView(sectionName: "Wurst", category: .drinks).environmentObject(menuViewModel)
+        ConsumerMenuSectionView(sectionName: "Wurst", category: .drinks).environmentObject(MenuViewModel())
     }
 }

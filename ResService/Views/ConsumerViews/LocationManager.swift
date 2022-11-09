@@ -10,6 +10,7 @@ import CoreLocation
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let manager = CLLocationManager()
+    private let accuration : Double = 0.00002
     
     @Published var location: CLLocationCoordinate2D?
     @Published var restaurantLocation : CLLocationCoordinate2D?
@@ -55,8 +56,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func authUserLocationWithRestaurant() -> Bool {
         if self.location != nil && self.restaurantLocation != nil {
-            if abs(Double(self.location!.latitude) - Double(self.restaurantLocation!.latitude)) < 0.00002 &&
-                abs(Double(self.location!.longitude) - Double(self.restaurantLocation!.longitude)) < 0.00002 {
+            if abs(Double(self.location!.latitude) - Double(self.restaurantLocation!.latitude)) < accuration &&
+                abs(Double(self.location!.longitude) - Double(self.restaurantLocation!.longitude)) < accuration {
                 return true
             }
         }

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ConsumerConfirmOrderView: View {
-//    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var userModel : UserModel
     @EnvironmentObject var menuModel : MenuViewModel
     @EnvironmentObject var diningRoomModel : DiningRoomViewModel
@@ -49,20 +48,33 @@ struct ConsumerConfirmOrderView: View {
     }
     
     var confirmButton : some View {
-        Button("Confirm") {
-            // sprawdzenie lokalizacji
+        Button {
+            // checking localization
             locationManager.requestLocation()
             print("Your location: \(locationManager.location!.latitude), \(locationManager.location!.longitude)")
 
+            // set variable to see dedicatet alert
             if locationManager.authUserLocationWithRestaurant() {
                 showSuccesfulResult = true
             } else {
                 showFailResult = true
             }
+        } label: {
+            ZStack {
+                Rectangle()
+                    .cornerRadius(8)
+                    .foregroundColor(.green)
+                    .frame(height: 50)
+                    .padding()
+                Text("Pay")
+                    .foregroundColor(.white)
+                    .font(Font.body.bold())
+            }
         }.alert("Thanks! Your order has been sent correctly", isPresented: $showSuccesfulResult) {
             Button("OK", role: .cancel) {
                 // return to the main customer view
                 self.shouldPopToRootView = false
+                // send order to the kitchne
                 self.orderInKitchen.addOrder(tableNumber: tableID, currentOrder: menuModel.convertIntDict(dict: userModel.listofOrder))
             }
         }.alert("Ohhh no! Your and the restaurant location are not similar", isPresented: $showFailResult) {

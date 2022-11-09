@@ -9,6 +9,10 @@ import SwiftUI
 
 struct ConsumerMainView: View {
     @StateObject var userModel = UserModel()
+    // the userModel can not be @EnvironmentObject because
+    // models operations are subject to constant change and
+    // each time the  variables are changed, the view is
+    // generated anew
     @EnvironmentObject var menuModel : MenuViewModel
     
     var body: some View {
@@ -18,7 +22,7 @@ struct ConsumerMainView: View {
                     .tabItem {
                         Label("Menu", systemImage: "menucard")
                     }
-                ConsumerListOfOrders().environmentObject(self.userModel).environmentObject(self.menuModel)
+                ConsumerListOfOrders().environmentObject(self.userModel)
                     .tabItem {
                         Label("Order", systemImage: "cart.circle.fill")
                     }
@@ -33,9 +37,7 @@ struct ConsumerMainView: View {
 }
 
 struct MainConsumerView_Previews: PreviewProvider {
-    @StateObject var userModel : UserModel = UserModel()
-
     static var previews: some View {
-        ConsumerMainView()
+        ConsumerMainView().environmentObject(MenuViewModel())
     }
 }
