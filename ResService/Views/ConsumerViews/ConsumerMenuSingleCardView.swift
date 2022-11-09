@@ -9,8 +9,8 @@ import SwiftUI
 import FirebaseStorage
 
 struct ConsumerMenuSingleCardView: View {
+    @EnvironmentObject var menuViewModel : MenuViewModel
     var menu : Menu
-    var menuViewModel : MenuViewModel
     
     @State var retrivedImage : UIImage?
     
@@ -80,7 +80,7 @@ struct MenuSingleCardView_Previews: PreviewProvider {
         ScrollView(.horizontal) {
             HStack(spacing: 10) {
                 ForEach(0..<3) {_ in
-                    ConsumerMenuSingleCardView(menu: menu, menuViewModel: menuViewModel)
+                    ConsumerMenuSingleCardView(menu: menu)
                 }
             }
         }.padding(.leading)

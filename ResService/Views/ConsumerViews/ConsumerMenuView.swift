@@ -9,24 +9,22 @@ import SwiftUI
 
 struct ConsumerMenuView: View {
     @EnvironmentObject var userModel : UserModel
-    @ObservedObject var menuModel : MenuViewModel
+    @EnvironmentObject var menuModel : MenuViewModel
     
     var body: some View {
         NavigationView {
             ScrollView {
-                ConsumerMenuSectionView(sectionName: "Starters", dishesInSection: menuModel.getDishesOfCategory(category: .starter), menuViewModel: menuModel).environmentObject(self.userModel)
-                ConsumerMenuSectionView(sectionName: "Main Course", dishesInSection: menuModel.getDishesOfCategory(category: .maincourse), menuViewModel: menuModel).environmentObject(self.userModel)
-                ConsumerMenuSectionView(sectionName: "Deserts", dishesInSection: menuModel.getDishesOfCategory(category: .deserts), menuViewModel: menuModel).environmentObject(self.userModel)
-                ConsumerMenuSectionView(sectionName: "Drinks", dishesInSection: menuModel.getDishesOfCategory(category: .drinks), menuViewModel: menuModel).environmentObject(self.userModel)
+                ConsumerMenuSectionView(sectionName: "Starters", category: .starter).environmentObject(self.userModel)
+                ConsumerMenuSectionView(sectionName: "Main Course", category: .maincourse).environmentObject(self.userModel)
+                ConsumerMenuSectionView(sectionName: "Deserts", category: .deserts).environmentObject(self.userModel)
+                ConsumerMenuSectionView(sectionName: "Drinks", category: .drinks).environmentObject(self.userModel)
             }
         }.navigationViewStyle(.stack)
     }
 }
 
 struct ConsumerMenuView_Previews: PreviewProvider {
-    @ObservedObject static var menuModel : MenuViewModel = MenuViewModel()
-    
     static var previews: some View {
-        ConsumerMenuView(menuModel: menuModel)
+        ConsumerMenuView().environmentObject(MenuViewModel())
     }
 }

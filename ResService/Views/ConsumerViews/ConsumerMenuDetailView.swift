@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ConsumerMenuDetailView: View {
     @EnvironmentObject var userModel : UserModel
+    @EnvironmentObject var menuViewModel : MenuViewModel
     
     @State var dishAmount : Int = 0
     
     var dishDetail : Menu
-    var menuViewModel : MenuViewModel
         
     var body: some View {
         ScrollView {
@@ -85,6 +85,6 @@ struct ConsumerMenuDetailView_Previews: PreviewProvider {
     static var menuViewModel : MenuViewModel = MenuViewModel()
     
     static var previews: some View {
-        ConsumerMenuDetailView(dishDetail: dishDetail, menuViewModel: menuViewModel)
+        ConsumerMenuDetailView(dishDetail: dishDetail)
     }
 }

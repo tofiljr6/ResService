@@ -21,7 +21,7 @@ struct ContentView: View {
         } else if user.role == Role.boss.rawValue {
             BossMainView()
         } else if user.role == Role.client.rawValue {
-            ConsumerMainView().environmentObject(self.user)
+            ConsumerMainView().environmentObject(self.user).environmentObject(MenuViewModel())
         }
         else {
             noUserRole

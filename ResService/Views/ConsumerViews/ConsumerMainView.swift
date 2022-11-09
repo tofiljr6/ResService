@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ConsumerMainView: View {
     @StateObject var userModel = UserModel()
-    @ObservedObject var menuModel : MenuViewModel = MenuViewModel()
+    @EnvironmentObject var menuModel : MenuViewModel
     
     var body: some View {
         VStack {
             TabView {
-                ConsumerMenuView(menuModel : menuModel).environmentObject(self.userModel)
+                ConsumerMenuView().environmentObject(self.userModel)
                     .tabItem {
                         Label("Menu", systemImage: "menucard")
                     }
