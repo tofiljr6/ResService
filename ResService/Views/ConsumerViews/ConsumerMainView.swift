@@ -8,23 +8,27 @@
 import SwiftUI
 
 struct ConsumerMainView: View {
-    @StateObject var userModel = UserModel()
+    @EnvironmentObject var userModel : UserModel
     // the userModel can not be @EnvironmentObject because
     // models operations are subject to constant change and
     // each time the  variables are changed, the view is
     // generated anew
-    @EnvironmentObject var menuModel : MenuViewModel
+    @StateObject var userOrderModel : UserOrderModel = UserOrderModel()
     
     var body: some View {
         VStack {
             TabView {
-                ConsumerMenuView().environmentObject(self.userModel)
+                ConsumerMenuView(userOrderModel: userOrderModel).environmentObject(self.userOrderModel)
                     .tabItem {
                         Label("Menu", systemImage: "menucard")
                     }
-                ConsumerListOfOrders().environmentObject(self.userModel)
+                ConsumerListOfOrders(userOrderModel : userOrderModel).environmentObject(self.userModel)
                     .tabItem {
                         Label("Order", systemImage: "cart.circle.fill")
+                    }
+                ConsumerSettingTab().environmentObject(self.userModel)
+                    .tabItem {
+                        Label("Setting", systemImage: "person.fill")
                     }
             }.onAppear {
                 // ios 15 bug - transparent tabview - fixed
@@ -37,7 +41,10 @@ struct ConsumerMainView: View {
 }
 
 struct MainConsumerView_Previews: PreviewProvider {
+    static var userModel = UserModel()
+
     static var previews: some View {
         ConsumerMainView().environmentObject(MenuViewModel())
+            .environmentObject(UserModel())
     }
 }

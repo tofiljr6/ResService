@@ -9,22 +9,25 @@ import SwiftUI
 
 struct ConsumerMenuView: View {
     @EnvironmentObject var userModel : UserModel
-    @EnvironmentObject var menuModel : MenuViewModel
+//    @StateObject var userOrderModel = UserOrderModel()
+    @ObservedObject var userOrderModel : UserOrderModel
     
     var body: some View {
         NavigationView {
             ScrollView {
-                ConsumerMenuSectionView(sectionName: "Starters", category: .starter).environmentObject(self.userModel)
-                ConsumerMenuSectionView(sectionName: "Main Course", category: .maincourse).environmentObject(self.userModel)
-                ConsumerMenuSectionView(sectionName: "Deserts", category: .deserts).environmentObject(self.userModel)
-                ConsumerMenuSectionView(sectionName: "Drinks", category: .drinks).environmentObject(self.userModel)
-            }
+                ConsumerMenuSectionView(userOrderModel: userOrderModel, sectionName: "Starters", category: .starter).environmentObject(self.userOrderModel)
+                ConsumerMenuSectionView(userOrderModel: userOrderModel, sectionName: "Main Course", category: .maincourse).environmentObject(self.userOrderModel)
+                ConsumerMenuSectionView(userOrderModel: userOrderModel, sectionName: "Deserts", category: .deserts).environmentObject(self.userOrderModel)
+                ConsumerMenuSectionView(userOrderModel: userOrderModel, sectionName: "Drinks", category: .drinks).environmentObject(self.userOrderModel)
+            }.navigationTitle("Hello, \(userModel.username)")
         }.navigationViewStyle(.stack)
     }
 }
 
 struct ConsumerMenuView_Previews: PreviewProvider {
+    static var userOrderModel : UserOrderModel = UserOrderModel()
+    
     static var previews: some View {
-        ConsumerMenuView().environmentObject(MenuViewModel())
+        ConsumerMenuView(userOrderModel: userOrderModel).environmentObject(MenuViewModel())
     }
 }

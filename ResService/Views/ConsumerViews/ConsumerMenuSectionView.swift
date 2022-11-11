@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ConsumerMenuSectionView: View {
-    @EnvironmentObject var userModel : UserModel
+//    @EnvironmentObject var userModel : UserModel
+    @ObservedObject var userOrderModel : UserOrderModel
     @EnvironmentObject var menuViewMode : MenuViewModel
     var sectionName : String
     var category : DishCategory
@@ -24,7 +25,7 @@ struct ConsumerMenuSectionView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: 0) {
                         ForEach(menuViewMode.getDishesOfCategory(category: category), id: \.dishID) { dish in
-                            NavigationLink(destination: ConsumerMenuDetailView(dishDetail: dish).environmentObject(self.userModel)) {
+                            NavigationLink(destination: ConsumerMenuDetailView(userModel: userOrderModel, dishDetail: dish).environmentObject(self.userOrderModel)) {
                                 ConsumerMenuSingleCardView(menu: dish)
                             }
                         }
@@ -36,7 +37,9 @@ struct ConsumerMenuSectionView: View {
 }
 
 struct ConsumerMenuSectionView_Previews: PreviewProvider {
+    static var userOrderModel : UserOrderModel = UserOrderModel()
+    
     static var previews: some View {
-        ConsumerMenuSectionView(sectionName: "Wurst", category: .drinks).environmentObject(MenuViewModel())
+        ConsumerMenuSectionView(userOrderModel: userOrderModel, sectionName: "Wurst", category: .drinks).environmentObject(MenuViewModel())
     }
 }

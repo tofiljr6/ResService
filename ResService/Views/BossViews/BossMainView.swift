@@ -11,13 +11,13 @@ import SwiftUI
 
 struct BossMainView: View {
     @ObservedObject var diningRoom : DiningRoomViewModel = DiningRoomViewModel()
+    @StateObject var userModel : UserModel
     
     var sections : [MenuSection] = [MenuSection(id: UUID(), name: "Role", items: [MenuItem(id: UUID(), name: "Preview Waiter"),
                                                                                   MenuItem(id: UUID(), name: "Preview Kitchen")]),
                                     MenuSection(id: UUID(), name: "Manage restauratn", items: [MenuItem(id: UUID(), name: "Add new dishes"),
                                                                                                MenuItem(id: UUID(), name: "Employee new"),
                                                                                                MenuItem(id: UUID(), name: "Manage tables")])]
-    
     private enum BossSection : String {
         case previewWaiter  = "Preview Waiter"
         case previewKitchen = "Preview Kitchen"
@@ -38,7 +38,16 @@ struct BossMainView: View {
                     }
                 }
             }.navigationTitle("Restaurant settings")
-        }
+            .toolbar {
+                Button {
+                    userModel.signout()
+                } label: {
+                    Image(systemName: "person.badge.minus").foregroundColor(.red)
+                }
+            }
+        }.fullScreenCover(isPresented: $userModel.userIsLoggedIn, content: {
+            SignInView()
+        })
     }
     
     private func getDestination(itemText: String) -> AnyView {
@@ -61,7 +70,9 @@ struct BossMainView: View {
 }
 
 struct BossMainView_Previews: PreviewProvider {
+    static var userModel : UserModel = UserModel()
+    
     static var previews: some View {
-        BossMainView()
+        BossMainView(userModel: userModel)
     }
 }

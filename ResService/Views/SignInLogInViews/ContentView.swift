@@ -12,19 +12,21 @@ var conter = 0
 var presentValue : String = "50"
 
 struct ContentView: View {
-    @StateObject  var user = UserModel()
+    @StateObject var user : UserModel = UserModel()
     @State private var showPopup : Bool = false
     
     var body: some View {
         if user.role == Role.waiter.rawValue {
             DiningRoomView(diningRoom: DiningRoomViewModel())
         } else if user.role == Role.boss.rawValue {
-            BossMainView()
+            BossMainView(userModel : user)
         } else if user.role == Role.client.rawValue {
-            ConsumerMainView().environmentObject(self.user).environmentObject(MenuViewModel())
+            ConsumerMainView().environmentObject(MenuViewModel()).environmentObject(user)
         }
         else {
-            noUserRole
+            noUserRole.onAppear(perform: {
+                user.initUser()
+            })
         }
     }
     
@@ -45,8 +47,8 @@ struct ContentView: View {
 }
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView().environmentObject(UserModel())
+//    }
+//}

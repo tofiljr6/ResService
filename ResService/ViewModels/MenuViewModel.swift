@@ -51,24 +51,24 @@ final class MenuViewModel : ObservableObject {
             // retive all menus photos
             for menuDish in self.menuDishes {
                 
-                let storageRef = Storage.storage().reference()
-                let fileRef = storageRef.child("imagesOfDishes/\(menuDish.dishPhotoURL).jpg")
-                fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-                    if error == nil && data != nil {
-                        if let image = UIImage(data: data!) {
-                            DispatchQueue.main.async {
-                                self.menuPhotos[menuDish.dishID] = image
-                                print("Załadowano \(menuDish.dishID)")
-                            }
-                        }
-                    }
-                }
-//                // only for testing to reduce using fb storage
-//                let uiimageTestMode = ["photo", "photo.fill", "photo.on.rectangle", "text.below.photo"]
-//                DispatchQueue.main.async {
-//                    self.menuPhotos[menuDish.dishID] = UIImage(systemName: uiimageTestMode.randomElement()!)
-//                    print("\(menuDish.dishID) załadowano")
+//                let storageRef = Storage.storage().reference()
+//                let fileRef = storageRef.child("imagesOfDishes/\(menuDish.dishPhotoURL).jpg")
+//                fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+//                    if error == nil && data != nil {
+//                        if let image = UIImage(data: data!) {
+//                            DispatchQueue.main.async {
+//                                self.menuPhotos[menuDish.dishID] = image
+//                                print("Załadowano \(menuDish.dishID)")
+//                            }
+//                        }
+//                    }
 //                }
+                // only for testing to reduce using fb storage
+                let uiimageTestMode = ["photo", "photo.fill", "photo.on.rectangle", "text.below.photo"]
+                DispatchQueue.main.async {
+                    self.menuPhotos[menuDish.dishID] = UIImage(systemName: uiimageTestMode.randomElement()!)
+                    print("\(menuDish.dishID) załadowano")
+                }
             }
         })
     }

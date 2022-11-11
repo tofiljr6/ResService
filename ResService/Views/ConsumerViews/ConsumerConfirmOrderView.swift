@@ -15,13 +15,14 @@ struct ConsumerConfirmOrderView: View {
     @StateObject var locationManager = LocationManager()
     @Binding var shouldPopToRootView : Bool
     @Binding var tableID : Int
+    @ObservedObject var userOrderModel : UserOrderModel
     @State var showSuccesfulResult : Bool = false
     @State var showFailResult : Bool = false
     
     var body: some View {
         VStack {
             List {
-                ForEach(userModel.listofOrder.sorted(by: >), id: \.key) { key, value in
+                ForEach(userOrderModel.listofOrder.sorted(by: >), id: \.key) { key, value in
                     HStack {
                         Text(menuModel.getMenuByID(id: key)!.dishName)
                         Spacer()
@@ -75,7 +76,11 @@ struct ConsumerConfirmOrderView: View {
                 // return to the main customer view
                 self.shouldPopToRootView = false
                 // send order to the kitchne
-                self.orderInKitchen.addOrder(tableNumber: tableID, currentOrder: menuModel.convertIntDict(dict: userModel.listofOrder))
+                self.orderInKitchen.addOrder(tableNumber: tableID, currentOrder: menuModel.convertIntDict(dict: userOrderModel.listofOrder))
+                
+                
+                // check
+                print("\(userModel.username) ordered \(userOrderModel.listofOrder)")
             }
         }.alert("Ohhh no! Your and the restaurant location are not similar", isPresented: $showFailResult) {
             Button("OK", role: .cancel) { }
@@ -86,10 +91,11 @@ struct ConsumerConfirmOrderView: View {
 struct ConsumerConfirmOrderView_Previews: PreviewProvider {
     @State static var shouldPopToRootView : Bool = false
     @State static var tableID : Int = 41
-    
+    static var userOrderModel : UserOrderModel = UserOrderModel()
+
     static var previews: some View {
         NavigationView {
-            ConsumerConfirmOrderView(shouldPopToRootView: $shouldPopToRootView, tableID: $tableID)
+            ConsumerConfirmOrderView(shouldPopToRootView: $shouldPopToRootView, tableID: $tableID, userOrderModel: userOrderModel)
                 .navigationTitle("Confirmation")
         }
     }

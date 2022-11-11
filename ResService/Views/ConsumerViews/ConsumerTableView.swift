@@ -10,6 +10,7 @@ import SwiftUI
 struct ConsumerTableView: View {
     @State var tableInfo : TableInfo
     @Binding var shouldPopToRootView : Bool
+    @ObservedObject var userOrderModel : UserOrderModel
     @EnvironmentObject var userModel : UserModel
     @EnvironmentObject var menuModel : MenuViewModel
     @EnvironmentObject var diningRoom : DiningRoomViewModel
@@ -20,7 +21,8 @@ struct ConsumerTableView: View {
     private let paddingconst = CGFloat(10)
     
     var body: some View {
-        NavigationLink(destination: { ConsumerConfirmOrderView(shouldPopToRootView : self.$shouldPopToRootView, tableID : $tableInfo.id).environmentObject(userModel)}) {
+//        NavigationLink(destination: { ConsumerConfirmOrderView(userModel : self.$shouldPopToRootView, menuModel : $tableInfo.id, diningRoomModel : userOrderModel).environmentObject(userModel)}) {
+        NavigationLink(destination: { ConsumerConfirmOrderView(shouldPopToRootView: self.$shouldPopToRootView, tableID: $tableInfo.id, userOrderModel: userOrderModel)}) {
             ZStack {
                 Rectangle()
                     .fill(.green)
@@ -35,13 +37,14 @@ struct ConsumerTableView: View {
 
 struct ConsumerTableView_Previews: PreviewProvider {
     @State static var shouldPopToRootView : Bool = false
-    
+    static var userOrderModel : UserOrderModel = UserOrderModel()
+
     static var previews: some View {
         NavigationView {
             ConsumerTableView(tableInfo: TableInfo(id: 1,
                                                status: .brown,
                                                location: CGPoint(x: 50, y: 50),
-                                               description: "A"), shouldPopToRootView: $shouldPopToRootView)
+                                               description: "A"), shouldPopToRootView: $shouldPopToRootView, userOrderModel: userOrderModel)
             .environmentObject(UserModel()).environmentObject(MenuViewModel()).environmentObject(DiningRoomViewModel())
             .navigationTitle("Select table:")
         }

@@ -90,6 +90,7 @@ struct SignInView: View {
                     Button("boss") {
                         email = "boss@gmail.com"
                         password = "123456"
+//                        userModel.login(email: email, password: password)
                         login()
                     }.offset(x: -50, y: -60)
 //                    Button("waiter") {
@@ -100,6 +101,7 @@ struct SignInView: View {
                     Button("consumer") {
                         email = "user1@gmail.com"
                         password = "123456"
+//                        userModel.login(email: email, password: password)
                         login()
                     }.offset(x: 50, y: -60)
             }
@@ -112,11 +114,11 @@ struct SignInView: View {
             if error != nil {
                 print(error!.localizedDescription)
             }
-            
+
             // add additinal information about user to firebase collection
             guard let userID = Auth.auth().currentUser?.uid else { return }
             let ref = Database.database(url: dbURLConnection ).reference()
-            
+
             let userinfo = [
                 "username" : name,
                 "role" : "client"
@@ -130,7 +132,7 @@ struct SignInView: View {
             if error != nil {
                 print(error!.localizedDescription)
             }
-            
+
             userIsLoggedIn.toggle()
         }
     }

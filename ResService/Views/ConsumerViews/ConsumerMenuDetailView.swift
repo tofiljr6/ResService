@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ConsumerMenuDetailView: View {
-    @EnvironmentObject var userModel : UserModel
+//    @EnvironmentObject var userModel : UserModel
+    @ObservedObject var userModel : UserOrderModel
     @EnvironmentObject var menuViewModel : MenuViewModel
     
     @State var dishAmount : Int = 0
@@ -83,8 +84,9 @@ struct ConsumerMenuDetailView_Previews: PreviewProvider {
                                         dishCategory: "starter",
                                         dishPhotoURL: UUID().uuidString)
     static var menuViewModel : MenuViewModel = MenuViewModel()
-    
+    static var userOrderModel : UserOrderModel = UserOrderModel()
+
     static var previews: some View {
-        ConsumerMenuDetailView(dishDetail: dishDetail)
+        ConsumerMenuDetailView(userModel: userOrderModel, dishDetail: dishDetail)
     }
 }

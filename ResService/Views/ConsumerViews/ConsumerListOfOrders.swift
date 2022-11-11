@@ -11,6 +11,7 @@ struct ConsumerListOfOrders: View {
     @EnvironmentObject var userModel : UserModel
     @EnvironmentObject var menuModel : MenuViewModel
     @ObservedObject var ordersInKitchenModel : OrdersInKitchenViewModel = OrdersInKitchenViewModel()
+    @ObservedObject var userOrderModel : UserOrderModel
     @StateObject var diningRoomModel : DiningRoomViewModel = DiningRoomViewModel()
     @State var isActive : Bool = false
     
@@ -19,17 +20,21 @@ struct ConsumerListOfOrders: View {
     var body: some View {
         NavigationView {
             VStack {
-                if userModel.listofOrder.count == 0 {
+                if userOrderModel.listofOrder.count == 0 {
                     Text("Select dishes to see your order")
                         .foregroundColor(.gray)
                     Spacer()
                 } else {
                     List {
-                        ForEach(userModel.listofOrder.sorted(by: >), id: \.key) { key, value in
+                        ForEach(userOrderModel.listofOrder.sorted(by: >), id: \.key) { key, value in
                             HStack {
-                                Text(menuModel.getMenuByID(id: key)!.dishName)
+                                if let dname = menuModel.getMenuByID(id: key)?.dishName {
+                                    Text(dname)
+                                }
                                 Spacer()
-                                Text("\(value.description) x \(String(format: "%.2f", menuModel.getMenuByID(id: key)!.dishPrice))")
+                                if let dprice = menuModel.getMenuByID(id: key)?.dishPrice {
+                                    Text("\(value.description) x \(String(format: "%.2f", dprice))")
+                                }
                             }
                         }
                     }
@@ -60,7 +65,7 @@ struct ConsumerListOfOrders: View {
                             Spacer()
                             
                             // root
-                            NavigationLink(destination: ConsumerDiningRoomView(rootIsActive: self.$isActive)
+                            NavigationLink(destination: ConsumerDiningRoomView(userOrderModel: userOrderModel, rootIsActive: self.$isActive)
                                 .environmentObject(diningRoomModel)
                                 .environmentObject(userModel)
                                 .environmentObject(menuModel), isActive: self.$isActive) {
@@ -87,8 +92,12 @@ struct ConsumerListOfOrders: View {
     func countTotal() -> Double {
         var acc = 0.0
         
-        for dish in userModel.listofOrder {
-            acc += ( menuModel.getMenuByID(id: dish.key)!.dishPrice * Double(dish.value))
+        for dish in userOrderModel.listofOrder {
+            if let price = menuModel.getMenuByID(id: dish.key)?.dishPrice {
+                acc += ( price * Double(dish.value))
+            } else {
+                print(menuModel.menuDishes)
+            }
         }
         
         return acc
@@ -96,9 +105,11 @@ struct ConsumerListOfOrders: View {
 }
 
 struct ConsumerListOfOrders_Previews: PreviewProvider {
+    static var userOrderModel : UserOrderModel = UserOrderModel()
+    
     static var previews: some View {
         NavigationView {
-            ConsumerListOfOrders().environmentObject(UserModel())
+            ConsumerListOfOrders(userOrderModel: userOrderModel).environmentObject(UserModel())
                 .navigationTitle("Your order")
         }
     }

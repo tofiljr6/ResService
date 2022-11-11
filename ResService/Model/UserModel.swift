@@ -17,12 +17,12 @@ class UserModel : ObservableObject {
     
     @Published var username : String = ""
     @Published var role : String = ""
-    @Published var listofOrder : [Int : Int] = [:]
+    @Published var userIsLoggedIn : Bool = false
     
-    init() {
+    func initUser() {
         let ref = Database.database(url: dbURLConnection).reference()
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        
+
         ref.child("users/\(userID)").getData(completion:  { error, snapshot in
             guard error == nil else {
                 print(error!.localizedDescription)
@@ -37,19 +37,40 @@ class UserModel : ObservableObject {
         });
     }
     
-    func addToOrder(menu : Int, amount : Int) -> Void {
-        self.listofOrder[menu] = amount
+    func register(email : String, password : String, userName : String) {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            // add additinal information about user to firebase collection
+            guard let userID = Auth.auth().currentUser?.uid else { return }
+            let ref = Database.database(url: self.dbURLConnection ).reference()
+            
+            let userinfo = [
+                "username" : userName,
+                "role" : "client"
+            ]
+            ref.child("users").child(userID).setValue(userinfo)
+        }
     }
     
-    func deleteOrder(menu : Int) -> Void {
-        self.listofOrder.removeValue(forKey: menu)
+    func login(email : String, password : String) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            self.userIsLoggedIn.toggle()
+        }
     }
     
-    func getAmountToOrder(menu : Int) -> Int {
-        return listofOrder[menu] ?? 0
-    }
-    
-    func deleteFromCurrentOrder(menu : Menu) -> Void {
-        
+    func signout() {
+        do {
+            try Auth.auth().signOut()
+            self.userIsLoggedIn.toggle()
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 }
