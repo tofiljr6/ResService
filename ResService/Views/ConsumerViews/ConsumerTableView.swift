@@ -30,8 +30,8 @@ struct ConsumerTableView: View {
                     .cornerRadius(4)
                 Text(tableInfo.description)
                     .foregroundColor(.black)
-            }.position(tableInfo.location)
-        }.isDetailLink(false).navigationTitle("Select table:")
+            }.navigationTitle("Select table:")
+        }.isDetailLink(false).position(tableInfo.location)
     }
 }
 
