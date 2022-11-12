@@ -17,7 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         if user.role == Role.waiter.rawValue {
-            DiningRoomView(diningRoom: DiningRoomViewModel())
+            DiningRoomView(diningRoom: DiningRoomViewModel()).environmentObject(user)
         } else if user.role == Role.boss.rawValue {
             BossMainView(userModel : user)
         } else if user.role == Role.client.rawValue {

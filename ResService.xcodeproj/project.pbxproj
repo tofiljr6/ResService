@@ -17,6 +17,7 @@
 		F23D0ADB2909A287005C84F3 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D0ADA2909A287005C84F3 /* MenuViewModel.swift */; };
 		F23D0ADE290A9B0F005C84F3 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D0ADD290A9B0E005C84F3 /* MenuModel.swift */; };
 		F2401995291E863800ADC818 /* UserOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2401994291E863800ADC818 /* UserOrderModel.swift */; };
+		F2401997291E955500ADC818 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2401996291E955500ADC818 /* RegisterView.swift */; };
 		F253267828F5E45A002F5F36 /* ResServiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253267728F5E45A002F5F36 /* ResServiceApp.swift */; };
 		F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253267928F5E45A002F5F36 /* ContentView.swift */; };
 		F253267C28F5E45A002F5F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F253267B28F5E45A002F5F36 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 		F23D0ADA2909A287005C84F3 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		F23D0ADD290A9B0E005C84F3 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		F2401994291E863800ADC818 /* UserOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOrderModel.swift; sourceTree = "<group>"; };
+		F2401996291E955500ADC818 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		F253267428F5E45A002F5F36 /* ResService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F253267728F5E45A002F5F36 /* ResServiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResServiceApp.swift; sourceTree = "<group>"; };
 		F253267928F5E45A002F5F36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				F237CB9429055E5D003C1007 /* SignInView.swift */,
 				F253267928F5E45A002F5F36 /* ContentView.swift */,
+				F2401996291E955500ADC818 /* RegisterView.swift */,
 			);
 			path = SignInLogInViews;
 			sourceTree = "<group>";
@@ -221,6 +224,14 @@
 				F2401994291E863800ADC818 /* UserOrderModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F2401998291FCF6400ADC818 /* ConsumerSetting */ = {
+			isa = PBXGroup;
+			children = (
+				F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */,
+			);
+			path = ConsumerSetting;
 			sourceTree = "<group>";
 		};
 		F253266B28F5E45A002F5F36 = {
@@ -344,6 +355,7 @@
 		F29BC14F29181E2F00557956 /* ConsumerViews */ = {
 			isa = PBXGroup;
 			children = (
+				F2401998291FCF6400ADC818 /* ConsumerSetting */,
 				F29BC15229181E8000557956 /* ConsumerMainView.swift */,
 				F29BC154291820CC00557956 /* ConsumerMenuSingleCardView.swift */,
 				F29BC1562918256400557956 /* ConsumerMenuView.swift */,
@@ -354,7 +366,6 @@
 				F2B7FDA1291AF03800840E68 /* ConsumerTableView.swift */,
 				F2B7FDA3291AF32900840E68 /* ConsumerConfirmOrderView.swift */,
 				F2B7FDA7291B107400840E68 /* LocationManager.swift */,
-				F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */,
 			);
 			path = ConsumerViews;
 			sourceTree = "<group>";
@@ -552,6 +563,7 @@
 				F29B1C2F2905C69500303829 /* UserModel.swift in Sources */,
 				F29B1C372908503800303829 /* MenuView.swift in Sources */,
 				F2B7FDA0291AEF6100840E68 /* ConsumerDiningRoomView.swift in Sources */,
+				F2401997291E955500ADC818 /* RegisterView.swift in Sources */,
 				F29BC1572918256400557956 /* ConsumerMenuView.swift in Sources */,
 				F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */,
 				F253267828F5E45A002F5F36 /* ResServiceApp.swift in Sources */,

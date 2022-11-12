@@ -69,6 +69,8 @@ class UserModel : ObservableObject {
         do {
             try Auth.auth().signOut()
             self.userIsLoggedIn.toggle()
+            UserDefaults.standard.removeObject(forKey: "userUIDey")
+            UserDefaults.standard.synchronize()
         } catch let error {
             print(error.localizedDescription)
         }
