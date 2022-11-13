@@ -14,10 +14,16 @@ class UserModel : ObservableObject {
     let dbURLConnection = "https://resservice-f26c6-default-rtdb.europe-west1.firebasedatabase.app/"
     private let usernameCellname = "username"
     private let roleCellname = "role"
+    private let emailCellname = "email"
+    private let uuidCellname = "UUID"
+    private let authIDCellname = "authID"
     
     @Published var username : String = ""
     @Published var role : String = ""
+    @Published var uuid : String = ""
+    @Published var email : String = ""
     @Published var userIsLoggedIn : Bool = false
+    @Published var authID : String = ""
     
     func initUser() {
         let ref = Database.database(url: dbURLConnection).reference()
@@ -33,6 +39,9 @@ class UserModel : ObservableObject {
                 print(userinfo[self.usernameCellname]!)
                 self.username = userinfo[self.usernameCellname] ?? "Unknown"
                 self.role = userinfo[self.roleCellname] ?? Role.unknown.rawValue
+                self.uuid = userinfo[self.uuidCellname] ?? "\(UUID().uuidString)"
+                self.email = userinfo[self.emailCellname] ?? "@"
+                self.authID = userinfo[self.authIDCellname] ?? "Unknown"
             }
         });
     }

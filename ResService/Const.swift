@@ -14,6 +14,7 @@ let OIKcollectionName = "ordersInKitchenCollection"
 let diningRoomCollectionName = "diningRoomCollection"
 let menuCollectionName = "menuCollection"
 let paramCollectionName = "param"
+let userCollectionName = "users"
 
 let paramUniqueOrderNumber = "noorder"
 let menuUniqueName = "menuUniqueID"

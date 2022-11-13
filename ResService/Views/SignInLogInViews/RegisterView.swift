@@ -79,7 +79,10 @@ struct RegisterView: View {
 
             let userinfo = [
                 "username" : name,
-                "role" : "client"
+                "role" : "client",
+                "UUID" : UUID().uuidString,
+                "email" : email,
+                "authID" : userID
             ]
             ref.child("users").child(userID).setValue(userinfo)
         }

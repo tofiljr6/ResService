@@ -18,6 +18,9 @@
 		F23D0ADE290A9B0F005C84F3 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D0ADD290A9B0E005C84F3 /* MenuModel.swift */; };
 		F2401995291E863800ADC818 /* UserOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2401994291E863800ADC818 /* UserOrderModel.swift */; };
 		F2401997291E955500ADC818 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2401996291E955500ADC818 /* RegisterView.swift */; };
+		F240199A2920026000ADC818 /* EmployView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24019992920026000ADC818 /* EmployView.swift */; };
+		F240199C2920035600ADC818 /* EmployViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F240199B2920035600ADC818 /* EmployViewModel.swift */; };
+		F240199E29200CE400ADC818 /* AddNewWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F240199D29200CE400ADC818 /* AddNewWorkerView.swift */; };
 		F253267828F5E45A002F5F36 /* ResServiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253267728F5E45A002F5F36 /* ResServiceApp.swift */; };
 		F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F253267928F5E45A002F5F36 /* ContentView.swift */; };
 		F253267C28F5E45A002F5F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F253267B28F5E45A002F5F36 /* Assets.xcassets */; };
@@ -30,6 +33,7 @@
 		F25326B028F7290D002F5F36 /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326AF28F7290D002F5F36 /* DishView.swift */; };
 		F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326B128F82A71002F5F36 /* KitchenView.swift */; };
 		F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326B428F87358002F5F36 /* FunctionBoxView.swift */; };
+		F25E50B52921050D00F43ADF /* EmployeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50B42921050D00F43ADF /* EmployeeDetailView.swift */; };
 		F2930305291D8EFE0020E16C /* ConsumerSettingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */; };
 		F29B1C2F2905C69500303829 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C2E2905C69500303829 /* UserModel.swift */; };
 		F29B1C322908265700303829 /* BossMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C312908265700303829 /* BossMainView.swift */; };
@@ -94,6 +98,9 @@
 		F23D0ADD290A9B0E005C84F3 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		F2401994291E863800ADC818 /* UserOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOrderModel.swift; sourceTree = "<group>"; };
 		F2401996291E955500ADC818 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		F24019992920026000ADC818 /* EmployView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployView.swift; sourceTree = "<group>"; };
+		F240199B2920035600ADC818 /* EmployViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployViewModel.swift; sourceTree = "<group>"; };
+		F240199D29200CE400ADC818 /* AddNewWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewWorkerView.swift; sourceTree = "<group>"; };
 		F253267428F5E45A002F5F36 /* ResService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F253267728F5E45A002F5F36 /* ResServiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResServiceApp.swift; sourceTree = "<group>"; };
 		F253267928F5E45A002F5F36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +116,7 @@
 		F25326AF28F7290D002F5F36 /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
 		F25326B128F82A71002F5F36 /* KitchenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenView.swift; sourceTree = "<group>"; };
 		F25326B428F87358002F5F36 /* FunctionBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionBoxView.swift; sourceTree = "<group>"; };
+		F25E50B42921050D00F43ADF /* EmployeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailView.swift; sourceTree = "<group>"; };
 		F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerSettingTab.swift; sourceTree = "<group>"; };
 		F29B1C2E2905C69500303829 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F29B1C312908265700303829 /* BossMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossMainView.swift; sourceTree = "<group>"; };
@@ -329,6 +337,9 @@
 				F29B1C312908265700303829 /* BossMainView.swift */,
 				F29B1C3829085C7E00303829 /* AddDishToMenuView.swift */,
 				F2B7FD522919678E00840E68 /* ImagePicker.swift */,
+				F24019992920026000ADC818 /* EmployView.swift */,
+				F240199D29200CE400ADC818 /* AddNewWorkerView.swift */,
+				F25E50B42921050D00F43ADF /* EmployeeDetailView.swift */,
 			);
 			path = BossViews;
 			sourceTree = "<group>";
@@ -348,6 +359,7 @@
 				F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */,
 				F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */,
 				F23D0ADA2909A287005C84F3 /* MenuViewModel.swift */,
+				F240199B2920035600ADC818 /* EmployViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -543,8 +555,10 @@
 				F2EC9FCA2912CA1E00493A27 /* TableView.swift in Sources */,
 				F2B7FDA2291AF03800840E68 /* ConsumerTableView.swift in Sources */,
 				F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */,
+				F240199C2920035600ADC818 /* EmployViewModel.swift in Sources */,
 				F29B1C322908265700303829 /* BossMainView.swift in Sources */,
 				F29BC1592918260200557956 /* ConsumerMenuSectionView.swift in Sources */,
+				F240199A2920026000ADC818 /* EmployView.swift in Sources */,
 				F2D41C962912AEC8001B8230 /* OrderCardModel.swift in Sources */,
 				F2B7FD62291AA07100840E68 /* ConsumerListOfOrders.swift in Sources */,
 				F2D41C922912ACBE001B8230 /* DishModel.swift in Sources */,
@@ -561,9 +575,11 @@
 				F2B7FDA4291AF32900840E68 /* ConsumerConfirmOrderView.swift in Sources */,
 				F23D0ADE290A9B0F005C84F3 /* MenuModel.swift in Sources */,
 				F29B1C2F2905C69500303829 /* UserModel.swift in Sources */,
+				F25E50B52921050D00F43ADF /* EmployeeDetailView.swift in Sources */,
 				F29B1C372908503800303829 /* MenuView.swift in Sources */,
 				F2B7FDA0291AEF6100840E68 /* ConsumerDiningRoomView.swift in Sources */,
 				F2401997291E955500ADC818 /* RegisterView.swift in Sources */,
+				F240199E29200CE400ADC818 /* AddNewWorkerView.swift in Sources */,
 				F29BC1572918256400557956 /* ConsumerMenuView.swift in Sources */,
 				F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */,
 				F253267828F5E45A002F5F36 /* ResServiceApp.swift in Sources */,

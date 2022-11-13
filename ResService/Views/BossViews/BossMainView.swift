@@ -16,13 +16,14 @@ struct BossMainView: View {
     var sections : [MenuSection] = [MenuSection(id: UUID(), name: "Role", items: [MenuItem(id: UUID(), name: "Preview Waiter"),
                                                                                   MenuItem(id: UUID(), name: "Preview Kitchen")]),
                                     MenuSection(id: UUID(), name: "Manage restauratn", items: [MenuItem(id: UUID(), name: "Add new dishes"),
-                                                                                               MenuItem(id: UUID(), name: "Employee new"),
+                                                                                               MenuItem(id: UUID(), name: "Employ"),
                                                                                                MenuItem(id: UUID(), name: "Manage tables")])]
     private enum BossSection : String {
         case previewWaiter  = "Preview Waiter"
         case previewKitchen = "Preview Kitchen"
         case addNewDishes   = "Add new dishes"
         case manageTables   = "Manage tables"
+        case employ         = "Employ"
     }
     
     var body: some View {
@@ -62,6 +63,7 @@ struct BossMainView: View {
             .toolbar(content: {
                 Button(action: { diningRoom.addNewTable() }, label: { Image(systemName: "plus.circle") })
             }))
+        case .some(.employ): return AnyView(EmployView())
         case .none:
             return AnyView(Text("Nieznazny bład"))
             

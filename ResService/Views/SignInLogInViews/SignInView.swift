@@ -16,13 +16,6 @@ struct SignInView: View {
     @State private var createUserTabIsShowing : Bool = false
 
     var body: some View {
-//        if UserDefaults.standard.object(forKey: "userUIDey") != nil {
-////        if userIsLoggedIn {
-//            ContentView()
-//        } else {
-//            content
-//        }
-        
         if UserDefaults.standard.object(forKey: "userUIDey") != nil {
             ContentView()
         } else {
@@ -30,7 +23,6 @@ struct SignInView: View {
                 ContentView()
             } else {
                 content
-                //            ManageTablesView()
             }
         }
     }
