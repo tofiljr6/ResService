@@ -11,7 +11,7 @@ import SwiftUI
 
 struct BossMainView: View {
     @ObservedObject var diningRoom : DiningRoomViewModel = DiningRoomViewModel()
-    @StateObject var userModel : UserModel
+    @EnvironmentObject var userModel : UserModel
     
     var sections : [MenuSection] = [MenuSection(id: UUID(), name: "Role", items: [MenuItem(id: UUID(), name: "Preview Waiter"),
                                                                                   MenuItem(id: UUID(), name: "Preview Kitchen")]),
@@ -56,7 +56,7 @@ struct BossMainView: View {
         
         switch val {
         case .some(.previewKitchen): return AnyView(KitchenView().navigationBarTitleDisplayMode(.inline))
-        case .some(.previewWaiter): return AnyView(DiningRoomView(diningRoom: diningRoom).navigationBarTitleDisplayMode(.inline))
+        case .some(.previewWaiter): return AnyView(DiningRoomView(diningRoom: diningRoom).navigationBarTitleDisplayMode(.inline).environmentObject(userModel))
         case .some(.addNewDishes): return AnyView(MenuView())
         case .some(.manageTables): return AnyView(ManageDiningRoomView(diningRoom: diningRoom)
             .navigationBarTitleDisplayMode(.inline)
@@ -75,6 +75,6 @@ struct BossMainView_Previews: PreviewProvider {
     static var userModel : UserModel = UserModel()
     
     static var previews: some View {
-        BossMainView(userModel: userModel)
+        BossMainView().environmentObject(UserModel())
     }
 }
