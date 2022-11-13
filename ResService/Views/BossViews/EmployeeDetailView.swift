@@ -28,9 +28,10 @@ struct EmployeeDetailView: View {
     }
 }
 
-//struct EmployeeDetailView_Previews: PreviewProvider {
-//
-//    static var previews: some View {
-//        EmployeeDetailView()
-//    }
-//}
+struct EmployeeDetailView_Previews: PreviewProvider {
+    static var user : User = User(role: "client", username: "username", email: "x@gmail.com", UUID: UUID().uuidString, authID: UUID().uuidString)
+    
+    static var previews: some View {
+        EmployeeDetailView(user: user)
+    }
+}
