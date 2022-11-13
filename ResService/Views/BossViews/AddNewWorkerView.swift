@@ -45,7 +45,7 @@ struct AddNewWorkerView: View {
             
             Button("Add") {
                 print("click")
-                employViewModel.employ(email: email, role: .boss)
+                employViewModel.employ(email: email, role: role)
             }
             
             
