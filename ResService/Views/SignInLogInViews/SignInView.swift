@@ -13,18 +13,23 @@ struct SignInView: View {
     @State private var password : String = ""
     @State private var name : String = ""
     @State private var userIsLoggedIn : Bool = false
-    
+    @State private var createUserTabIsShowing : Bool = false
+
     var body: some View {
-        if userIsLoggedIn {
+        if UserDefaults.standard.object(forKey: "userUIDey") != nil {
             ContentView()
         } else {
-             content
-//            BossMainView()
+            if userIsLoggedIn {
+                ContentView()
+            } else {
+                content
+            }
         }
     }
     
     var content : some View {
         ZStack {
+            // background
             RoundedRectangle(cornerRadius: 30, style: .continuous)
                 .foregroundStyle(.linearGradient(colors: [.green, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
                 .frame(width: 1000, height: 400)
@@ -37,28 +42,21 @@ struct SignInView: View {
                     .font(.system(size: 50, weight: .bold, design: .monospaced))
                     .offset(x: -50, y: -150)
                 Group {
-                    TextField("Name", text: $name)
-                        .textFieldStyle(.plain)
-                    
-                    Rectangle()
-                        .frame(width: 350, height: 1)
-                        .foregroundColor(.blue)
-                    
                     TextField("Email", text: $email)
-                        .textFieldStyle(.plain)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     Rectangle()
                         .frame(width: 350, height: 1)
                         .foregroundColor(.blue)
                     
                     SecureField("Password", text: $password)
-                        .textFieldStyle(.plain)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                 }.offset(y: 70)
                 
                 Button {
-                    register()
+                    login()
                 } label: {
-                    Text("Sign up")
+                    Text("Log in")
                         .bold()
                         .frame(width: 200, height: 40)
                         .background(
@@ -70,14 +68,17 @@ struct SignInView: View {
                 
                 
                 Button {
-                    login()
+                    createUserTabIsShowing.toggle()
                 } label: {
-                    Text("Already have an account? Login")
+                    Text("Are you new? Create an account")
                         .bold()
-                        
                 }.padding(.top)
-                    .offset(y: 100)
+                .offset(y: 200)
             }.frame(width: 350)
+                .sheet(isPresented: $createUserTabIsShowing) {
+                    RegisterView(createUserTabIsShowing : $createUserTabIsShowing)
+                }
+            
 //                .onAppear {
 //                    Auth.auth().addStateDidChangeListener { auth, user in
 //                        if user != nil {
@@ -86,30 +87,29 @@ struct SignInView: View {
 //                        }
 //                    }
 //                }
-            Button("boss") {
-                email = "boss@gmail.com"
-                password = "123456"
-                login()
-            }.offset(y: -60)
-        }.ignoresSafeArea()
-    }
-    
-    func register() {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
+            Group {
+                    Button("boss") {
+                        email = "boss@gmail.com"
+                        password = "123456"
+//                        userModel.login(email: email, password: password)
+                        login()
+                    }.offset(x: -50, y: -60)
+//                    Button("waiter") {
+//                        email = "tester@gmail.com"
+//                        password = "123456"
+//                        login()
+//                    }.offset(x: 50, y: -60)
+                    Button("consumer") {
+                        email = "user1@gmail.com"
+                        password = "123456"
+//                        userModel.login(email: email, password: password)
+                        login()
+//                        UserDefaults.standard.removeObject(forKey: "userUIDey")
+//                        UserDefaults.standard.synchronize()
+                    }.offset(x: 50, y: -60)
             }
             
-            // add additinal information about user to firebase collection
-            guard let userID = Auth.auth().currentUser?.uid else { return }
-            let ref = Database.database(url: dbURLConnection ).reference()
-            
-            let userinfo = [
-                "username" : name,
-                "role" : "client"
-            ]
-            ref.child("users").child(userID).setValue(userinfo)
-        }
+        }.ignoresSafeArea()
     }
     
     func login() {
@@ -117,8 +117,16 @@ struct SignInView: View {
             if error != nil {
                 print(error!.localizedDescription)
             }
-            
+
             userIsLoggedIn.toggle()
+            
+            let uid = Auth.auth().currentUser?.uid
+
+            if uid != nil {
+                print(uid!.description)
+                UserDefaults.standard.set(uid!, forKey: "userUIDey")
+                UserDefaults.standard.synchronize()
+            }
         }
     }
 }

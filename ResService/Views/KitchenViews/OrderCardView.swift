@@ -9,11 +9,11 @@ import SwiftUI
 
 struct OrderCardView: View {
     let orderInfo: Order
-    let dishes : [Dish2]
+    let dishes : [Dish]
     private let dataString : String
     var color: Color
     
-    init(orderInfo: Order, dishes: [Dish2], color : Color) {
+    init(orderInfo: Order, dishes: [Dish], color : Color) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         let dateFromString = dateFormatter.date(from: orderInfo.data)
@@ -58,8 +58,8 @@ struct OrderCardView: View {
 struct OrderCardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            OrderCardView(orderInfo: Order(data: Date.now.formatted(), table: 3, orderNumber: 2),
-                          dishes: [Dish2(dishName: "classic", dishAmount: 2)], color: .green)
+            OrderCardView(orderInfo: Order(data: Date.now.formatted(), table: "3", orderNumber: 2),
+                          dishes: [Dish(dishName: "classic", dishAmount: 2)], color: .green)
         }
     }
 }

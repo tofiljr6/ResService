@@ -8,24 +8,21 @@
 import Foundation
 import Firebase
 
-class OrdersInKitchen : ObservableObject {
-    let OIKcollectionName = "ordersInKitchenCollection"
-    let paramCollectionName = "param"
-    let dbURLConnection = "https://resservice-f26c6-default-rtdb.europe-west1.firebasedatabase.app/"
-    let paramUniqueOrderNumber = "noorder"
-
+class OrdersInKitchenViewModel : ObservableObject {
     @Published var P_ordersToDo : [OrderCard] = []
+    
     var localOrdersToDo : [OrderCard] = []
     var uniqueOrderNumber : Int = 0
     
     init() {
+        print("OrdersInKitchenViewModel - connect")
         // initalize the connection to the collection, where are some params, which is needed to
         // make a unique value of order (noorder)
         let refparam = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
         refparam.observe(DataEventType.value, with: { snaphot in
             guard let paramsinfo = snaphot.value as? [String: Int] else { return }
-            if paramsinfo[self.paramUniqueOrderNumber] != nil {
-                self.uniqueOrderNumber = paramsinfo[self.paramUniqueOrderNumber]!
+            if paramsinfo[paramUniqueOrderNumber] != nil {
+                self.uniqueOrderNumber = paramsinfo[paramUniqueOrderNumber]!
             }
         })
         
@@ -39,13 +36,13 @@ class OrdersInKitchen : ObservableObject {
                 let jsonData = try! JSONSerialization.data(withJSONObject: json!, options: .prettyPrinted)
                 let info = try! JSONDecoder().decode(Order.self, from: jsonData)
 
-                var dishesArray : [Dish2] = []
+                var dishesArray : [Dish] = []
                 let dishes = json!["dishes"]! as? [String : Any] // else { print("wrong type"); return }
     
                 if dishes != nil {
                     for dish in dishes! {
                         let jsonDishData = try! JSONSerialization.data(withJSONObject: dish.value)
-                        let dishData = try! JSONDecoder().decode(Dish2.self, from: jsonDishData)
+                        let dishData = try! JSONDecoder().decode(Dish.self, from: jsonDishData)
                         dishesArray.append(dishData)
                     }
                     // add new UUID() do OrderCard because, when we want to interate it, we have to have
@@ -53,7 +50,7 @@ class OrdersInKitchen : ObservableObject {
                     // two diffrent orders can belong to the same table
                     self.localOrdersToDo.append(OrderCard(id: UUID(), info: info, dishes: dishesArray))
                 } else {
-                    print("NO DISHES!")
+//                    print("NO DISHES!")
                 }
             }
             
@@ -75,35 +72,52 @@ class OrdersInKitchen : ObservableObject {
     func addOrder(tableNumber: Int, currentOrder : [String : Int]) -> Void {
         let ref = Database.database(url: dbURLConnection).reference().child(OIKcollectionName)
         let refparams = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
+        let reftables = Database.database(url: dbURLConnection).reference()
         
-        // get the unique order number from firebase
-        let child = "order\(self.uniqueOrderNumber)"
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // "2017-01-23T10:12:31.484Z"
-        let dateFromString = dateFormatter.date(from: Date.now.formatted(.iso8601))
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        let newDate = dateFormatter.string(from: dateFromString!)
-        
-        // default the time zone is another so we had to add two hours
-        let order = [
-            "dishes" : "dishes",
-            "table" : tableNumber,
-            "data" : newDate, // Date.now.formatted()
-            "orderNumber" : self.uniqueOrderNumber
-        ] as [String : Any]
-        ref.child(child).setValue(order)
-        
-        for (index, order) in currentOrder.enumerated() {
-            let o = [
-                "dishName" : order.key,
-                "dishAmount" : order.value
+        reftables.child(diningRoomCollectionName).child("table\(tableNumber)").getData(completion:  { error, snapshot in
+            var tableDesc = ""
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return;
+            }
+            if snapshot != nil {
+                let snap = snapshot!.value as? [String : Any] ?? [:]
+                let table = snap["table\(tableNumber)"]
+                let tableJSON = try! JSONSerialization.data(withJSONObject: table!)
+                let tableStruct = try! JSONDecoder().decode(TableInfoDB.self, from: tableJSON)
+                tableDesc = tableStruct.description
+
+            }
+            
+            // get the unique order number from firebase
+            let child = "order\(self.uniqueOrderNumber)"
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // "2017-01-23T10:12:31.484Z"
+            let dateFromString = dateFormatter.date(from: Date.now.formatted(.iso8601))
+            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+            let newDate = dateFormatter.string(from: dateFromString!)
+            
+            // default the time zone is another so we had to add two hours
+            let order = [
+                "dishes" : "dishes",
+                "table" : tableDesc,
+                "data" : newDate, // Date.now.formatted()
+                "orderNumber" : self.uniqueOrderNumber
             ] as [String : Any]
-            ref.child(child).child("dishes").child("dish\(index)").setValue(o)
-        }
-        
-        // up-to-date unique order number in firebase
-        refparams.child(self.paramUniqueOrderNumber).setValue(self.uniqueOrderNumber + 1)
+            ref.child(child).setValue(order)
+            
+            for (index, order) in currentOrder.enumerated() {
+                let o = [
+                    "dishName" : order.key,
+                    "dishAmount" : order.value
+                ] as [String : Any]
+                ref.child(child).child("dishes").child("dish\(index)").setValue(o)
+            }
+            
+            // up-to-date unique order number in firebase
+            refparams.child(paramUniqueOrderNumber).setValue(self.uniqueOrderNumber + 1)
+        });
     }
     
     /**
@@ -119,6 +133,11 @@ class OrdersInKitchen : ObservableObject {
         })
     }
     
+    /**
+        Remove order from to-do list in the kitchen
+     
+     - Parameter order : the unique number of order, from which we want to delete from order list
+     */
     func removeOrderFromList(order: Int) -> Void {
         let ref = Database.database(url: dbURLConnection).reference().child(OIKcollectionName)
         ref.child("order\(order)").removeValue()
@@ -128,21 +147,4 @@ class OrdersInKitchen : ObservableObject {
             self.P_ordersToDo = []
         }
     }
-}
-
-struct Order : Decodable, Hashable {
-    var data : String
-    var table : Int
-    var orderNumber : Int
-}
-
-struct OrderCard : Hashable, Identifiable {
-    var id: UUID
-    
-    static func == (lhs: OrderCard, rhs: OrderCard) -> Bool {
-        lhs.info.table < rhs.info.table
-    }
-    
-    let info : Order
-    let dishes : [Dish2]
 }

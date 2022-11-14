@@ -7,6 +7,16 @@
 
 import SwiftUI
 import Firebase
+import FirebaseStorage
+import FirebaseFirestore
+
+enum DishCategory : String, CaseIterable {
+    case starter = "starter"
+    case maincourse = "maincouse"
+    case deserts = "deserts"
+    case drinks = "drinks"
+    case spirits = "spirits"
+}
 
 struct AddDishToMenuView: View {
     @StateObject var menuViewModel : MenuViewModel
@@ -15,6 +25,11 @@ struct AddDishToMenuView: View {
     @State private var newDishPrice : String = ""
     @State private var newDishDescription : String = ""
     @State private var newDishProducts : String = ""
+    @State private var newDishCategory : DishCategory = DishCategory.starter
+    
+    @State var selectedImage : UIImage?
+    @State var isPickerShowing : Bool = false
+    @State var retrivedImages = [UIImage]()
     
     @Environment(\.showingSheet) var showingSheet
     
@@ -25,17 +40,48 @@ struct AddDishToMenuView: View {
             
             Spacer()
             
-            ZStack {
-                Circle()
+            
+            VStack {
                 
-                Image(systemName: "camera")
-                    .resizable()
-                    .frame(width: 200, height: 150)
-                    .scaledToFit()
-                    .foregroundColor(.blue)
-            }.padding()
+                if selectedImage != nil {
+                    Image(uiImage: selectedImage!)
+                        .resizable()
+                        .frame(width: 250, height: 250)
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .frame(width: 250, height: 250)
+                        .scaledToFit()
+                }
+                
+                Button {
+                    isPickerShowing = true
+                } label: {
+                    Text("Select a  photo")
+                }
+                
+                Divider()
+                
+                HStack {
+                    ForEach(retrivedImages, id: \.self) { image in
+                        Image(uiImage: image)
+                            .resizable()
+                            .frame(width: 75, height: 75)
+                    }
+                }
+                
+                
+            }.sheet(isPresented: $isPickerShowing) {
+                ImagePicker(selectedImage: $selectedImage, isPickerShowing: $isPickerShowing)
+            }
             
             Group {
+                Picker("Pick a category of new dish", selection: $newDishCategory) {
+                    ForEach(DishCategory.allCases, id: \.self) { item in
+                        Text(item.rawValue)
+                    }
+                }
+                
                 TextField("Name", text: $newDishName)
                     .textFieldStyle(.plain)
                 
@@ -55,11 +101,27 @@ struct AddDishToMenuView: View {
             Spacer()
             
             Button {
-                // Save
-                menuViewModel.addNewDishToMenu(newDishName: newDishName, newDishPrice: Double(newDishPrice)!, newDishDescription: newDishDescription, newDishProducts: newDishProducts)
-                
-                // Exit the view
-                self.showingSheet?.wrappedValue = false
+                if let price = Double(newDishPrice.replacingOccurrences(of: ",", with: ".")) {
+                    let newDishPhotoUUID = UUID().uuidString
+                    
+                    // Save
+                    menuViewModel.addNewDishToMenu(newDishName: newDishName,
+                                                   newDishPrice: price,
+                                                   newDishDescription: newDishDescription,
+                                                   newDishProducts: newDishProducts,
+                                                   newDishCategory: newDishCategory,
+                                                   newDishPhotoURL: newDishPhotoUUID)
+                    // Upload photo to FBStorage
+                    uploadPhoto(fileNameWithoutExtension: newDishPhotoUUID)
+                    
+                    
+                    
+                    // Exit the view
+                    self.showingSheet?.wrappedValue = false
+                } else {
+                    // error was occured
+                    print("bład")
+                }
             } label: {
                 Text("Save")
                     .bold()
@@ -74,9 +136,36 @@ struct AddDishToMenuView: View {
         }.padding()
     }
     
-//    func saveDish() {
-//        let ref = Database.database(url: dbURLConnection).reference().child(menuCollectionName)
-//    }
+    func uploadPhoto(fileNameWithoutExtension: String) {
+        guard selectedImage != nil else { return }
+        let storageRef = Storage.storage().reference()
+        
+        // Data in memory
+        let imageData = selectedImage!.jpegData(compressionQuality: 0.05) // 0.8
+        guard imageData != nil else { return }
+        
+        let path = "imagesOfDishes/\(fileNameWithoutExtension).jpg"
+        
+        let fileRef = storageRef.child(path)
+        
+        _ = fileRef.putData(imageData!, metadata: nil) { metadata, error in
+            if error == nil && metadata != nil { }
+        }
+    }
+    
+    func showPhotoFromStorageFB(photoURL : String) { // only for testing
+        let storageRef = Storage.storage().reference()
+        let fileRef = storageRef.child("imagesOfDishes/\(photoURL).jpg")
+        fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+            if error == nil && data != nil {
+                if let image = UIImage(data: data!) {
+                    DispatchQueue.main.async {
+                        self.retrivedImages.append(image)
+                    }
+                }
+            }
+        }
+    }
 }
 
 struct AddDishToMenuView_Previews: PreviewProvider {
