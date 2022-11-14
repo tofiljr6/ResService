@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ConsumerMenuSectionView: View {
-//    @EnvironmentObject var userModel : UserModel
     @ObservedObject var userOrderModel : UserOrderModel
     @EnvironmentObject var menuViewMode : MenuViewModel
     var sectionName : String

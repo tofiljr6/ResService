@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ConsumerMenuView: View {
     @EnvironmentObject var userModel : UserModel
-//    @StateObject var userOrderModel = UserOrderModel()
     @ObservedObject var userOrderModel : UserOrderModel
     
     var body: some View {

@@ -223,13 +223,11 @@
 			isa = PBXGroup;
 			children = (
 				F23D0ADD290A9B0E005C84F3 /* MenuModel.swift */,
-				F29B1C2E2905C69500303829 /* UserModel.swift */,
 				F2D41C912912ACBE001B8230 /* DishModel.swift */,
 				F2D41C932912AEB2001B8230 /* OrderModel.swift */,
 				F2D41C952912AEC8001B8230 /* OrderCardModel.swift */,
 				F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */,
 				F227C2182916992D00184384 /* TableModel.swift */,
-				F2401994291E863800ADC818 /* UserOrderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,6 +329,29 @@
 			path = FunctionsViews;
 			sourceTree = "<group>";
 		};
+		F25E50B6292274B000F43ADF /* ConsumerMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F29BC15229181E8000557956 /* ConsumerMainView.swift */,
+				F29BC154291820CC00557956 /* ConsumerMenuSingleCardView.swift */,
+				F29BC1562918256400557956 /* ConsumerMenuView.swift */,
+				F29BC1582918260200557956 /* ConsumerMenuSectionView.swift */,
+				F2ABE0B129183735005D4EBD /* ConsumerMenuDetailView.swift */,
+			);
+			path = ConsumerMenu;
+			sourceTree = "<group>";
+		};
+		F25E50B7292274C200F43ADF /* ConsumerOrder */ = {
+			isa = PBXGroup;
+			children = (
+				F2B7FD61291AA07100840E68 /* ConsumerListOfOrders.swift */,
+				F2B7FD9F291AEF6100840E68 /* ConsumerDiningRoomView.swift */,
+				F2B7FDA1291AF03800840E68 /* ConsumerTableView.swift */,
+				F2B7FDA3291AF32900840E68 /* ConsumerConfirmOrderView.swift */,
+			);
+			path = ConsumerOrder;
+			sourceTree = "<group>";
+		};
 		F29B1C302908264500303829 /* BossViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +381,8 @@
 				F235591B2903F52A002AEF80 /* OrdersInKitchenViewModel.swift */,
 				F23D0ADA2909A287005C84F3 /* MenuViewModel.swift */,
 				F240199B2920035600ADC818 /* EmployViewModel.swift */,
+				F29B1C2E2905C69500303829 /* UserModel.swift */,
+				F2401994291E863800ADC818 /* UserOrderModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -367,16 +390,9 @@
 		F29BC14F29181E2F00557956 /* ConsumerViews */ = {
 			isa = PBXGroup;
 			children = (
+				F25E50B7292274C200F43ADF /* ConsumerOrder */,
+				F25E50B6292274B000F43ADF /* ConsumerMenu */,
 				F2401998291FCF6400ADC818 /* ConsumerSetting */,
-				F29BC15229181E8000557956 /* ConsumerMainView.swift */,
-				F29BC154291820CC00557956 /* ConsumerMenuSingleCardView.swift */,
-				F29BC1562918256400557956 /* ConsumerMenuView.swift */,
-				F29BC1582918260200557956 /* ConsumerMenuSectionView.swift */,
-				F2ABE0B129183735005D4EBD /* ConsumerMenuDetailView.swift */,
-				F2B7FD61291AA07100840E68 /* ConsumerListOfOrders.swift */,
-				F2B7FD9F291AEF6100840E68 /* ConsumerDiningRoomView.swift */,
-				F2B7FDA1291AF03800840E68 /* ConsumerTableView.swift */,
-				F2B7FDA3291AF32900840E68 /* ConsumerConfirmOrderView.swift */,
 				F2B7FDA7291B107400840E68 /* LocationManager.swift */,
 			);
 			path = ConsumerViews;

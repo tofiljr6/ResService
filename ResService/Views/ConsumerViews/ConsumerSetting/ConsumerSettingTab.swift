@@ -14,14 +14,6 @@ struct ConsumerSettingTab: View {
     
     var body: some View {
         NavigationView {
-//            HStack {
-//                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-//                Button {
-//                    userModel.signout()
-//                } label: {
-//                    Text("Sign out")
-//                }
-//            }
             List {
                 ForEach(menuItem, id: \.id) { item in
                     NavigationLink(destination: Text(item.name)) {

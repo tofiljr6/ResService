@@ -21,7 +21,6 @@ struct ConsumerTableView: View {
     private let paddingconst = CGFloat(10)
     
     var body: some View {
-//        NavigationLink(destination: { ConsumerConfirmOrderView(userModel : self.$shouldPopToRootView, menuModel : $tableInfo.id, diningRoomModel : userOrderModel).environmentObject(userModel)}) {
         NavigationLink(destination: { ConsumerConfirmOrderView(shouldPopToRootView: self.$shouldPopToRootView, tableID: $tableInfo.id, userOrderModel: userOrderModel)}) {
             ZStack {
                 Rectangle()
