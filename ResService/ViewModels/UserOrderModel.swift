@@ -25,4 +25,8 @@ class UserOrderModel : ObservableObject {
     func deleteFromCurrentOrder(menu : Menu) -> Void {
         
     }
+    
+    func deleteCurrentOrder() -> Void {
+        self.listofOrder = [:]
+    }
 }

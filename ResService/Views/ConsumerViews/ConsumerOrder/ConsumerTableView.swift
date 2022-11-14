@@ -24,7 +24,7 @@ struct ConsumerTableView: View {
         NavigationLink(destination: { ConsumerConfirmOrderView(shouldPopToRootView: self.$shouldPopToRootView, tableID: $tableInfo.id, userOrderModel: userOrderModel)}) {
             ZStack {
                 Rectangle()
-                    .fill(.green)
+                    .fill(tableInfo.status)
                     .frame(width: boxsize, height: boxsize)
                     .cornerRadius(4)
                 Text(tableInfo.description)

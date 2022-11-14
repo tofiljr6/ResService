@@ -15,11 +15,13 @@ struct WaiterOrderView: View {
     @ObservedObject var ordersInProgress : OrdersInProgressViewModel
     @ObservedObject var ordersInKitchen : OrdersInKitchenViewModel
     @ObservedObject var menu : MenuViewModel
+    @ObservedObject var diningRoomModel : DiningRoomViewModel
     @State var tableInfo : TableInfo
     
     init(tableInfo : TableInfo) {
         self.ordersInProgress = OrdersInProgressViewModel()
         self.ordersInKitchen = OrdersInKitchenViewModel()
+        self.diningRoomModel = DiningRoomViewModel()
         self.menu = MenuViewModel()
         self.tableInfo = tableInfo
     }
@@ -63,6 +65,9 @@ struct WaiterOrderView: View {
                     ordersInKitchen.addOrder(tableNumber: tableInfo.id,
                                                currentOrder: ordersInProgress.currentOrder)
                     ordersInProgress.clearCurrentOrderState()
+                    
+                    // change table's status
+                    diningRoomModel.setTableStatus(number: tableInfo.id, color: "red")
                 }
                 FunctionBoxView(functionName: "Pay") {
                     ordersInProgress.payTable(tableNumber: tableInfo.id)

@@ -48,8 +48,7 @@ struct ConsumerListOfOrders: View {
                         
                         HStack {
                             Button {
-                                // TODO: cancel the order
-                                print("cancel")
+                                userOrderModel.deleteCurrentOrder()
                             } label: {
                                 ZStack {
                                     Rectangle()

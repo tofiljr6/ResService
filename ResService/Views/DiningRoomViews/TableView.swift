@@ -21,7 +21,7 @@ struct TableView: Table {
         NavigationLink(destination: { WaiterOrderView(tableInfo: tableInfo)}) {
             ZStack {
                 Rectangle()
-                    .fill(.green)
+                    .fill(tableInfo.status)
                     .frame(width: boxsize, height: boxsize)
                     .cornerRadius(4)
                 Text(tableInfo.description)
