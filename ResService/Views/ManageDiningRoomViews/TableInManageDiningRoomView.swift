@@ -26,7 +26,8 @@ struct TableInManageDiningRoomView: Table {
         
         ZStack {
             Rectangle()
-                .fill(tableInfo.status)
+//                .fill(tableInfo.status)
+                .fill(diningRoom.getColor(id: tableInfo.id))
                 .frame(width: boxsize, height: boxsize)
                 .cornerRadius(4)
                 .position(tableInfo.location)

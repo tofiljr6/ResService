@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct KitchenView: View {
-    @ObservedObject var ordersInProgress : OrdersInProgressViewModel
-    @ObservedObject var ordersInKitchen : OrdersInKitchenViewModel
+    @EnvironmentObject var ordersInProgress : OrdersInProgressViewModel
+    @EnvironmentObject var ordersInKitchen : OrdersInKitchenViewModel
     
     var columns = [
         GridItem(.flexible(), spacing: 2),
         GridItem(.flexible(), spacing: 2),
         GridItem(.flexible(), spacing: 2)
     ]
-    
-    init() {
-        ordersInProgress = OrdersInProgressViewModel()
-        ordersInKitchen = OrdersInKitchenViewModel()
-    }
     
     var body: some View {
             if UIDevice.current.userInterfaceIdiom == .phone {

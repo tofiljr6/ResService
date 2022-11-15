@@ -67,7 +67,7 @@ final class MenuViewModel : ObservableObject {
                 let uiimageTestMode = ["photo", "photo.fill", "photo.on.rectangle", "text.below.photo"]
                 DispatchQueue.main.async {
                     self.menuPhotos[menuDish.dishID] = UIImage(systemName: uiimageTestMode.randomElement()!)
-                    print("\(menuDish.dishID) załadowano")
+//                    print("\(menuDish.dishID) załadowano")
                 }
             }
         })

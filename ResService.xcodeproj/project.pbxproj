@@ -34,6 +34,7 @@
 		F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326B128F82A71002F5F36 /* KitchenView.swift */; };
 		F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326B428F87358002F5F36 /* FunctionBoxView.swift */; };
 		F25E50B52921050D00F43ADF /* EmployeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50B42921050D00F43ADF /* EmployeeDetailView.swift */; };
+		F25E50C72923EDBD00F43ADF /* OrderPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */; };
 		F2930305291D8EFE0020E16C /* ConsumerSettingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */; };
 		F29B1C2F2905C69500303829 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C2E2905C69500303829 /* UserModel.swift */; };
 		F29B1C322908265700303829 /* BossMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C312908265700303829 /* BossMainView.swift */; };
@@ -117,6 +118,7 @@
 		F25326B128F82A71002F5F36 /* KitchenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenView.swift; sourceTree = "<group>"; };
 		F25326B428F87358002F5F36 /* FunctionBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionBoxView.swift; sourceTree = "<group>"; };
 		F25E50B42921050D00F43ADF /* EmployeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailView.swift; sourceTree = "<group>"; };
+		F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPreviewView.swift; sourceTree = "<group>"; };
 		F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerSettingTab.swift; sourceTree = "<group>"; };
 		F29B1C2E2905C69500303829 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F29B1C312908265700303829 /* BossMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossMainView.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			children = (
 				F25326AC28F72266002F5F36 /* WaiterOrderView.swift */,
 				F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */,
+				F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */,
 			);
 			path = WaiterViews;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				F2EC9FCC2913CEA700493A27 /* DiningRoomViewModel.swift in Sources */,
 				F29B1C3529082A2F00303829 /* RoleEnum.swift in Sources */,
 				F29BC15329181E8000557956 /* ConsumerMainView.swift in Sources */,
+				F25E50C72923EDBD00F43ADF /* OrderPreviewView.swift in Sources */,
 				F25326B028F7290D002F5F36 /* DishView.swift in Sources */,
 				F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */,
 				F23D0ADB2909A287005C84F3 /* MenuViewModel.swift in Sources */,

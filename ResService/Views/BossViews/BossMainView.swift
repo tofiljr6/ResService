@@ -10,8 +10,11 @@ import SwiftUI
 
 
 struct BossMainView: View {
-    @ObservedObject var diningRoom : DiningRoomViewModel = DiningRoomViewModel()
     @EnvironmentObject var userModel : UserModel
+    @ObservedObject var diningRoom : DiningRoomViewModel = DiningRoomViewModel()
+    @ObservedObject var ordersInProgress : OrdersInProgressViewModel = OrdersInProgressViewModel()
+    @ObservedObject var ordersInKitchen : OrdersInKitchenViewModel = OrdersInKitchenViewModel()
+    @ObservedObject var menu : MenuViewModel = MenuViewModel()
     
     var sections : [MenuSection] = [MenuSection(id: UUID(), name: "Role", items: [MenuItem(id: UUID(), name: "Preview Waiter"),
                                                                                   MenuItem(id: UUID(), name: "Preview Kitchen")]),
@@ -55,15 +58,27 @@ struct BossMainView: View {
         let val = BossSection(rawValue: itemText)
         
         switch val {
-        case .some(.previewKitchen): return AnyView(KitchenView().navigationBarTitleDisplayMode(.inline))
-        case .some(.previewWaiter): return AnyView(DiningRoomView(diningRoom: diningRoom).navigationBarTitleDisplayMode(.inline).environmentObject(userModel))
-        case .some(.addNewDishes): return AnyView(MenuView())
-        case .some(.manageTables): return AnyView(ManageDiningRoomView(diningRoom: diningRoom)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar(content: {
-                Button(action: { diningRoom.addNewTable() }, label: { Image(systemName: "plus.circle") })
-            }))
-        case .some(.employ): return AnyView(EmployView())
+        case .some(.previewKitchen):
+            return AnyView(KitchenView().navigationBarTitleDisplayMode(.inline)
+                .environmentObject(ordersInProgress)
+                .environmentObject(ordersInKitchen))
+        case .some(.previewWaiter):
+            return AnyView(DiningRoomView().navigationBarTitleDisplayMode(.inline)
+                .environmentObject(userModel)
+                .environmentObject(diningRoom)
+                .environmentObject(menu)
+                .environmentObject(ordersInProgress)
+                .environmentObject(ordersInKitchen))
+        case .some(.addNewDishes):
+            return AnyView(MenuView())
+        case .some(.manageTables):
+            return AnyView(ManageDiningRoomView(diningRoom: diningRoom)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar(content: {
+                    Button(action: { diningRoom.addNewTable() }, label: { Image(systemName: "plus.circle") })
+                }))
+        case .some(.employ):
+            return AnyView(EmployView())
         case .none:
             return AnyView(Text("Nieznazny bład"))
             

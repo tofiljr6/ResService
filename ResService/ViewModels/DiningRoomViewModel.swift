@@ -139,5 +139,14 @@ class DiningRoomViewModel : ObservableObject {
         
         return self.uniqueTableID
     }
+    
+    func getColor(id : Int) -> Color {
+        for table in tablesInfo {
+            if table.id == id {
+                return table.status
+            }
+        }
+        return .gray
+    }
 
 }

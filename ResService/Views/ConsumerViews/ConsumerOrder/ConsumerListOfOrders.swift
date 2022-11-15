@@ -21,6 +21,7 @@ struct ConsumerListOfOrders: View {
         NavigationView {
             VStack {
                 if userOrderModel.listofOrder.count == 0 {
+                    Spacer()
                     Text("Select dishes to see your order")
                         .foregroundColor(.gray)
                     Spacer()
@@ -79,11 +80,10 @@ struct ConsumerListOfOrders: View {
                                         .font(Font.body.bold())
                                 }
                             }.isDetailLink(false)
-                            .navigationTitle("Your order")
                         }
                     }
                 }
-            }
+            }.navigationTitle("Your order")
         }
     }
     

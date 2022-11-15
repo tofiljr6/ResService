@@ -12,9 +12,10 @@ import Firebase
 
 class OrdersInProgressViewModel : ObservableObject {
     @Published var tabledishesDict : [String: [Dish]] = [:]
+    @Published var currentOrder : [String : Int] = [:]
     
     var singleTableOrders : [Dish] = []
-    var currentOrder : [String : Int] = [:]
+    
     
     private let decoder = JSONDecoder()
     
@@ -55,7 +56,7 @@ class OrdersInProgressViewModel : ObservableObject {
      - Return : the current dish, which were added to the table
      */
     func getDishesToTisch(number: Int) -> [Dish] {
-        return self.tabledishesDict["table\(number)"]!
+        return self.tabledishesDict["table\(number)"] ?? []
     }
     
     /**
@@ -93,6 +94,20 @@ class OrdersInProgressViewModel : ObservableObject {
             ref.child("table\(number)").child("dishes").child("dish\(counter)").setValue(d)
             counter += 1
         }
+    }
+    
+    func decreaseAmountOfDish(dishName : String) -> Void {
+        self.currentOrder[dishName] = self.currentOrder[dishName]! - 1
+    }
+    
+    func increaseAmountOfDish(dishName : String) -> Void {
+        print(self.currentOrder[dishName]!.description)
+        self.currentOrder[dishName] = self.currentOrder[dishName]! + 1
+        print(self.currentOrder[dishName]!.description)
+    }
+    
+    func getAmountOfDish(dishName : String) -> Int {
+        return self.currentOrder[dishName]!
     }
     
     /**
