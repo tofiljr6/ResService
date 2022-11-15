@@ -25,6 +25,11 @@ struct ContentView: View {
             BossMainView().environmentObject(user)
         } else if user.role == Role.client.rawValue {
             ConsumerMainView().environmentObject(MenuViewModel()).environmentObject(user)
+        } else if user.role == Role.kitchen.rawValue {
+            KitchenView()
+                .environmentObject(OrdersInProgressViewModel())
+                .environmentObject(OrdersInKitchenViewModel())
+                .environmentObject(user)
         }
         else {
             noUserRole.onAppear(perform: {
@@ -45,6 +50,9 @@ struct ContentView: View {
             Text("Hello \(user.username)!")
                 .font(.title)
             Text("The views for your role: \(user.role)")
+            Button("clear userdeflauts") {
+                UserDefaults.standard.removeObject(forKey: "userUIDey")
+            }
         }
     }
 }

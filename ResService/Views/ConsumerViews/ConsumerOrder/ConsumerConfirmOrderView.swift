@@ -78,6 +78,8 @@ struct ConsumerConfirmOrderView: View {
                 // send order to the kitchne
                 self.orderInKitchen.addOrder(tableNumber: tableID, currentOrder: menuModel.convertIntDict(dict: userOrderModel.listofOrder))
                 
+                // occupy table
+                self.diningRoomModel.setTableStatus(number: tableID, color: "red")
                 
                 // check
                 print("\(userModel.username) ordered \(userOrderModel.listofOrder)")
