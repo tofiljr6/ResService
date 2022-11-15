@@ -8,9 +8,6 @@
 import SwiftUI
 import Firebase
 
-//var currentOrder: [String: Int] = [:]
-//var localDishes : [Dish] = []
-
 struct WaiterOrderView: View {
     @EnvironmentObject var ordersInProgress : OrdersInProgressViewModel
     @EnvironmentObject var ordersInKitchen : OrdersInKitchenViewModel
@@ -74,7 +71,6 @@ struct WaiterOrderView: View {
         }.sheet(isPresented: $isOrderDetailShowing) {
             OrderPreviewView(number: tableInfo.id).environmentObject(ordersInProgress)
         }.onDisappear {
-            // delete current orderd on dismiss 
             ordersInProgress.clearCurrentOrderState()
         }
     }
