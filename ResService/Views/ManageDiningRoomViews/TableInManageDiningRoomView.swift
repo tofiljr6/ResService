@@ -16,8 +16,6 @@ struct TableInManageDiningRoomView: Table {
     @State private var showingTableDetail : Bool = false
     @State private var newTableName : String = ""
     
-    var manageTableViewWidth  : CGFloat = UIScreen.main.bounds.width
-    var manageTableViewHeight : CGFloat = UIScreen.main.bounds.height * 0.90
     private let boxsize = CGFloat(50)
     private let paddingconst = CGFloat(10)
     

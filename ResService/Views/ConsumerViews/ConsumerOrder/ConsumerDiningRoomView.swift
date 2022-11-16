@@ -14,11 +14,18 @@ struct ConsumerDiningRoomView: View {
     @ObservedObject var userOrderModel : UserOrderModel
     @Binding var rootIsActive : Bool
 
+    var manageTableViewWidth  : CGFloat = UIScreen.main.bounds.width * 0.90
+    var manageTableViewHeight : CGFloat = UIScreen.main.bounds.height * 0.70
+    
     var body: some View {
-        ZStack {
-            ForEach(diningRoom.tablesInfo, id: \.id) { item in
-                ConsumerTableView(tableInfo: item, shouldPopToRootView: self.$rootIsActive, userOrderModel : userOrderModel)
-                    .environmentObject(userModel)
+        HStack {
+            VStack {
+                ZStack {
+                    ForEach(diningRoom.tablesInfo, id: \.id) { item in
+                        ConsumerTableView(tableInfo: item, shouldPopToRootView: self.$rootIsActive, userOrderModel : userOrderModel)
+                            .environmentObject(userModel)
+                    }
+                }.frame(width: manageTableViewWidth, height: manageTableViewHeight)
             }
         }
     }
@@ -29,7 +36,16 @@ struct ConsumerDiningRoomView_Previews: PreviewProvider {
     static var userOrderModel : UserOrderModel = UserOrderModel()
     
     static var previews: some View {
-        ConsumerDiningRoomView(userOrderModel: userOrderModel, rootIsActive: $rootIsActive)
-            .environmentObject(UserModel())
+        NavigationView {
+            TabView {
+                ConsumerDiningRoomView(userOrderModel: userOrderModel, rootIsActive: $rootIsActive)
+                    .environmentObject(UserModel()).environmentObject(DiningRoomViewModel())
+                    .previewDevice("iPhone 11 Pro").previewDisplayName("iPhone 11 Pro")
+                    .tabItem {
+                        Label("Order", systemImage: "cart.circle.fill")
+                        
+                    }
+            }.navigationTitle("Select table:")
+        }
     }
 }

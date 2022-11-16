@@ -15,8 +15,11 @@ struct ConsumerTableView: View {
     @EnvironmentObject var menuModel : MenuViewModel
     @EnvironmentObject var diningRoom : DiningRoomViewModel
     
-    var manageTableViewWidth  : CGFloat = UIScreen.main.bounds.width * 0.8
-    var manageTableViewHeight : CGFloat =  UIScreen.main.bounds.height * 0.8
+    var w  : CGFloat = UIScreen.main.bounds.width * 0.90
+    var h : CGFloat = UIScreen.main.bounds.height * 0.70
+    var wo  = manageTableViewWidth
+    var ho = manageTableViewHeight
+    
     private let boxsize = CGFloat(50)
     private let paddingconst = CGFloat(10)
     
@@ -24,14 +27,14 @@ struct ConsumerTableView: View {
         NavigationLink(destination: { ConsumerConfirmOrderView(shouldPopToRootView: self.$shouldPopToRootView, tableID: $tableInfo.id, userOrderModel: userOrderModel).environmentObject(diningRoom)}) {
             ZStack {
                 Rectangle()
-//                    .fill(tableInfo.status)
                     .fill(diningRoom.getColor(id: tableInfo.id))
                     .frame(width: boxsize, height: boxsize)
                     .cornerRadius(4)
                 Text(tableInfo.description)
                     .foregroundColor(.black)
             }.navigationTitle("Select table:")
-        }.isDetailLink(false).position(tableInfo.location)
+        }.isDetailLink(false).position(x: (w / wo) * tableInfo.location.x,
+                                       y: (h / ho) * tableInfo.location.y)
     }
 }
 
