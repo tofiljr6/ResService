@@ -15,11 +15,13 @@ struct BossMainView: View {
     @ObservedObject var ordersInProgress : OrdersInProgressViewModel = OrdersInProgressViewModel()
     @ObservedObject var ordersInKitchen : OrdersInKitchenViewModel = OrdersInKitchenViewModel()
     @ObservedObject var menu : MenuViewModel = MenuViewModel()
+    @StateObject var restaurantLocationModel : RestaurantLocationViewModel = RestaurantLocationViewModel()
     
     var sections : [MenuSection] = [MenuSection(id: UUID(), name: "Role", items: [MenuItem(id: UUID(), name: "Preview Waiter"),
                                                                                   MenuItem(id: UUID(), name: "Preview Kitchen")]),
                                     MenuSection(id: UUID(), name: "Manage restauratn", items: [MenuItem(id: UUID(), name: "Add new dishes"),
                                                                                                MenuItem(id: UUID(), name: "Employ"),
+                                                                                               MenuItem(id: UUID(), name: "Change restaurant location"),
                                                                                                MenuItem(id: UUID(), name: "Manage tables")])]
     private enum BossSection : String {
         case previewWaiter  = "Preview Waiter"
@@ -27,6 +29,7 @@ struct BossMainView: View {
         case addNewDishes   = "Add new dishes"
         case manageTables   = "Manage tables"
         case employ         = "Employ"
+        case location       = "Change restaurant location"
     }
     
     var body: some View {
@@ -79,6 +82,10 @@ struct BossMainView: View {
                 }))
         case .some(.employ):
             return AnyView(EmployView())
+        case .some(.location):
+            return AnyView(ChangeLocationView()
+                .environmentObject(restaurantLocationModel)
+            )
         case .none:
             return AnyView(Text("Nieznazny bład"))
             

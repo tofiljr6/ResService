@@ -20,9 +20,9 @@ class OrdersInKitchenViewModel : ObservableObject {
         // make a unique value of order (noorder)
         let refparam = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
         refparam.observe(DataEventType.value, with: { snaphot in
-            guard let paramsinfo = snaphot.value as? [String: Int] else { return }
+            guard let paramsinfo = snaphot.value as? [String: Any] else { return } 
             if paramsinfo[paramUniqueOrderNumber] != nil {
-                self.uniqueOrderNumber = paramsinfo[paramUniqueOrderNumber]!
+                self.uniqueOrderNumber = paramsinfo[paramUniqueOrderNumber]! as! Int
             }
         })
         
