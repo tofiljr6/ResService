@@ -200,9 +200,8 @@
 		F23D0AD82909A211005C84F3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F25E50CD29251AD400F43ADF /* New Group */,
 				F29BC14F29181E2F00557956 /* ConsumerViews */,
-				F2C14384291417D50043CB32 /* ManageDiningRoomViews */,
-				F2EC9FC62912C98E00493A27 /* DiningRoomViews */,
 				F25326B628F87360002F5F36 /* FunctionsViews */,
 				F25326AE28F728C4002F5F36 /* WaiterViews */,
 				F25326B328F82A78002F5F36 /* KitchenViews */,
@@ -307,6 +306,7 @@
 		F25326AE28F728C4002F5F36 /* WaiterViews */ = {
 			isa = PBXGroup;
 			children = (
+				F2EC9FC62912C98E00493A27 /* DiningRoomViews */,
 				F25326AC28F72266002F5F36 /* WaiterOrderView.swift */,
 				F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */,
 				F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */,
@@ -355,9 +355,17 @@
 			path = ConsumerOrder;
 			sourceTree = "<group>";
 		};
+		F25E50CD29251AD400F43ADF /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		F29B1C302908264500303829 /* BossViews */ = {
 			isa = PBXGroup;
 			children = (
+				F2C14384291417D50043CB32 /* ManageDiningRoomViews */,
 				F29B1C312908265700303829 /* BossMainView.swift */,
 				F29B1C3829085C7E00303829 /* AddDishToMenuView.swift */,
 				F2B7FD522919678E00840E68 /* ImagePicker.swift */,

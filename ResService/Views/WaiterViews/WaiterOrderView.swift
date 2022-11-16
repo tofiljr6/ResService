@@ -45,7 +45,7 @@ struct WaiterOrderView: View {
             HStack{
                 Text("Current")
                 Spacer()
-                Text("XYZ")
+                Text("\(String(format: "%.2f", ordersInProgress.countTotal(menu: menu.menuDishes)))")
             }.padding()
             
             HStack {

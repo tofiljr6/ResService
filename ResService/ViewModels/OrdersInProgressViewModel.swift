@@ -48,6 +48,18 @@ class OrdersInProgressViewModel : ObservableObject {
         })
     }
     
+    func countTotal(menu : [Menu]) -> Double {
+        var acc : Double = 0.0
+        
+        for m in menu {
+            if currentOrder[m.dishName] != nil {
+                acc += Double(currentOrder[m.dishName]!) * m.dishPrice
+            }
+        }
+        
+        return acc
+    }
+    
     /**
         Get all dish, which are asossiated with choosen tableNumber
      
