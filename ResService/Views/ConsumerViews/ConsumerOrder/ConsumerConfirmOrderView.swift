@@ -60,6 +60,9 @@ struct ConsumerConfirmOrderView: View {
             } else {
                 showFailResult = true
             }
+            
+            // resign order
+            userOrderModel.resignOrderToOrdered()
         } label: {
             ZStack {
                 Rectangle()
