@@ -20,25 +20,43 @@ struct ConsumerListOfOrders: View {
     var body: some View {
         NavigationView {
             VStack {
-                if userOrderModel.listofOrder.count == 0 {
+                if userOrderModel.listofOrder.count == 0 && userOrderModel.orderedList.count == 0 {
+                    Spacer()
                     Text("Select dishes to see your order")
                         .foregroundColor(.gray)
                     Spacer()
                 } else {
                     List {
-                        ForEach(userOrderModel.listofOrder.sorted(by: >), id: \.key) { key, value in
-                            HStack {
-                                if let dname = menuModel.getMenuByID(id: key)?.dishName {
-                                    Text(dname)
+                        Section(header: Text("Current order")) {
+                            ForEach(userOrderModel.listofOrder.sorted(by: >), id: \.key) { key, value in
+                                HStack {
+                                    if let dname = menuModel.getMenuByID(id: key)?.dishName {
+                                        Text(dname)
+                                    }
+                                    Spacer()
+                                    if let dprice = menuModel.getMenuByID(id: key)?.dishPrice {
+                                        Text("\(value.description) x \(String(format: "%.2f", dprice))")
+                                    }
                                 }
-                                Spacer()
-                                if let dprice = menuModel.getMenuByID(id: key)?.dishPrice {
-                                    Text("\(value.description) x \(String(format: "%.2f", dprice))")
+                            }
+                        }
+                        
+                        Section(header: Text("Ordered")) {
+                            ForEach(userOrderModel.orderedList.sorted(by: >), id: \.key) { key, value in
+                                
+                                HStack {
+                                    if let dname = menuModel.getMenuByID(id: key)?.dishName {
+                                        Text(dname)
+                                    }
+                                    Spacer()
+                                    if let dprice = menuModel.getMenuByID(id: key)?.dishPrice {
+                                        Text("\(value.description) x \(String(format: "%.2f", dprice))")
+                                    }
                                 }
                             }
                         }
                     }
-                    
+                
                     VStack {
                         HStack {
                             Text("Total")
@@ -48,8 +66,7 @@ struct ConsumerListOfOrders: View {
                         
                         HStack {
                             Button {
-                                // TODO: cancel the order
-                                print("cancel")
+                                userOrderModel.deleteCurrentOrder()
                             } label: {
                                 ZStack {
                                     Rectangle()
@@ -80,11 +97,10 @@ struct ConsumerListOfOrders: View {
                                         .font(Font.body.bold())
                                 }
                             }.isDetailLink(false)
-                            .navigationTitle("Your order")
                         }
                     }
                 }
-            }
+            }.navigationTitle("Your order")
         }
     }
     

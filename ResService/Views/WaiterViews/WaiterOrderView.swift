@@ -8,21 +8,15 @@
 import SwiftUI
 import Firebase
 
-var currentOrder: [String: Int] = [:]
-var localDishes : [Dish] = []
-
 struct WaiterOrderView: View {
-    @ObservedObject var ordersInProgress : OrdersInProgressViewModel
-    @ObservedObject var ordersInKitchen : OrdersInKitchenViewModel
-    @ObservedObject var menu : MenuViewModel
-    @State var tableInfo : TableInfo
+    @EnvironmentObject var ordersInProgress : OrdersInProgressViewModel
+    @EnvironmentObject var ordersInKitchen : OrdersInKitchenViewModel
+    @EnvironmentObject var menu : MenuViewModel
     
-    init(tableInfo : TableInfo) {
-        self.ordersInProgress = OrdersInProgressViewModel()
-        self.ordersInKitchen = OrdersInKitchenViewModel()
-        self.menu = MenuViewModel()
-        self.tableInfo = tableInfo
-    }
+    @State var tableInfo : TableInfo
+    @ObservedObject var diningRoomModel : DiningRoomViewModel
+    
+    @State var isOrderDetailShowing : Bool = false
     
     let columns = [
         GridItem(.flexible(), spacing: 2),
@@ -36,9 +30,6 @@ struct WaiterOrderView: View {
                 Text("Table number: \(tableInfo.description)")
                     .padding(.leading)
                 Spacer()
-//                NavigationLink(destination: SelectTableView(currentTable: $tableNumber)) {
-//                    Text("Change")
-//                }.padding(.trailing)
             }.font(.title)
     
             LazyVGrid(columns: columns, spacing: 2) {
@@ -54,7 +45,7 @@ struct WaiterOrderView: View {
             HStack{
                 Text("Current")
                 Spacer()
-                Text("XYZ")
+                Text("\(String(format: "%.2f", ordersInProgress.countTotal(menu: menu.menuDishes)))")
             }.padding()
             
             HStack {
@@ -63,11 +54,24 @@ struct WaiterOrderView: View {
                     ordersInKitchen.addOrder(tableNumber: tableInfo.id,
                                                currentOrder: ordersInProgress.currentOrder)
                     ordersInProgress.clearCurrentOrderState()
+                    
+                    // occupy table
+                    diningRoomModel.setTableStatus(number: tableInfo.id, color: "red")
                 }
                 FunctionBoxView(functionName: "Pay") {
                     ordersInProgress.payTable(tableNumber: tableInfo.id)
+                    
+                    // make table free
+                    diningRoomModel.setTableStatus(number: tableInfo.id, color: "green")
+                }
+                FunctionBoxView(functionName: "Preview") {
+                    isOrderDetailShowing.toggle()
                 }
             }
+        }.sheet(isPresented: $isOrderDetailShowing) {
+            OrderPreviewView(number: tableInfo.id).environmentObject(ordersInProgress)
+        }.onDisappear {
+            ordersInProgress.clearCurrentOrderState()
         }
     }
 }
@@ -75,12 +79,13 @@ struct WaiterOrderView: View {
 
 struct WaiterOrderView_Previews: PreviewProvider {
     @State static var tableNumber : Int = 1
+    static var diningRoom : DiningRoomViewModel = DiningRoomViewModel()
     
     static var previews: some View {
         WaiterOrderView(
             tableInfo: TableInfo(id: 1,
                                  status: .green,
                                  location: CGPoint(x: 40, y: 40),
-                                 description: "D"))
+                                 description: "D"), diningRoomModel: diningRoom)
     }
 }

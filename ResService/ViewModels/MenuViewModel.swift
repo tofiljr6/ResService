@@ -21,9 +21,9 @@ final class MenuViewModel : ObservableObject {
         // load unique param to new dish
         let paramref = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
         paramref.observe(DataEventType.value, with: { snaphot in
-            guard let paramsinfo = snaphot.value as? [String: Int] else { return }
+            guard let paramsinfo = snaphot.value as? [String: Any] else { return }
             if paramsinfo[menuUniqueName] != nil {
-                self.uniqueNewDishID = paramsinfo[menuUniqueName]!
+                self.uniqueNewDishID = paramsinfo[menuUniqueName]! as! Int
             }
         })
         
@@ -67,7 +67,7 @@ final class MenuViewModel : ObservableObject {
                 let uiimageTestMode = ["photo", "photo.fill", "photo.on.rectangle", "text.below.photo"]
                 DispatchQueue.main.async {
                     self.menuPhotos[menuDish.dishID] = UIImage(systemName: uiimageTestMode.randomElement()!)
-                    print("\(menuDish.dishID) załadowano")
+//                    print("\(menuDish.dishID) załadowano")
                 }
             }
         })
@@ -148,5 +148,14 @@ final class MenuViewModel : ObservableObject {
     private func incrementUniqueID() {
         let paramref = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
         paramref.child(menuUniqueName).setValue(self.uniqueNewDishID + 1)
+    }
+    
+    func removeMenuFromList(at offset : IndexSet) {
+        let ids = offset.map({ menuDishes[$0].dishID })
+        let paramref = Database.database(url: dbURLConnection).reference().child(menuCollectionName)
+        print("dishmenu\(ids[0])")
+        paramref.child("dishmenu\(ids[0])").removeValue()
+        
+        self.menuDishes.remove(atOffsets: offset)
     }
 }

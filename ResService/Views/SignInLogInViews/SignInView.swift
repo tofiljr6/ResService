@@ -14,6 +14,7 @@ struct SignInView: View {
     @State private var name : String = ""
     @State private var userIsLoggedIn : Bool = false
     @State private var createUserTabIsShowing : Bool = false
+    @State private var isUserEmailExistInDB : Bool = true
 
     var body: some View {
         if UserDefaults.standard.object(forKey: "userUIDey") != nil {
@@ -109,6 +110,15 @@ struct SignInView: View {
                     }.offset(x: 50, y: -60)
             }
             
+            Group {
+                if !isUserEmailExistInDB {
+                    Text("Email or password is incorrect")
+                        .foregroundColor(.red)
+                        .font(.callout)
+                        .offset(y: 125)
+                }
+            }
+            
         }.ignoresSafeArea()
     }
     
@@ -116,14 +126,16 @@ struct SignInView: View {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if error != nil {
                 print(error!.localizedDescription)
+                isUserEmailExistInDB = false
             }
 
-            userIsLoggedIn.toggle()
+            
             
             let uid = Auth.auth().currentUser?.uid
 
             if uid != nil {
                 print(uid!.description)
+                userIsLoggedIn.toggle()
                 UserDefaults.standard.set(uid!, forKey: "userUIDey")
                 UserDefaults.standard.synchronize()
             }

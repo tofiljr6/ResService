@@ -41,7 +41,7 @@ struct ConsumerConfirmOrderView: View {
 
             if let location = locationManager.location {
                 Text("Your location: \(location.latitude), \(location.longitude)")
-                Text("Restaurant location: \(locationManager.restaurantLocation!.latitude), \(locationManager.restaurantLocation!.longitude)")
+//                Text("Restaurant location: \(restaurantLocationManager.restaurantCoordinates.latitude), \(restaurantLocationManager.restaurantCoordinates.longitude)")
             }
             
             confirmButton
@@ -60,6 +60,9 @@ struct ConsumerConfirmOrderView: View {
             } else {
                 showFailResult = true
             }
+            
+            // resign order
+            userOrderModel.resignOrderToOrdered()
         } label: {
             ZStack {
                 Rectangle()
@@ -78,6 +81,8 @@ struct ConsumerConfirmOrderView: View {
                 // send order to the kitchne
                 self.orderInKitchen.addOrder(tableNumber: tableID, currentOrder: menuModel.convertIntDict(dict: userOrderModel.listofOrder))
                 
+                // occupy table
+                self.diningRoomModel.setTableStatus(number: tableID, color: "red")
                 
                 // check
                 print("\(userModel.username) ordered \(userOrderModel.listofOrder)")

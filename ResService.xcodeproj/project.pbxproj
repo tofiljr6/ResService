@@ -34,6 +34,9 @@
 		F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326B128F82A71002F5F36 /* KitchenView.swift */; };
 		F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25326B428F87358002F5F36 /* FunctionBoxView.swift */; };
 		F25E50B52921050D00F43ADF /* EmployeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50B42921050D00F43ADF /* EmployeeDetailView.swift */; };
+		F25E50C72923EDBD00F43ADF /* OrderPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */; };
+		F25E50CF292543D200F43ADF /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50CE292543D100F43ADF /* ChangeLocationView.swift */; };
+		F25E50D2292597BB00F43ADF /* RestaurantLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */; };
 		F2930305291D8EFE0020E16C /* ConsumerSettingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */; };
 		F29B1C2F2905C69500303829 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C2E2905C69500303829 /* UserModel.swift */; };
 		F29B1C322908265700303829 /* BossMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C312908265700303829 /* BossMainView.swift */; };
@@ -117,6 +120,9 @@
 		F25326B128F82A71002F5F36 /* KitchenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenView.swift; sourceTree = "<group>"; };
 		F25326B428F87358002F5F36 /* FunctionBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionBoxView.swift; sourceTree = "<group>"; };
 		F25E50B42921050D00F43ADF /* EmployeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailView.swift; sourceTree = "<group>"; };
+		F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPreviewView.swift; sourceTree = "<group>"; };
+		F25E50CE292543D100F43ADF /* ChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
+		F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantLocationViewModel.swift; sourceTree = "<group>"; };
 		F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerSettingTab.swift; sourceTree = "<group>"; };
 		F29B1C2E2905C69500303829 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F29B1C312908265700303829 /* BossMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossMainView.swift; sourceTree = "<group>"; };
@@ -198,9 +204,8 @@
 		F23D0AD82909A211005C84F3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F25E50CD29251AD400F43ADF /* New Group */,
 				F29BC14F29181E2F00557956 /* ConsumerViews */,
-				F2C14384291417D50043CB32 /* ManageDiningRoomViews */,
-				F2EC9FC62912C98E00493A27 /* DiningRoomViews */,
 				F25326B628F87360002F5F36 /* FunctionsViews */,
 				F25326AE28F728C4002F5F36 /* WaiterViews */,
 				F25326B328F82A78002F5F36 /* KitchenViews */,
@@ -305,8 +310,10 @@
 		F25326AE28F728C4002F5F36 /* WaiterViews */ = {
 			isa = PBXGroup;
 			children = (
+				F2EC9FC62912C98E00493A27 /* DiningRoomViews */,
 				F25326AC28F72266002F5F36 /* WaiterOrderView.swift */,
 				F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */,
+				F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */,
 			);
 			path = WaiterViews;
 			sourceTree = "<group>";
@@ -352,15 +359,24 @@
 			path = ConsumerOrder;
 			sourceTree = "<group>";
 		};
+		F25E50CD29251AD400F43ADF /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		F29B1C302908264500303829 /* BossViews */ = {
 			isa = PBXGroup;
 			children = (
+				F2C14384291417D50043CB32 /* ManageDiningRoomViews */,
 				F29B1C312908265700303829 /* BossMainView.swift */,
 				F29B1C3829085C7E00303829 /* AddDishToMenuView.swift */,
 				F2B7FD522919678E00840E68 /* ImagePicker.swift */,
 				F24019992920026000ADC818 /* EmployView.swift */,
 				F240199D29200CE400ADC818 /* AddNewWorkerView.swift */,
 				F25E50B42921050D00F43ADF /* EmployeeDetailView.swift */,
+				F25E50CE292543D100F43ADF /* ChangeLocationView.swift */,
 			);
 			path = BossViews;
 			sourceTree = "<group>";
@@ -383,6 +399,7 @@
 				F240199B2920035600ADC818 /* EmployViewModel.swift */,
 				F29B1C2E2905C69500303829 /* UserModel.swift */,
 				F2401994291E863800ADC818 /* UserOrderModel.swift */,
+				F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -559,10 +576,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F227C2192916992D00184384 /* TableModel.swift in Sources */,
+				F25E50D2292597BB00F43ADF /* RestaurantLocationViewModel.swift in Sources */,
 				F2401995291E863800ADC818 /* UserOrderModel.swift in Sources */,
 				F2EC9FCC2913CEA700493A27 /* DiningRoomViewModel.swift in Sources */,
 				F29B1C3529082A2F00303829 /* RoleEnum.swift in Sources */,
 				F29BC15329181E8000557956 /* ConsumerMainView.swift in Sources */,
+				F25E50C72923EDBD00F43ADF /* OrderPreviewView.swift in Sources */,
 				F25326B028F7290D002F5F36 /* DishView.swift in Sources */,
 				F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */,
 				F23D0ADB2909A287005C84F3 /* MenuViewModel.swift in Sources */,
@@ -606,6 +625,7 @@
 				F2C14386291418180043CB32 /* TableInManageDiningRoomView.swift in Sources */,
 				F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */,
 				F29BC155291820CC00557956 /* ConsumerMenuSingleCardView.swift in Sources */,
+				F25E50CF292543D200F43ADF /* ChangeLocationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,13 +10,18 @@ import SwiftUI
 
 
 struct BossMainView: View {
-    @ObservedObject var diningRoom : DiningRoomViewModel = DiningRoomViewModel()
     @EnvironmentObject var userModel : UserModel
+    @ObservedObject var diningRoom : DiningRoomViewModel = DiningRoomViewModel()
+    @ObservedObject var ordersInProgress : OrdersInProgressViewModel = OrdersInProgressViewModel()
+    @ObservedObject var ordersInKitchen : OrdersInKitchenViewModel = OrdersInKitchenViewModel()
+    @ObservedObject var menu : MenuViewModel = MenuViewModel()
+    @StateObject var restaurantLocationModel : RestaurantLocationViewModel = RestaurantLocationViewModel()
     
     var sections : [MenuSection] = [MenuSection(id: UUID(), name: "Role", items: [MenuItem(id: UUID(), name: "Preview Waiter"),
                                                                                   MenuItem(id: UUID(), name: "Preview Kitchen")]),
                                     MenuSection(id: UUID(), name: "Manage restauratn", items: [MenuItem(id: UUID(), name: "Add new dishes"),
                                                                                                MenuItem(id: UUID(), name: "Employ"),
+                                                                                               MenuItem(id: UUID(), name: "Change restaurant location"),
                                                                                                MenuItem(id: UUID(), name: "Manage tables")])]
     private enum BossSection : String {
         case previewWaiter  = "Preview Waiter"
@@ -24,6 +29,7 @@ struct BossMainView: View {
         case addNewDishes   = "Add new dishes"
         case manageTables   = "Manage tables"
         case employ         = "Employ"
+        case location       = "Change restaurant location"
     }
     
     var body: some View {
@@ -55,15 +61,31 @@ struct BossMainView: View {
         let val = BossSection(rawValue: itemText)
         
         switch val {
-        case .some(.previewKitchen): return AnyView(KitchenView().navigationBarTitleDisplayMode(.inline))
-        case .some(.previewWaiter): return AnyView(DiningRoomView(diningRoom: diningRoom).navigationBarTitleDisplayMode(.inline).environmentObject(userModel))
-        case .some(.addNewDishes): return AnyView(MenuView())
-        case .some(.manageTables): return AnyView(ManageDiningRoomView(diningRoom: diningRoom)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar(content: {
-                Button(action: { diningRoom.addNewTable() }, label: { Image(systemName: "plus.circle") })
-            }))
-        case .some(.employ): return AnyView(EmployView())
+        case .some(.previewKitchen):
+            return AnyView(KitchenView().navigationBarTitleDisplayMode(.inline)
+                .environmentObject(ordersInProgress)
+                .environmentObject(ordersInKitchen))
+        case .some(.previewWaiter):
+            return AnyView(DiningRoomView().navigationBarTitleDisplayMode(.inline)
+                .environmentObject(userModel)
+                .environmentObject(diningRoom)
+                .environmentObject(menu)
+                .environmentObject(ordersInProgress)
+                .environmentObject(ordersInKitchen))
+        case .some(.addNewDishes):
+            return AnyView(MenuView())
+        case .some(.manageTables):
+            return AnyView(ManageDiningRoomView(diningRoom: diningRoom)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar(content: {
+                    Button(action: { diningRoom.addNewTable() }, label: { Image(systemName: "plus.circle") })
+                }))
+        case .some(.employ):
+            return AnyView(EmployView())
+        case .some(.location):
+            return AnyView(ChangeLocationView()
+                .environmentObject(restaurantLocationModel)
+            )
         case .none:
             return AnyView(Text("Nieznazny bład"))
             

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 let dbURLConnection = "https://resservice-f26c6-default-rtdb.europe-west1.firebasedatabase.app/"
 
@@ -19,3 +20,6 @@ let userCollectionName = "users"
 let paramUniqueOrderNumber = "noorder"
 let menuUniqueName = "menuUniqueID"
 let tableUniqueID = "tableUniqueID"
+
+let manageTableViewWidth  : CGFloat = UIScreen.main.bounds.width
+let manageTableViewHeight : CGFloat = UIScreen.main.bounds.height * 0.90

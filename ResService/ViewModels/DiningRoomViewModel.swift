@@ -96,9 +96,9 @@ class DiningRoomViewModel : ObservableObject {
      
      - Parameter color : A new name of color.
      */
-    private func setTableStatus(number: Int, color : String) -> Void {
+    func setTableStatus(number: Int, color : String) -> Void {
         let ref = Database.database(url: dbURLConnection).reference().child(diningRoomCollectionName)
-        ref.child("table\(number)").updateChildValues(["color" : color])
+        ref.child("table\(number)").updateChildValues(["status" : color])
     }
     
     /**
@@ -138,6 +138,15 @@ class DiningRoomViewModel : ObservableObject {
         paramref.child(tableUniqueID).setValue(self.uniqueTableID + 1)
         
         return self.uniqueTableID
+    }
+    
+    func getColor(id : Int) -> Color {
+        for table in tablesInfo {
+            if table.id == id {
+                return table.status
+            }
+        }
+        return .gray
     }
 
 }

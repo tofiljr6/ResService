@@ -24,7 +24,7 @@ struct EmployView: View {
                             Text(item.role).foregroundColor(.gray)
                         }
                     }
-                }
+                }.onDelete(perform: employViewModel.removeWorker(at:))
             }
         }.navigationTitle("Team")
         .toolbar {
