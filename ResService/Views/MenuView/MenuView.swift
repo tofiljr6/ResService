@@ -17,6 +17,7 @@ struct MenuView: View {
                 ForEach(menuViewModel.menuDishes, id: \.dishID) { dish in
                     Text(dish.dishName)
                 }.onMove(perform: move)
+                    .onDelete(perform: menuViewModel.removeMenuFromList)
             }.navigationBarTitle("Menu", displayMode: .inline)
             .toolbar {
                 EditButton()
