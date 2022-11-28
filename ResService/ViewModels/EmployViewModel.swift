@@ -44,6 +44,9 @@ class EmployViewModel : ObservableObject {
             }
             
             self.workers = self.workersLocal
+            self.workers = self.workers.sorted { u1, u2 in
+                u1.UUID < u2.UUID
+            }
             self.workersLocal = []
         })
     }
@@ -67,5 +70,17 @@ class EmployViewModel : ObservableObject {
                 break
             }
         }
+    }
+    
+    func removeWorker(at offset : IndexSet) {
+        var test = self.getOnlyEmployees()
+
+        let ids = offset.map({ test[$0].authID })
+        print(ids)
+        
+        let ref = Database.database(url: dbURLConnection).reference().child(userCollectionName)
+        ref.child(ids[0].description).updateChildValues(["role" : "client"])
+        
+        test.remove(atOffsets: offset)
     }
 }

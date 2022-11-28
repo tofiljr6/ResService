@@ -41,7 +41,7 @@ struct ConsumerConfirmOrderView: View {
 
             if let location = locationManager.location {
                 Text("Your location: \(location.latitude), \(location.longitude)")
-                Text("Restaurant location: \(locationManager.restaurantLocation!.latitude), \(locationManager.restaurantLocation!.longitude)")
+//                Text("Restaurant location: \(restaurantLocationManager.restaurantCoordinates.latitude), \(restaurantLocationManager.restaurantCoordinates.longitude)")
             }
             
             confirmButton
