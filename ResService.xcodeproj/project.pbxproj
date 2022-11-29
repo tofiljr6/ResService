@@ -37,6 +37,15 @@
 		F25E50C72923EDBD00F43ADF /* OrderPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */; };
 		F25E50CF292543D200F43ADF /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50CE292543D100F43ADF /* ChangeLocationView.swift */; };
 		F25E50D2292597BB00F43ADF /* RestaurantLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */; };
+		F27A51EC293532ED00048E6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27A51EB293532ED00048E6B /* Main.storyboard */; };
+		F27A51EE2935330800048E6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A51ED2935330800048E6B /* ViewController.swift */; };
+		F27A51F42936226200048E6B /* ARUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A51F32936226200048E6B /* ARUIView.swift */; };
+		F27A51FF2936248000048E6B /* fender_stratocaster.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A51FB2936247F00048E6B /* fender_stratocaster.usdz */; };
+		F27A52002936248000048E6B /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A51FC2936247F00048E6B /* toy_biplane.usdz */; };
+		F27A52012936248000048E6B /* toy_robot_vintage.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A51FD2936248000048E6B /* toy_robot_vintage.usdz */; };
+		F27A52022936248000048E6B /* teapot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A51FE2936248000048E6B /* teapot.usdz */; };
+		F27A52042936465500048E6B /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A52032936465500048E6B /* ARModel.swift */; };
+		F27A52072936622E00048E6B /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = F27A52062936622E00048E6B /* FocusEntity */; };
 		F2930305291D8EFE0020E16C /* ConsumerSettingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */; };
 		F29B1C2F2905C69500303829 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C2E2905C69500303829 /* UserModel.swift */; };
 		F29B1C322908265700303829 /* BossMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C312908265700303829 /* BossMainView.swift */; };
@@ -123,6 +132,14 @@
 		F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPreviewView.swift; sourceTree = "<group>"; };
 		F25E50CE292543D100F43ADF /* ChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
 		F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantLocationViewModel.swift; sourceTree = "<group>"; };
+		F27A51EB293532ED00048E6B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F27A51ED2935330800048E6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F27A51F32936226200048E6B /* ARUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARUIView.swift; sourceTree = "<group>"; };
+		F27A51FB2936247F00048E6B /* fender_stratocaster.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fender_stratocaster.usdz; sourceTree = "<group>"; };
+		F27A51FC2936247F00048E6B /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
+		F27A51FD2936248000048E6B /* toy_robot_vintage.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_robot_vintage.usdz; sourceTree = "<group>"; };
+		F27A51FE2936248000048E6B /* teapot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = teapot.usdz; sourceTree = "<group>"; };
+		F27A52032936465500048E6B /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
 		F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerSettingTab.swift; sourceTree = "<group>"; };
 		F29B1C2E2905C69500303829 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F29B1C312908265700303829 /* BossMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossMainView.swift; sourceTree = "<group>"; };
@@ -159,6 +176,7 @@
 			files = (
 				F2B7FD562919700700840E68 /* FirebaseAnalytics in Frameworks */,
 				F2B7FD5A2919700700840E68 /* FirebaseAuth in Frameworks */,
+				F27A52072936622E00048E6B /* FocusEntity in Frameworks */,
 				F2B7FD5C2919700700840E68 /* FirebaseDatabase in Frameworks */,
 				F2B7FD5E2919700700840E68 /* FirebaseFirestore in Frameworks */,
 				F2B7FD582919700700840E68 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
@@ -268,6 +286,7 @@
 		F253267628F5E45A002F5F36 /* ResService */ = {
 			isa = PBXGroup;
 			children = (
+				F27A51E729352C6400048E6B /* AR */,
 				F29BC14E2917F3A500557956 /* ViewModels */,
 				F2091E6E2916F6CC00FFAFD0 /* Protocols */,
 				F23D0ADC290A9AE7005C84F3 /* Model */,
@@ -366,6 +385,29 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		F27A51E729352C6400048E6B /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				F27A51E829352FF000048E6B /* Models */,
+				F27A51EB293532ED00048E6B /* Main.storyboard */,
+				F27A51ED2935330800048E6B /* ViewController.swift */,
+				F27A51F32936226200048E6B /* ARUIView.swift */,
+				F27A52032936465500048E6B /* ARModel.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		F27A51E829352FF000048E6B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F27A51FB2936247F00048E6B /* fender_stratocaster.usdz */,
+				F27A51FE2936248000048E6B /* teapot.usdz */,
+				F27A51FC2936247F00048E6B /* toy_biplane.usdz */,
+				F27A51FD2936248000048E6B /* toy_robot_vintage.usdz */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F29B1C302908264500303829 /* BossViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +498,7 @@
 				F2B7FD5B2919700700840E68 /* FirebaseDatabase */,
 				F2B7FD5D2919700700840E68 /* FirebaseFirestore */,
 				F2B7FD5F2919700700840E68 /* FirebaseStorage */,
+				F27A52062936622E00048E6B /* FocusEntity */,
 			);
 			productName = ResService;
 			productReference = F253267428F5E45A002F5F36 /* ResService.app */;
@@ -531,6 +574,7 @@
 			mainGroup = F253266B28F5E45A002F5F36;
 			packageReferences = (
 				F2B7FD542919700700840E68 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F27A52052936622E00048E6B /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = F253267528F5E45A002F5F36 /* Products */;
 			projectDirPath = "";
@@ -548,9 +592,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F27A52002936248000048E6B /* toy_biplane.usdz in Resources */,
 				F253267F28F5E45A002F5F36 /* Preview Assets.xcassets in Resources */,
+				F27A51FF2936248000048E6B /* fender_stratocaster.usdz in Resources */,
 				F253267C28F5E45A002F5F36 /* Assets.xcassets in Resources */,
+				F27A52022936248000048E6B /* teapot.usdz in Resources */,
 				F25326A428F5E9E6002F5F36 /* GoogleService-Info.plist in Resources */,
+				F27A51EC293532ED00048E6B /* Main.storyboard in Resources */,
+				F27A52012936248000048E6B /* toy_robot_vintage.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +630,7 @@
 				F2EC9FCC2913CEA700493A27 /* DiningRoomViewModel.swift in Sources */,
 				F29B1C3529082A2F00303829 /* RoleEnum.swift in Sources */,
 				F29BC15329181E8000557956 /* ConsumerMainView.swift in Sources */,
+				F27A52042936465500048E6B /* ARModel.swift in Sources */,
 				F25E50C72923EDBD00F43ADF /* OrderPreviewView.swift in Sources */,
 				F25326B028F7290D002F5F36 /* DishView.swift in Sources */,
 				F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */,
@@ -609,6 +659,7 @@
 				F2D41C942912AEB2001B8230 /* OrderModel.swift in Sources */,
 				F2B7FDA4291AF32900840E68 /* ConsumerConfirmOrderView.swift in Sources */,
 				F23D0ADE290A9B0F005C84F3 /* MenuModel.swift in Sources */,
+				F27A51EE2935330800048E6B /* ViewController.swift in Sources */,
 				F29B1C2F2905C69500303829 /* UserModel.swift in Sources */,
 				F25E50B52921050D00F43ADF /* EmployeeDetailView.swift in Sources */,
 				F29B1C372908503800303829 /* MenuView.swift in Sources */,
@@ -617,6 +668,7 @@
 				F240199E29200CE400ADC818 /* AddNewWorkerView.swift in Sources */,
 				F29BC1572918256400557956 /* ConsumerMenuView.swift in Sources */,
 				F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */,
+				F27A51F42936226200048E6B /* ARUIView.swift in Sources */,
 				F253267828F5E45A002F5F36 /* ResServiceApp.swift in Sources */,
 				F2EC9FC82912C99F00493A27 /* DiningRoomView.swift in Sources */,
 				F235591C2903F52A002AEF80 /* OrdersInKitchenViewModel.swift in Sources */,
@@ -787,6 +839,7 @@
 				DEVELOPMENT_TEAM = YKV2G5YRAW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You need the camera to display ArKit content";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ffssfd;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -818,6 +871,7 @@
 				DEVELOPMENT_TEAM = YKV2G5YRAW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You need the camera to display ArKit content";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ffssfd;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -956,6 +1010,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F27A52052936622E00048E6B /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
 		F2B7FD542919700700840E68 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -967,6 +1029,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F27A52062936622E00048E6B /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F27A52052936622E00048E6B /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
 		F2B7FD552919700700840E68 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F2B7FD542919700700840E68 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
