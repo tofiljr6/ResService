@@ -9,14 +9,6 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-struct User : Codable {
-    var role : String
-    var username : String
-    var email : String
-    var UUID : String
-    var authID : String
-}
-
 class EmployViewModel : ObservableObject {
     
     private var workersLocal : [User] = []

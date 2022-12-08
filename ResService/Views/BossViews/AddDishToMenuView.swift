@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseStorage
-import FirebaseFirestore
+import FirebaseFirestore // TODO: delete???
 
 enum DishCategory : String, CaseIterable {
     case starter = "starter"

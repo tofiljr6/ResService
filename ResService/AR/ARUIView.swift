@@ -16,7 +16,7 @@ struct ARUIView: View {
     @State private var modelConfirmedForPlacement : Model?
     
     private var models: [Model] = {
-       // dynamically get out model filenames
+        // dynamically get out model filenames
         let filemanager = FileManager.default
         
         guard let path = Bundle.main.resourcePath, let files = try? filemanager.contentsOfDirectory(atPath: path) else { return [] }
@@ -60,7 +60,13 @@ struct ARViewContainer : UIViewRepresentable {
             if let modelEntity = model.modelEntity {
                 print("DEBUG: adding model to scene - \(model.modelName)")
                 
-                let anchorrEntity = AnchorEntity(plane: .any)
+                #if targetEnvironment(simulator)
+                    let anchorrEntity = AnchorEntity()
+                #else // real divice
+                    let anchorrEntity = AnchorEntity(plane:     AnchoringComponent.Target.Alignment.any) // plane: .any ??
+                
+                #endif
+
                 anchorrEntity.addChild(modelEntity.clone(recursive: true))
                 
                 uiView.scene.addAnchor(anchorrEntity)
