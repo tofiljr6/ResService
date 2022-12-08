@@ -50,6 +50,7 @@
 		F289060A293A98E100254245 /* UserM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2890609293A98E100254245 /* UserM.swift */; };
 		F289060C293A9C6800254245 /* ResLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F289060B293A9C6800254245 /* ResLocModel.swift */; };
 		F2930305291D8EFE0020E16C /* ConsumerSettingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */; };
+		F2943B7C2941FAB900DA91A3 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2943B7B2941FAB900DA91A3 /* NotificationViewModel.swift */; };
 		F29B1C2F2905C69500303829 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C2E2905C69500303829 /* UserModel.swift */; };
 		F29B1C322908265700303829 /* BossMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C312908265700303829 /* BossMainView.swift */; };
 		F29B1C3529082A2F00303829 /* RoleEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C3429082A2F00303829 /* RoleEnum.swift */; };
@@ -147,6 +148,7 @@
 		F2890609293A98E100254245 /* UserM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserM.swift; sourceTree = "<group>"; };
 		F289060B293A9C6800254245 /* ResLocModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResLocModel.swift; sourceTree = "<group>"; };
 		F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerSettingTab.swift; sourceTree = "<group>"; };
+		F2943B7B2941FAB900DA91A3 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		F29B1C2E2905C69500303829 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F29B1C312908265700303829 /* BossMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossMainView.swift; sourceTree = "<group>"; };
 		F29B1C3429082A2F00303829 /* RoleEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleEnum.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				F29B1C2E2905C69500303829 /* UserModel.swift */,
 				F2401994291E863800ADC818 /* UserOrderModel.swift */,
 				F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */,
+				F2943B7B2941FAB900DA91A3 /* NotificationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */,
 				F29BC155291820CC00557956 /* ConsumerMenuSingleCardView.swift in Sources */,
 				F25E50CF292543D200F43ADF /* ChangeLocationView.swift in Sources */,
+				F2943B7C2941FAB900DA91A3 /* NotificationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

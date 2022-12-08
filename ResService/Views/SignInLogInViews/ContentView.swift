@@ -21,8 +21,10 @@ struct ContentView: View {
                 .environmentObject(MenuViewModel())
                 .environmentObject(OrdersInProgressViewModel())
                 .environmentObject(OrdersInKitchenViewModel())
+                .environmentObject(NotificationViewModel())
         } else if user.role == Role.boss.rawValue {
             BossMainView().environmentObject(user)
+                .environmentObject(NotificationViewModel())
         } else if user.role == Role.client.rawValue {
             ConsumerMainView().environmentObject(MenuViewModel()).environmentObject(user)
         } else if user.role == Role.kitchen.rawValue {
@@ -30,6 +32,7 @@ struct ContentView: View {
                 .environmentObject(OrdersInProgressViewModel())
                 .environmentObject(OrdersInKitchenViewModel())
                 .environmentObject(user)
+                .environmentObject(NotificationViewModel())
         }
         else {
             noUserRole.onAppear(perform: {

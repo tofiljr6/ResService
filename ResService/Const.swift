@@ -16,6 +16,7 @@ let diningRoomCollectionName = "diningRoomCollection"
 let menuCollectionName = "menuCollection"
 let paramCollectionName = "param"
 let userCollectionName = "users"
+let notificationCollectionName = "notificationCollection"
 
 let paramUniqueOrderNumber = "noorder"
 let menuUniqueName = "menuUniqueID"
