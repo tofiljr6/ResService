@@ -22,6 +22,17 @@ struct KitchenView: View {
     var body: some View {
         if UIDevice.current.userInterfaceIdiom == .phone {
             VStack {
+                if userModel.role == "kitchen" {
+                    HStack{
+                        Spacer()
+                        Button {
+                            userModel.signout()
+                        } label: {
+                            Image(systemName: "person.badge.minus")
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
                 ScrollView {
                     ForEach(ordersInKitchen.P_ordersToDo, id: \.id) { item in
                         OrderCardView(orderInfo: item.info,dishes: item.dishes, color: .green)
@@ -37,6 +48,9 @@ struct KitchenView: View {
                     }
                 }
             }.padding()
+            .fullScreenCover(isPresented: $userModel.userIsLoggedIn, content: {
+                SignInView()
+            })
         } else { // == .pad
             VStack(spacing: 20) {
                 HStack {

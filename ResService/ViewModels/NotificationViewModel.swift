@@ -28,20 +28,18 @@ final class NotificationViewModel : ObservableObject {
                 let jsonData = try! JSONSerialization.data(withJSONObject: json!, options: .prettyPrinted)
                 let info = try! JSONDecoder().decode(NotificationOrder.self, from: jsonData)
 
-                print(info)
                 
                 self.notificationArrayLocal.append(info)
             }
-            self.notificationArray = self.notificationArrayLocal
+            self.notificationArray = self.notificationArrayLocal.sorted(by: {n1, n2 in
+                n1.orderNumber < n2.orderNumber
+            })
             self.notificationArrayLocal = []
         })
     }
     
     func add(orderNumber: Int, tableName : String) -> Void {
         let ref = Database.database(url: dbURLConnection).reference().child(notificationCollectionName)
-        
-//        print("send")
-        
         let notificationInfo = [
             "orderNumber" : orderNumber,
             "tableName" : tableName
@@ -52,8 +50,6 @@ final class NotificationViewModel : ObservableObject {
     
     func remove(at offset : IndexSet) {
         let ids = offset.map({self.notificationArray[$0].orderNumber})
-        
-        print(ids)
         
         let ref = Database.database(url: dbURLConnection).reference().child(notificationCollectionName)
         ref.child("order\(ids[0].description)").removeValue()

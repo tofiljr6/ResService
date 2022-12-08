@@ -28,7 +28,6 @@ struct DiningRoomView: View {
                 HStack{
                     if notificationViewModel.notificationArray.count != 0 {
                         Button {
-                            print("show")
                             notificationCenterIsShowing = true
                         } label: {
                             Text(notificationViewModel.notificationArray.count.description)
@@ -36,36 +35,55 @@ struct DiningRoomView: View {
                         }
                     } else {
                         Button {
-                            print("none")
+                            notificationCenterIsShowing = true
                         } label: {
                             Image(systemName: "bell")
                         }
                     }
                     
-                    Button {
-                        userModel.signout()
-                    } label: {
-                        Image(systemName: "person.badge.minus").foregroundColor(.red)
+                    if userModel.role == "waiter" {
+                        Button {
+                            userModel.signout()
+                        } label: {
+                            Image(systemName: "person.badge.minus").foregroundColor(.red)
+                        }
                     }
                 }
             }.fullScreenCover(isPresented: $userModel.userIsLoggedIn, content: {
                 SignInView().frame(maxWidth: .infinity, maxHeight: .infinity)
             })
             .sheet(isPresented: $notificationCenterIsShowing) {
-                List {
-                    ForEach(notificationViewModel.notificationArray, id: \.orderNumber) { item in
-                        HStack {
-                            Text(item.tableName)
-                            Spacer()
-                            Text(item.orderNumber.description)
-                        }
-                    }.onDelete(perform: notificationViewModel.remove(at:))
-                }
+                SheetView(showSheetView: $notificationCenterIsShowing, notificationViewModel: notificationViewModel)
             }
         }
     }
 }
 
+
+struct SheetView: View {
+    @Binding var showSheetView: Bool
+    @ObservedObject var notificationViewModel : NotificationViewModel
+
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(notificationViewModel.notificationArray, id: \.orderNumber) { item in
+                    HStack {
+                        Text(item.tableName)
+                        Spacer()
+                        Text(item.orderNumber.description)
+                    }
+                }.onDelete(perform: notificationViewModel.remove(at:))
+            }
+            .navigationBarTitle(Text("Notifications"), displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: {
+                self.showSheetView = false
+            }) {
+                Text("Done").bold()
+            })
+        }
+    }
+}
 
 
 struct ManageTablesView_Previews: PreviewProvider {
