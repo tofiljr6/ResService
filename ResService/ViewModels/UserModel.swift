@@ -36,7 +36,7 @@ class UserModel : ObservableObject {
             }
             if snapshot != nil {
                 let userinfo = snapshot!.value as? [String : String] ?? [:];
-                print(userinfo[self.usernameCellname]!)
+//                print(userinfo[self.usernameCellname]!)
                 self.username = userinfo[self.usernameCellname] ?? "Unknown"
                 self.role = userinfo[self.roleCellname] ?? Role.unknown.rawValue
                 self.uuid = userinfo[self.uuidCellname] ?? "\(UUID().uuidString)"

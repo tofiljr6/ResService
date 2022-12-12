@@ -39,10 +39,12 @@ struct TableView: View {
                 Text(tableInfo.description)
                     .foregroundColor(.black)
             }
-            .position(x: (w / wo) * tableInfo.location.x,
-                      y: ((h ?? UIScreen.main.bounds.height * 0.90 ) / ho) * tableInfo.location.y)
-        }
+//            .position(x: (w / wo) * tableInfo.location.x,
+//                      y: ((h ?? UIScreen.main.bounds.height * 0.90 ) / ho) * tableInfo.location.y)
+        }.isDetailLink(false)
 //        .position(tableInfo.location)
+        .position(x: (w / wo) * tableInfo.location.x,
+                  y: ((h ?? UIScreen.main.bounds.height * 0.90 ) / ho) * tableInfo.location.y)
 
     }
 }
