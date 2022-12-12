@@ -45,6 +45,7 @@ struct SignInView: View {
                 Group {
                     TextField("Email", text: $email)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .textInputAutocapitalization(.never)
                     
                     Rectangle()
                         .frame(width: 350, height: 1)
@@ -52,6 +53,7 @@ struct SignInView: View {
                     
                     SecureField("Password", text: $password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .textInputAutocapitalization(.never)
                 }.offset(y: 70)
                 
                 Button {

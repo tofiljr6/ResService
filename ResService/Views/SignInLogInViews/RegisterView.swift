@@ -40,6 +40,7 @@ struct RegisterView: View {
                         
                         TextField("Email", text: $email)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .textInputAutocapitalization(.never)
                         
                         Rectangle()
                             .frame(width: 350, height: 1)
@@ -47,6 +48,7 @@ struct RegisterView: View {
                         
                         SecureField("Password", text: $password)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .textInputAutocapitalization(.never)
                         
                         
                         Button {
