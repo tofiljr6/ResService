@@ -1,52 +1,57 @@
 //
-//  MenuSingleCardView.swift
+//  ConsumerMenuSingleCard2View.swift
 //  ResService
 //
-//  Created by Mateusz Tofil on 06/11/2022.
+//  Created by Mateusz Tofil on 12/12/2022.
 //
 
 import SwiftUI
 import FirebaseStorage
 
-struct ConsumerMenuSingleCardView: View {
+struct ConsumerMenuSingleCard2View: View {
     @EnvironmentObject var menuViewModel : MenuViewModel
+    @Environment(\.colorScheme) var systemColorScheme
     var menu : Menu
     
     @State var retrivedImage : UIImage?
-    
-    var cardWidth  : CGFloat = 200
-    var cardHeight : CGFloat = 240
     
     var body: some View {
         VStack(alignment: .leading) {
             if retrivedImage == nil {
                 RoundedRectangle(cornerRadius: 5)
-                    .frame(width: 200, height: 200)
+                    .frame(width: 340, height: 340)
                     .foregroundColor(.gray)
             } else {
                 ZStack {
                     Image(uiImage: retrivedImage!)
                         .resizable()
-                        .frame(width: 200, height: 200)
+                        .frame(width: 340, height: 340)
+                        .scaledToFit()
                         .cornerRadius(5)
+                    
                     if menu.armodel != "" {
                         Image(systemName: "camera.viewfinder")
                             .foregroundColor(.yellow)
                             .font(.title2)
                             .offset(x: 75, y: -75)
                     }
+                    
+                    if systemColorScheme == .light {
+                        LinearGradient(gradient: Gradient(colors: [.white, .clear, .clear, .clear, .clear]), startPoint: .bottom, endPoint: .top)
+                        Text(menu.dishName)
+                            .foregroundColor(.black)
+                            .font(.title)
+                            .offset(x: -125, y: 150)
+                    } else {
+                        LinearGradient(gradient: Gradient(colors: [.black, .clear, .clear, .clear, .clear]), startPoint: .bottom, endPoint: .top)
+                        Text(menu.dishName)
+                            .foregroundColor(.white)
+                            .font(.title)
+                            .offset(x: -125, y: 150)
+                    }
                 }
             }
-            HStack {
-                Text(menu.dishName)
-                Spacer()
-                Text(menu.dishPrice.description)
-            }.foregroundColor(.primary)
-        }
-        .padding(.leading, 15)
-        .onAppear {
-            showDishPhoto()
-        }
+        }.onAppear { showDishPhoto() }
     }
     
     func showDishPhoto() {
@@ -73,7 +78,7 @@ struct ConsumerMenuSingleCardView: View {
     }
 }
 
-struct MenuSingleCardView_Previews: PreviewProvider {
+struct ConsumerMenuSingleCard2View_Previews: PreviewProvider {
     static var menu : Menu = Menu(dishID: 1,
                            dishDescription: "Lorem ",
                            dishName: "Curry Wurst Classic",
@@ -86,13 +91,8 @@ struct MenuSingleCardView_Previews: PreviewProvider {
     
     static var menuViewModel = MenuViewModel()
     
+    
     static var previews: some View {
-        ScrollView(.horizontal) {
-            HStack(spacing: 10) {
-                ForEach(0..<3) {_ in
-                    ConsumerMenuSingleCardView(menu: menu)
-                }
-            }
-        }.padding(.leading)
+        ConsumerMenuSingleCard2View(menu: menu)
     }
 }

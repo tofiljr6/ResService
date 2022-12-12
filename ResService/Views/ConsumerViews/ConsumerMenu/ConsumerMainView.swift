@@ -16,26 +16,20 @@ struct ConsumerMainView: View {
     @StateObject var userOrderModel : UserOrderModel = UserOrderModel()
     
     var body: some View {
-        VStack {
-            TabView {
-                ConsumerMenuView(userOrderModel: userOrderModel).environmentObject(self.userOrderModel)
-                    .tabItem {
-                        Label("Menu", systemImage: "menucard")
-                    }
-                ConsumerListOfOrders(userOrderModel : userOrderModel).environmentObject(self.userModel)
-                    .tabItem {
-                        Label("Order", systemImage: "cart.circle.fill")
-                    }
-                ConsumerSettingTab().environmentObject(self.userModel)
-                    .tabItem {
-                        Label("Setting", systemImage: "person.fill")
-                    }
-            }.onAppear {
-                // ios 15 bug - transparent tabview - fixed
-                let tabBarAppearance = UITabBarAppearance()
-                tabBarAppearance.configureWithOpaqueBackground()
-                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-            }
+        TabView {
+            ConsumerMenuView(userOrderModel: userOrderModel).environmentObject(self.userOrderModel)
+                .tabItem {
+                    Label("Menu", systemImage: "menucard")
+                }
+            ConsumerListOfOrders(userOrderModel : userOrderModel).environmentObject(self.userModel)
+                .tabItem {
+                    Label("Order", systemImage: "cart.circle.fill")
+                }
+        }.onAppear {
+            // ios 15 bug - transparent tabview - fixed
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithOpaqueBackground()
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         }
     }
 }

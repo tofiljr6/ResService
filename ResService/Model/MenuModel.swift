@@ -16,4 +16,5 @@ struct Menu : Codable {
     var dishOrderInMenu : Int
     var dishCategory : String
     var dishPhotoURL : String
+    var armodel : String
 }

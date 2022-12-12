@@ -36,7 +36,7 @@ struct ARUIView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement).ignoresSafeArea()
+            ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement)//.ignoresSafeArea()
             if self.isPlacmentEnabled {
                 PlacementButtonView(isPlacmentEnabled: self.$isPlacmentEnabled, selectedModel: self.$selectedModel, modelConfirmedForPlacemnet: self.$modelConfirmedForPlacement)
             } else {

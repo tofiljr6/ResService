@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */; };
+		F205461129446EC8005EE1F9 /* ConsumerListMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205461029446EC7005EE1F9 /* ConsumerListMenuView.swift */; };
 		F2091E702916F6DB00FFAFD0 /* TableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2091E6F2916F6DB00FFAFD0 /* TableProtocol.swift */; };
 		F2268FD428FD755A0096F35C /* OrdersInProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */; };
 		F227C2192916992D00184384 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F227C2182916992D00184384 /* TableModel.swift */; };
@@ -80,6 +81,8 @@
 		F2D41C962912AEC8001B8230 /* OrderCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C952912AEC8001B8230 /* OrderCardModel.swift */; };
 		F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */; };
 		F2D41C9A2912B1A2001B8230 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C992912B1A2001B8230 /* Const.swift */; };
+		F2DB002E29476B540026E40F /* ConsumerARinMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DB002D29476B540026E40F /* ConsumerARinMenuView.swift */; };
+		F2DB0030294773D80026E40F /* ConsumerMenuSingleCard2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DB002F294773D80026E40F /* ConsumerMenuSingleCard2View.swift */; };
 		F2EC9FC82912C99F00493A27 /* DiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FC72912C99F00493A27 /* DiningRoomView.swift */; };
 		F2EC9FCA2912CA1E00493A27 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FC92912CA1E00493A27 /* TableView.swift */; };
 		F2EC9FCC2913CEA700493A27 /* DiningRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */; };
@@ -104,6 +107,7 @@
 
 /* Begin PBXFileReference section */
 		F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableView.swift; sourceTree = "<group>"; };
+		F205461029446EC7005EE1F9 /* ConsumerListMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerListMenuView.swift; sourceTree = "<group>"; };
 		F2091E6F2916F6DB00FFAFD0 /* TableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
 		F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInProgressViewModel.swift; sourceTree = "<group>"; };
 		F227C2182916992D00184384 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 		F2D41C952912AEC8001B8230 /* OrderCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCardModel.swift; sourceTree = "<group>"; };
 		F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionAndItemModel.swift; sourceTree = "<group>"; };
 		F2D41C992912B1A2001B8230 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		F2DB002D29476B540026E40F /* ConsumerARinMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerARinMenuView.swift; sourceTree = "<group>"; };
+		F2DB002F294773D80026E40F /* ConsumerMenuSingleCard2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerMenuSingleCard2View.swift; sourceTree = "<group>"; };
 		F2EC9FC72912C99F00493A27 /* DiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningRoomView.swift; sourceTree = "<group>"; };
 		F2EC9FC92912CA1E00493A27 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningRoomViewModel.swift; sourceTree = "<group>"; };
@@ -209,6 +215,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F205461229446EEA005EE1F9 /* ListMenuViews */ = {
+			isa = PBXGroup;
+			children = (
+				F205461029446EC7005EE1F9 /* ConsumerListMenuView.swift */,
+				F2DB002F294773D80026E40F /* ConsumerMenuSingleCard2View.swift */,
+			);
+			path = ListMenuViews;
+			sourceTree = "<group>";
+		};
 		F2091E6E2916F6CC00FFAFD0 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,11 +383,13 @@
 		F25E50B6292274B000F43ADF /* ConsumerMenu */ = {
 			isa = PBXGroup;
 			children = (
+				F205461229446EEA005EE1F9 /* ListMenuViews */,
 				F29BC15229181E8000557956 /* ConsumerMainView.swift */,
 				F29BC154291820CC00557956 /* ConsumerMenuSingleCardView.swift */,
 				F29BC1562918256400557956 /* ConsumerMenuView.swift */,
 				F29BC1582918260200557956 /* ConsumerMenuSectionView.swift */,
 				F2ABE0B129183735005D4EBD /* ConsumerMenuDetailView.swift */,
+				F2DB002D29476B540026E40F /* ConsumerARinMenuView.swift */,
 			);
 			path = ConsumerMenu;
 			sourceTree = "<group>";
@@ -677,6 +694,7 @@
 				F29B1C2F2905C69500303829 /* UserModel.swift in Sources */,
 				F25E50B52921050D00F43ADF /* EmployeeDetailView.swift in Sources */,
 				F29B1C372908503800303829 /* MenuView.swift in Sources */,
+				F2DB002E29476B540026E40F /* ConsumerARinMenuView.swift in Sources */,
 				F2B7FDA0291AEF6100840E68 /* ConsumerDiningRoomView.swift in Sources */,
 				F2401997291E955500ADC818 /* RegisterView.swift in Sources */,
 				F240199E29200CE400ADC818 /* AddNewWorkerView.swift in Sources */,
@@ -690,6 +708,8 @@
 				F237CB9529055E5D003C1007 /* SignInView.swift in Sources */,
 				F2930305291D8EFE0020E16C /* ConsumerSettingTab.swift in Sources */,
 				F2C14386291418180043CB32 /* TableInManageDiningRoomView.swift in Sources */,
+				F2DB0030294773D80026E40F /* ConsumerMenuSingleCard2View.swift in Sources */,
+				F205461129446EC8005EE1F9 /* ConsumerListMenuView.swift in Sources */,
 				F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */,
 				F29BC155291820CC00557956 /* ConsumerMenuSingleCardView.swift in Sources */,
 				F25E50CF292543D200F43ADF /* ChangeLocationView.swift in Sources */,
@@ -862,7 +882,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -894,7 +914,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
