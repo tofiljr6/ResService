@@ -60,9 +60,6 @@ struct ConsumerConfirmOrderView: View {
             } else {
                 showFailResult = true
             }
-            
-            // resign order
-            userOrderModel.resignOrderToOrdered()
         } label: {
             ZStack {
                 Rectangle()
@@ -86,6 +83,9 @@ struct ConsumerConfirmOrderView: View {
                 
                 // check
                 print("\(userModel.username) ordered \(userOrderModel.listofOrder)")
+                
+                // resign order
+                userOrderModel.resignOrderToOrdered()
             }
         }.alert("Ohhh no! Your and the restaurant location are not similar", isPresented: $showFailResult) {
             Button("OK", role: .cancel) { }
