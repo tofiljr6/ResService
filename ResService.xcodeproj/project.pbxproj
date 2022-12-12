@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */; };
-		F205461129446EC8005EE1F9 /* ConsumerListMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205461029446EC7005EE1F9 /* ConsumerListMenuView.swift */; };
 		F2091E702916F6DB00FFAFD0 /* TableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2091E6F2916F6DB00FFAFD0 /* TableProtocol.swift */; };
 		F2268FD428FD755A0096F35C /* OrdersInProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */; };
 		F227C2192916992D00184384 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F227C2182916992D00184384 /* TableModel.swift */; };
@@ -107,7 +106,6 @@
 
 /* Begin PBXFileReference section */
 		F201A4FF28FAB28F0023FAE8 /* SelectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableView.swift; sourceTree = "<group>"; };
-		F205461029446EC7005EE1F9 /* ConsumerListMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerListMenuView.swift; sourceTree = "<group>"; };
 		F2091E6F2916F6DB00FFAFD0 /* TableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProtocol.swift; sourceTree = "<group>"; };
 		F2268FD328FD755A0096F35C /* OrdersInProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInProgressViewModel.swift; sourceTree = "<group>"; };
 		F227C2182916992D00184384 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
@@ -215,13 +213,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F205461229446EEA005EE1F9 /* ListMenuViews */ = {
+		F205461229446EEA005EE1F9 /* CardViews */ = {
 			isa = PBXGroup;
 			children = (
-				F205461029446EC7005EE1F9 /* ConsumerListMenuView.swift */,
 				F2DB002F294773D80026E40F /* ConsumerMenuSingleCard2View.swift */,
+				F29BC154291820CC00557956 /* ConsumerMenuSingleCardView.swift */,
 			);
-			path = ListMenuViews;
+			path = CardViews;
 			sourceTree = "<group>";
 		};
 		F2091E6E2916F6CC00FFAFD0 /* Protocols */ = {
@@ -383,11 +381,10 @@
 		F25E50B6292274B000F43ADF /* ConsumerMenu */ = {
 			isa = PBXGroup;
 			children = (
-				F205461229446EEA005EE1F9 /* ListMenuViews */,
+				F205461229446EEA005EE1F9 /* CardViews */,
 				F29BC15229181E8000557956 /* ConsumerMainView.swift */,
-				F29BC154291820CC00557956 /* ConsumerMenuSingleCardView.swift */,
-				F29BC1562918256400557956 /* ConsumerMenuView.swift */,
 				F29BC1582918260200557956 /* ConsumerMenuSectionView.swift */,
+				F29BC1562918256400557956 /* ConsumerMenuView.swift */,
 				F2ABE0B129183735005D4EBD /* ConsumerMenuDetailView.swift */,
 				F2DB002D29476B540026E40F /* ConsumerARinMenuView.swift */,
 			);
@@ -709,7 +706,6 @@
 				F2930305291D8EFE0020E16C /* ConsumerSettingTab.swift in Sources */,
 				F2C14386291418180043CB32 /* TableInManageDiningRoomView.swift in Sources */,
 				F2DB0030294773D80026E40F /* ConsumerMenuSingleCard2View.swift in Sources */,
-				F205461129446EC8005EE1F9 /* ConsumerListMenuView.swift in Sources */,
 				F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */,
 				F29BC155291820CC00557956 /* ConsumerMenuSingleCardView.swift in Sources */,
 				F25E50CF292543D200F43ADF /* ChangeLocationView.swift in Sources */,

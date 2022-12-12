@@ -55,26 +55,26 @@ struct ConsumerMenuSingleCard2View: View {
     }
     
     func showDishPhoto() {
-        if menuViewModel.menuPhotos[menu.dishID] == nil {
-            let storageRef = Storage.storage().reference()
-            let fileRef = storageRef.child("imagesOfDishes/\(menu.dishPhotoURL).jpg")
-            fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-                if error == nil && data != nil {
-                    if let image = UIImage(data: data!) {
-                        DispatchQueue.main.async {
-                            print("załadowano menunr \(menu.dishID)")
-                            self.retrivedImage = image
-                        }
-                    }
-                }
-            }
-            ////        }
-        } else {
+//        if menuViewModel.menuPhotos[menu.dishID] == nil {
+//            let storageRef = Storage.storage().reference()
+//            let fileRef = storageRef.child("imagesOfDishes/\(menu.dishPhotoURL).jpg")
+//            fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+//                if error == nil && data != nil {
+//                    if let image = UIImage(data: data!) {
+//                        DispatchQueue.main.async {
+//                            print("załadowano menunr \(menu.dishID)")
+//                            self.retrivedImage = image
+//                        }
+//                    }
+//                }
+//            }
+//            ////        }
+//        } else {
             DispatchQueue.main.async {
                 self.retrivedImage = menuViewModel.menuPhotos[menu.dishID]
             }
             //        }
-        }
+//        }
     }
 }
 
