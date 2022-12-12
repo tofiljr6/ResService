@@ -22,7 +22,13 @@ struct DiningRoomView: View {
         NavigationView {
             ZStack {
                 ForEach(diningRoom.tablesInfo, id: \.id) { item in
-                    TableView(tableInfo: item, editMode: $editMode, diningRoom: diningRoom).environmentObject(menuModel).environmentObject(ordersInProgress).environmentObject(ordersInKitchen)
+                    if userModel.role == "boss" {
+                        TableView(tableInfo: item, editMode: $editMode, diningRoom: diningRoom, h: UIScreen.main.bounds.height * 0.85)
+                            .environmentObject(menuModel).environmentObject(ordersInProgress).environmentObject(ordersInKitchen)
+                    } else {
+                        TableView(tableInfo: item, editMode: $editMode, diningRoom: diningRoom)
+                            .environmentObject(menuModel).environmentObject(ordersInProgress).environmentObject(ordersInKitchen)
+                    }
                 }
             }.toolbar {
                 HStack{
