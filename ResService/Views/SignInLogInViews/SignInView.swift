@@ -67,7 +67,7 @@ struct SignInView: View {
                                 .foregroundStyle(.linearGradient(colors: [.green, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
                         ).foregroundColor(.white)
                 }.padding(.top)
-                    .offset(y: 100)
+                    .offset(y: 50)
                 
                 
                 Button {
@@ -76,7 +76,7 @@ struct SignInView: View {
                     Text("Are you new? Create an account")
                         .bold()
                 }.padding(.top)
-                .offset(y: 200)
+                .offset(y: 80)
             }.frame(width: 350)
                 .sheet(isPresented: $createUserTabIsShowing) {
                     RegisterView(createUserTabIsShowing : $createUserTabIsShowing)

@@ -27,7 +27,7 @@ struct RegisterView: View {
                 Text("Register")
                     .foregroundColor(.white)
                     .font(.system(size: 50, weight: .bold, design: .monospaced))
-                    .offset(x: -50, y: -150)
+                    .offset(x: -50, y: -135)
                 
                 VStack(spacing: 20) {
                     Group {
