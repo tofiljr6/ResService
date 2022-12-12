@@ -23,11 +23,11 @@ class Model {
         let filename = modelName + ".usdz"
         self.cancellable = ModelEntity.loadModelAsync(named: filename).sink(receiveCompletion: { loadCompletion in
             // handle out error
-            print("DEBUG: Unable to load modelEnityt for modelName \(self.modelName)")
+//            print("DEBUG: Unable to load modelEnityt for modelName \(self.modelName)")
         }, receiveValue: { modelEntity in
             // get our modelEntity
             self.modelEntity = modelEntity
-            print("DEBUG: Successfully loaded modelEnity for modelName \(self.modelName)")
+//            print("DEBUG: Successfully loaded modelEnity for modelName \(self.modelName)")
         })
     }
 }

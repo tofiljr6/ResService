@@ -32,8 +32,8 @@ struct ConsumerMenuSingleCard2View: View {
                     if menu.armodel != "" {
                         Image(systemName: "camera.viewfinder")
                             .foregroundColor(.yellow)
-                            .font(.title2)
-                            .offset(x: 75, y: -75)
+                            .font(.title)
+                            .offset(x: (340/2) - 25, y: -((340/2) - 25))
                     }
                     
                     if systemColorScheme == .light {
@@ -41,40 +41,50 @@ struct ConsumerMenuSingleCard2View: View {
                         Text(menu.dishName)
                             .foregroundColor(.black)
                             .font(.title)
-                            .offset(x: -125, y: 150)
+                            .offset(y: 180)
+                        Text(menu.dishPrice.description)
+                            .foregroundColor(.black)
+                            .offset(y: 200)
                     } else {
                         LinearGradient(gradient: Gradient(colors: [.black, .clear, .clear, .clear, .clear]), startPoint: .bottom, endPoint: .top)
                         Text(menu.dishName)
                             .foregroundColor(.white)
                             .font(.title)
-                            .offset(x: -125, y: 150)
+                            .offset(y: 180)
+                        Text(menu.dishPrice.description)
+                            .foregroundColor(.white)
+                            .offset(y: 200)
                     }
-                }
+                }.padding(.bottom, 50)
             }
         }.onAppear { showDishPhoto() }
     }
     
     func showDishPhoto() {
-//        if menuViewModel.menuPhotos[menu.dishID] == nil {
-//            let storageRef = Storage.storage().reference()
-//            let fileRef = storageRef.child("imagesOfDishes/\(menu.dishPhotoURL).jpg")
-//            fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-//                if error == nil && data != nil {
-//                    if let image = UIImage(data: data!) {
-//                        DispatchQueue.main.async {
-//                            print("załadowano menunr \(menu.dishID)")
-//                            self.retrivedImage = image
-//                        }
-//                    }
-//                }
-//            }
-//            ////        }
-//        } else {
+        if production == true {
+            if menuViewModel.menuPhotos[menu.dishID] == nil {
+                let storageRef = Storage.storage().reference()
+                let fileRef = storageRef.child("imagesOfDishes/\(menu.dishPhotoURL).jpg")
+                fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                    if error == nil && data != nil {
+                        if let image = UIImage(data: data!) {
+                            DispatchQueue.main.async {
+                                print("załadowano menunr \(menu.dishID)")
+                                self.retrivedImage = image
+                            }
+                        }
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.retrivedImage = menuViewModel.menuPhotos[menu.dishID]
+                }
+            }
+        } else {
             DispatchQueue.main.async {
                 self.retrivedImage = menuViewModel.menuPhotos[menu.dishID]
             }
-            //        }
-//        }
+        }
     }
 }
 

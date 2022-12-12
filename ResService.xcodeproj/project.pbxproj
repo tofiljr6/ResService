@@ -38,7 +38,6 @@
 		F25E50CF292543D200F43ADF /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50CE292543D100F43ADF /* ChangeLocationView.swift */; };
 		F25E50D2292597BB00F43ADF /* RestaurantLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */; };
 		F27A51EC293532ED00048E6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27A51EB293532ED00048E6B /* Main.storyboard */; };
-		F27A51EE2935330800048E6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A51ED2935330800048E6B /* ViewController.swift */; };
 		F27A51F42936226200048E6B /* ARUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A51F32936226200048E6B /* ARUIView.swift */; };
 		F27A51FF2936248000048E6B /* fender_stratocaster.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A51FB2936247F00048E6B /* fender_stratocaster.usdz */; };
 		F27A52002936248000048E6B /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A51FC2936247F00048E6B /* toy_biplane.usdz */; };
@@ -139,7 +138,6 @@
 		F25E50CE292543D100F43ADF /* ChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
 		F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantLocationViewModel.swift; sourceTree = "<group>"; };
 		F27A51EB293532ED00048E6B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F27A51ED2935330800048E6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F27A51F32936226200048E6B /* ARUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARUIView.swift; sourceTree = "<group>"; };
 		F27A51FB2936247F00048E6B /* fender_stratocaster.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fender_stratocaster.usdz; sourceTree = "<group>"; };
 		F27A51FC2936247F00048E6B /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 			children = (
 				F27A51E829352FF000048E6B /* Models */,
 				F27A51EB293532ED00048E6B /* Main.storyboard */,
-				F27A51ED2935330800048E6B /* ViewController.swift */,
 				F27A51F32936226200048E6B /* ARUIView.swift */,
 				F27A52032936465500048E6B /* ARModel.swift */,
 			);
@@ -687,7 +684,6 @@
 				F2D41C942912AEB2001B8230 /* OrderModel.swift in Sources */,
 				F2B7FDA4291AF32900840E68 /* ConsumerConfirmOrderView.swift in Sources */,
 				F23D0ADE290A9B0F005C84F3 /* MenuModel.swift in Sources */,
-				F27A51EE2935330800048E6B /* ViewController.swift in Sources */,
 				F29B1C2F2905C69500303829 /* UserModel.swift in Sources */,
 				F25E50B52921050D00F43ADF /* EmployeeDetailView.swift in Sources */,
 				F29B1C372908503800303829 /* MenuView.swift in Sources */,

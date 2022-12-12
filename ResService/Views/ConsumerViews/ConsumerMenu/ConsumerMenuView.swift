@@ -15,10 +15,10 @@ struct ConsumerMenuView: View {
         NavigationView {
             ScrollView {
                 ConsumerMenuSectionView(userOrderModel: userOrderModel, sectionName: "Starters", category: .starter).environmentObject(self.userOrderModel)
-                ConsumerARinMenuView()
                 ConsumerMenuSectionView(userOrderModel: userOrderModel, sectionName: "Main Course", category: .maincourse).environmentObject(self.userOrderModel)
+                ConsumerARinMenuView()
                 ConsumerMenuSectionView(userOrderModel: userOrderModel, sectionName: "Deserts", category: .deserts).environmentObject(self.userOrderModel)
-                ConsumerMenuSectionView(userOrderModel: userOrderModel, sectionName: "Drinks", category: .drinks).environmentObject(self.userOrderModel)
+                ConsumerMenuSectionView(userOrderModel: userOrderModel, sectionName: "Drinks", category: .spirits).environmentObject(self.userOrderModel)
             }.navigationTitle("Hello, \(userModel.username)")
                 .toolbar {
                     Button {
