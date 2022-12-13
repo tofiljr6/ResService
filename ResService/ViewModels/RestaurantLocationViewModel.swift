@@ -15,7 +15,6 @@ final class RestaurantLocationViewModel : ObservableObject {
     @Published var restaurantCoordinates : RestaurantLocModel
     
     init() {
-//        restaurantCoordinates = CLLocationCoordinate2D()
         self.restaurantCoordinates = RestaurantLocModel(id: UUID())
         
         

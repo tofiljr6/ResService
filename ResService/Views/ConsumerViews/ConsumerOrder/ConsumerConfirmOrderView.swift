@@ -13,11 +13,13 @@ struct ConsumerConfirmOrderView: View {
     @EnvironmentObject var diningRoomModel : DiningRoomViewModel
     @StateObject var orderInKitchen : OrdersInKitchenViewModel = OrdersInKitchenViewModel()
     @StateObject var locationManager = LocationManager()
+    @StateObject var restaurantModel : RestaurantLocationViewModel = RestaurantLocationViewModel()
     @Binding var shouldPopToRootView : Bool
     @Binding var tableID : Int
     @ObservedObject var userOrderModel : UserOrderModel
     @State var showSuccesfulResult : Bool = false
     @State var showFailResult : Bool = false
+    private let accuration : Double = 0.00002
     
     var body: some View {
         VStack {
@@ -32,18 +34,18 @@ struct ConsumerConfirmOrderView: View {
             }
             
             if locationManager.authUserLocationWithRestaurant() {
-                Image(systemName: "person.crop.circle.badge.checkmark")
-                    .foregroundColor(.green).font(.title)
+                HStack {
+                    Image(systemName: "person.crop.circle.badge.checkmark")
+                        .foregroundColor(.green).font(.title)
+                    Text("Location verification successful")
+                }
             } else {
-                Image(systemName: "person.crop.circle.badge.xmark")
-                    .foregroundColor(.red).font(.title)
+                HStack {
+                    Image(systemName: "person.crop.circle.badge.xmark")
+                        .foregroundColor(.red).font(.title)
+                    Text("Location verification unsuccessful")
+                }
             }
-
-            if let location = locationManager.location {
-                Text("Your location: \(location.latitude), \(location.longitude)")
-//                Text("Restaurant location: \(restaurantLocationManager.restaurantCoordinates.latitude), \(restaurantLocationManager.restaurantCoordinates.longitude)")
-            }
-            
             confirmButton
         }.navigationTitle("Payment")
     }
