@@ -18,7 +18,7 @@ struct ConsumerDiningRoomView: View {
     var manageTableViewHeight : CGFloat = UIScreen.main.bounds.height * 0.70
     
     var body: some View {
-        HStack {
+        ScrollView {
             VStack {
                 ZStack {
                     ForEach(diningRoom.tablesInfo, id: \.id) { item in
@@ -26,7 +26,7 @@ struct ConsumerDiningRoomView: View {
                             .environmentObject(userModel)
                     }
                 }.frame(width: manageTableViewWidth, height: manageTableViewHeight)
-            }
+            }.padding(.bottom, 50)
         }
     }
 }

@@ -37,12 +37,7 @@
 		F25E50C72923EDBD00F43ADF /* OrderPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */; };
 		F25E50CF292543D200F43ADF /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50CE292543D100F43ADF /* ChangeLocationView.swift */; };
 		F25E50D2292597BB00F43ADF /* RestaurantLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */; };
-		F27A51EC293532ED00048E6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27A51EB293532ED00048E6B /* Main.storyboard */; };
 		F27A51F42936226200048E6B /* ARUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A51F32936226200048E6B /* ARUIView.swift */; };
-		F27A51FF2936248000048E6B /* fender_stratocaster.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A51FB2936247F00048E6B /* fender_stratocaster.usdz */; };
-		F27A52002936248000048E6B /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A51FC2936247F00048E6B /* toy_biplane.usdz */; };
-		F27A52012936248000048E6B /* toy_robot_vintage.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A51FD2936248000048E6B /* toy_robot_vintage.usdz */; };
-		F27A52022936248000048E6B /* teapot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A51FE2936248000048E6B /* teapot.usdz */; };
 		F27A52042936465500048E6B /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A52032936465500048E6B /* ARModel.swift */; };
 		F27A52072936622E00048E6B /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = F27A52062936622E00048E6B /* FocusEntity */; };
 		F27A5209293676E300048E6B /* model1_medium.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A5208293676E300048E6B /* model1_medium.usdz */; };
@@ -81,6 +76,7 @@
 		F2D41C9A2912B1A2001B8230 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C992912B1A2001B8230 /* Const.swift */; };
 		F2DB002E29476B540026E40F /* ConsumerARinMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DB002D29476B540026E40F /* ConsumerARinMenuView.swift */; };
 		F2DB0030294773D80026E40F /* ConsumerMenuSingleCard2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DB002F294773D80026E40F /* ConsumerMenuSingleCard2View.swift */; };
+		F2DB0036294899BB0026E40F /* model3_medium.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F2DB0035294899BB0026E40F /* model3_medium.usdz */; };
 		F2EC9FC82912C99F00493A27 /* DiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FC72912C99F00493A27 /* DiningRoomView.swift */; };
 		F2EC9FCA2912CA1E00493A27 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FC92912CA1E00493A27 /* TableView.swift */; };
 		F2EC9FCC2913CEA700493A27 /* DiningRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */; };
@@ -137,12 +133,7 @@
 		F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPreviewView.swift; sourceTree = "<group>"; };
 		F25E50CE292543D100F43ADF /* ChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
 		F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantLocationViewModel.swift; sourceTree = "<group>"; };
-		F27A51EB293532ED00048E6B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F27A51F32936226200048E6B /* ARUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARUIView.swift; sourceTree = "<group>"; };
-		F27A51FB2936247F00048E6B /* fender_stratocaster.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fender_stratocaster.usdz; sourceTree = "<group>"; };
-		F27A51FC2936247F00048E6B /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
-		F27A51FD2936248000048E6B /* toy_robot_vintage.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_robot_vintage.usdz; sourceTree = "<group>"; };
-		F27A51FE2936248000048E6B /* teapot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = teapot.usdz; sourceTree = "<group>"; };
 		F27A52032936465500048E6B /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
 		F27A5208293676E300048E6B /* model1_medium.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = model1_medium.usdz; sourceTree = "<group>"; };
 		F2890609293A98E100254245 /* UserM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserM.swift; sourceTree = "<group>"; };
@@ -174,6 +165,7 @@
 		F2D41C992912B1A2001B8230 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		F2DB002D29476B540026E40F /* ConsumerARinMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerARinMenuView.swift; sourceTree = "<group>"; };
 		F2DB002F294773D80026E40F /* ConsumerMenuSingleCard2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerMenuSingleCard2View.swift; sourceTree = "<group>"; };
+		F2DB0035294899BB0026E40F /* model3_medium.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = model3_medium.usdz; sourceTree = "<group>"; };
 		F2EC9FC72912C99F00493A27 /* DiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningRoomView.swift; sourceTree = "<group>"; };
 		F2EC9FC92912CA1E00493A27 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningRoomViewModel.swift; sourceTree = "<group>"; };
@@ -411,7 +403,6 @@
 			isa = PBXGroup;
 			children = (
 				F27A51E829352FF000048E6B /* Models */,
-				F27A51EB293532ED00048E6B /* Main.storyboard */,
 				F27A51F32936226200048E6B /* ARUIView.swift */,
 				F27A52032936465500048E6B /* ARModel.swift */,
 			);
@@ -421,11 +412,8 @@
 		F27A51E829352FF000048E6B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F27A51FB2936247F00048E6B /* fender_stratocaster.usdz */,
-				F27A51FE2936248000048E6B /* teapot.usdz */,
-				F27A51FC2936247F00048E6B /* toy_biplane.usdz */,
-				F27A51FD2936248000048E6B /* toy_robot_vintage.usdz */,
 				F27A5208293676E300048E6B /* model1_medium.usdz */,
+				F2DB0035294899BB0026E40F /* model3_medium.usdz */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -616,14 +604,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F27A5209293676E300048E6B /* model1_medium.usdz in Resources */,
-				F27A52002936248000048E6B /* toy_biplane.usdz in Resources */,
+				F2DB0036294899BB0026E40F /* model3_medium.usdz in Resources */,
 				F253267F28F5E45A002F5F36 /* Preview Assets.xcassets in Resources */,
-				F27A51FF2936248000048E6B /* fender_stratocaster.usdz in Resources */,
 				F253267C28F5E45A002F5F36 /* Assets.xcassets in Resources */,
-				F27A52022936248000048E6B /* teapot.usdz in Resources */,
 				F25326A428F5E9E6002F5F36 /* GoogleService-Info.plist in Resources */,
-				F27A51EC293532ED00048E6B /* Main.storyboard in Resources */,
-				F27A52012936248000048E6B /* toy_robot_vintage.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

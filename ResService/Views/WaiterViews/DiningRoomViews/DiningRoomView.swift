@@ -17,19 +17,23 @@ struct DiningRoomView: View {
     @State var editMode : Bool = false
     @State var editModeInfo : String = "Edit"
     @State var notificationCenterIsShowing : Bool = false
-        
+
     var body: some View {
         NavigationView {
-            ZStack {
-                ForEach(diningRoom.tablesInfo, id: \.id) { item in
-                    if userModel.role == "boss" {
-                        TableView(tableInfo: item, editMode: $editMode, diningRoom: diningRoom, h: UIScreen.main.bounds.height * 0.85)
-                            .environmentObject(menuModel).environmentObject(ordersInProgress).environmentObject(ordersInKitchen)
-                    } else {
-                        TableView(tableInfo: item, editMode: $editMode, diningRoom: diningRoom)
-                            .environmentObject(menuModel).environmentObject(ordersInProgress).environmentObject(ordersInKitchen)
+            ScrollView {
+                VStack {
+                    ZStack {
+                        ForEach(diningRoom.tablesInfo, id: \.id) { item in
+                            if userModel.role == "boss" {
+                                TableView(tableInfo: item, editMode: $editMode, diningRoom: diningRoom, h: UIScreen.main.bounds.height * 0.85)
+                                    .environmentObject(menuModel).environmentObject(ordersInProgress).environmentObject(ordersInKitchen)
+                            } else {
+                                TableView(tableInfo: item, editMode: $editMode, diningRoom: diningRoom)
+                                    .environmentObject(menuModel).environmentObject(ordersInProgress).environmentObject(ordersInKitchen)
+                            }
+                        }
                     }
-                }
+                }.padding(.bottom, UIScreen.main.bounds.height)
             }.toolbar {
                 HStack{
                     if notificationViewModel.notificationArray.count != 0 {

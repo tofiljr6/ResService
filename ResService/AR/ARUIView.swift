@@ -12,24 +12,24 @@ import FocusEntity
 
 struct ARUIView: View {
     @State private var isPlacmentEnabled = false
-    @State private var selectedModel : Model?
-    @State private var modelConfirmedForPlacement : Model?
+    @State private var selectedModel : ARModel?
+    @State private var modelConfirmedForPlacement : ARModel?
     
-    private var models: [Model] = {
+    private var models: [ARModel] = {
         // dynamically get out model filenames
         let filemanager = FileManager.default
         
         guard let path = Bundle.main.resourcePath, let files = try? filemanager.contentsOfDirectory(atPath: path) else { return [] }
-        print(files)
-        var availableModels: [Model] = []
+//        print(files)
+        var availableModels: [ARModel] = []
         for file in files where file.hasSuffix("usdz") {
             let modelName = file.replacingOccurrences(of: ".usdz", with: "")
             
-            let model = Model(modelName: modelName)
+            let model = ARModel(modelName: modelName)
             
             availableModels.append(model)
         }
-        print(availableModels)
+//        print(availableModels)
 
         return availableModels
     }()
@@ -47,7 +47,7 @@ struct ARUIView: View {
 }
 
 struct ARViewContainer : UIViewRepresentable {
-    @Binding var modelConfirmedForPlacement : Model?
+    @Binding var modelConfirmedForPlacement : ARModel?
     
     func makeUIView(context: Context) -> some ARView {
         let arView = CustomARView(frame: .zero)// ARView(frame: .zero)
@@ -125,8 +125,8 @@ extension CustomARView : FEDelegate {
 
 struct PlacementButtonView : View {
     @Binding var isPlacmentEnabled : Bool
-    @Binding var selectedModel : Model?
-    @Binding var modelConfirmedForPlacemnet : Model?
+    @Binding var selectedModel : ARModel?
+    @Binding var modelConfirmedForPlacemnet : ARModel?
     
     var body: some View {
         HStack {
@@ -169,8 +169,8 @@ struct PlacementButtonView : View {
 
 struct ModelPickerView: View {
     @Binding var isPlacmentEnabled : Bool
-    @Binding var selectedModel : Model?
-    var models : [Model]
+    @Binding var selectedModel : ARModel?
+    var models : [ARModel]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -183,12 +183,23 @@ struct ModelPickerView: View {
                         self.selectedModel = self.models[index]
                     } label: {
 //                        Image(self.models[index].image)
-                        Image(uiImage: self.models[index].image)
-                            .resizable()
-                            .frame(height: 80)
-                            .aspectRatio(1/1, contentMode: .fit)
-                            .background(Color.white)
-                            .cornerRadius(5)
+                        if self.models[index].image != nil {
+                            Image(uiImage: self.models[index].image!)
+                                .resizable()
+                                .frame(height: 80)
+                                .aspectRatio(1/1, contentMode: .fit)
+                                .background(Color.white)
+                                .cornerRadius(5)
+                        } else {
+                            ZStack {
+                                Rectangle()
+                                    .frame(height: 80)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(5)
+                                Text(self.models[index].modelName)
+                                    .foregroundColor(.black)
+                            }
+                        }
                     }.buttonStyle(PlainButtonStyle())
                 }
             }
