@@ -25,4 +25,4 @@ let tableUniqueID = "tableUniqueID"
 let manageTableViewWidth  : CGFloat = UIScreen.main.bounds.width
 let manageTableViewHeight : CGFloat = UIScreen.main.bounds.height * 0.90
 
-let production : Bool = false
+let production : Bool = true

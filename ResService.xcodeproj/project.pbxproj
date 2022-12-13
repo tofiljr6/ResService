@@ -852,7 +852,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "You need the camera to display ArKit content";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ffssfd;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To place an order, you need permission to use your location for verification purposes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -884,7 +884,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "You need the camera to display ArKit content";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ffssfd;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To place an order, you need permission to use your location for verification purposes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
