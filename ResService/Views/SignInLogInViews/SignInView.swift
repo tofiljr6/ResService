@@ -90,26 +90,19 @@ struct SignInView: View {
 //                        }
 //                    }
 //                }
-            Group {
+            if loggin {
+                Group {
                     Button("boss") {
                         email = "boss@gmail.com"
                         password = "123456"
-//                        userModel.login(email: email, password: password)
                         login()
                     }.offset(x: -50, y: -60)
-//                    Button("waiter") {
-//                        email = "tester@gmail.com"
-//                        password = "123456"
-//                        login()
-//                    }.offset(x: 50, y: -60)
                     Button("consumer") {
                         email = "user1@gmail.com"
                         password = "123456"
-//                        userModel.login(email: email, password: password)
                         login()
-//                        UserDefaults.standard.removeObject(forKey: "userUIDey")
-//                        UserDefaults.standard.synchronize()
                     }.offset(x: 50, y: -60)
+                }
             }
             
             Group {
