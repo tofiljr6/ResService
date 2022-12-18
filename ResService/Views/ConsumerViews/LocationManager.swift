@@ -7,13 +7,14 @@
 
 import Foundation
 import CoreLocation
+import Firebase
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let manager = CLLocationManager()
-    private let accuration : Double = 0.00002
+    private let accuration : Double = 0.002
     
-    @Published var location: CLLocationCoordinate2D?
-    @Published var restaurantLocation : CLLocationCoordinate2D?
+    @Published var location: CLLocationCoordinate2D? // user location
+    @Published var restaurantCoordinates : RestaurantLocModel?
     
     override init() {
         print("Location Manager inizalization...")
@@ -22,16 +23,36 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         manager.requestWhenInUseAuthorization()
         
         // set defleaut location for restaurant
-        self.restaurantLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(37.785834), longitude: CLLocationDegrees(22.406417))
+        self.restaurantCoordinates = RestaurantLocModel(id: UUID())
         
-        // avoid warining with CCLocationManager
-        DispatchQueue.global().async {
-            if CLLocationManager.locationServicesEnabled() {
-                self.manager.delegate = self
-                self.manager.desiredAccuracy = kCLLocationAccuracyBest
-                self.manager.startUpdatingLocation()
+        
+        let refparam = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
+        refparam.observe(DataEventType.value, with: { snapshot in
+            guard let paramsinfo = snapshot.value as? [String: Any] else { return }
+            if paramsinfo["latitude"] != nil && paramsinfo["longitude"] != nil {
+                let lati = paramsinfo["latitude"]!  as! Float
+                let long = paramsinfo["longitude"]! as! Float
+                let latidegress = CLLocationDegrees(lati)
+                let longdegress = CLLocationDegrees(long)
+                if self.restaurantCoordinates != nil {
+                    self.restaurantCoordinates!.coordinate = CLLocationCoordinate2D(latitude: latidegress, longitude: longdegress)
+                }
             }
-        }
+            
+            if self.restaurantCoordinates != nil {
+                print(self.restaurantCoordinates!)
+            }
+            
+            
+            // avoid warining with CCLocationManager
+            DispatchQueue.global().async {
+                if CLLocationManager.locationServicesEnabled() {
+                    self.manager.delegate = self
+                    self.manager.desiredAccuracy = kCLLocationAccuracyBest
+                    self.manager.startUpdatingLocation()
+                }
+            }
+        })
     }
     
     func requestLocation() {
@@ -55,9 +76,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func authUserLocationWithRestaurant() -> Bool {
-        if self.location != nil && self.restaurantLocation != nil {
-            if abs(Double(self.location!.latitude) - Double(self.restaurantLocation!.latitude)) < accuration &&
-                abs(Double(self.location!.longitude) - Double(self.restaurantLocation!.longitude)) < accuration {
+        if self.location != nil && self.restaurantCoordinates != nil {
+            let latdiff = abs(Double(self.location!.latitude) - Double(self.restaurantCoordinates!.coordinate!.latitude))
+            let longdiff = abs(Double(self.location!.longitude) - Double(self.restaurantCoordinates!.coordinate!.longitude))
+            
+            if latdiff < accuration && longdiff < accuration {
                 return true
             }
         }

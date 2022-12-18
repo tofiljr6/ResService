@@ -37,7 +37,14 @@
 		F25E50C72923EDBD00F43ADF /* OrderPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */; };
 		F25E50CF292543D200F43ADF /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50CE292543D100F43ADF /* ChangeLocationView.swift */; };
 		F25E50D2292597BB00F43ADF /* RestaurantLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */; };
+		F27A51F42936226200048E6B /* ARUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A51F32936226200048E6B /* ARUIView.swift */; };
+		F27A52042936465500048E6B /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A52032936465500048E6B /* ARModel.swift */; };
+		F27A52072936622E00048E6B /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = F27A52062936622E00048E6B /* FocusEntity */; };
+		F27A5209293676E300048E6B /* model1_medium.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F27A5208293676E300048E6B /* model1_medium.usdz */; };
+		F289060A293A98E100254245 /* UserM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2890609293A98E100254245 /* UserM.swift */; };
+		F289060C293A9C6800254245 /* ResLocModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F289060B293A9C6800254245 /* ResLocModel.swift */; };
 		F2930305291D8EFE0020E16C /* ConsumerSettingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */; };
+		F2943B7C2941FAB900DA91A3 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2943B7B2941FAB900DA91A3 /* NotificationViewModel.swift */; };
 		F29B1C2F2905C69500303829 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C2E2905C69500303829 /* UserModel.swift */; };
 		F29B1C322908265700303829 /* BossMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C312908265700303829 /* BossMainView.swift */; };
 		F29B1C3529082A2F00303829 /* RoleEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29B1C3429082A2F00303829 /* RoleEnum.swift */; };
@@ -67,6 +74,9 @@
 		F2D41C962912AEC8001B8230 /* OrderCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C952912AEC8001B8230 /* OrderCardModel.swift */; };
 		F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */; };
 		F2D41C9A2912B1A2001B8230 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D41C992912B1A2001B8230 /* Const.swift */; };
+		F2DB002E29476B540026E40F /* ConsumerARinMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DB002D29476B540026E40F /* ConsumerARinMenuView.swift */; };
+		F2DB0030294773D80026E40F /* ConsumerMenuSingleCard2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DB002F294773D80026E40F /* ConsumerMenuSingleCard2View.swift */; };
+		F2DB0036294899BB0026E40F /* model3_medium.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F2DB0035294899BB0026E40F /* model3_medium.usdz */; };
 		F2EC9FC82912C99F00493A27 /* DiningRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FC72912C99F00493A27 /* DiningRoomView.swift */; };
 		F2EC9FCA2912CA1E00493A27 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FC92912CA1E00493A27 /* TableView.swift */; };
 		F2EC9FCC2913CEA700493A27 /* DiningRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */; };
@@ -123,7 +133,13 @@
 		F25E50C62923EDBD00F43ADF /* OrderPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPreviewView.swift; sourceTree = "<group>"; };
 		F25E50CE292543D100F43ADF /* ChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
 		F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantLocationViewModel.swift; sourceTree = "<group>"; };
+		F27A51F32936226200048E6B /* ARUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARUIView.swift; sourceTree = "<group>"; };
+		F27A52032936465500048E6B /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
+		F27A5208293676E300048E6B /* model1_medium.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = model1_medium.usdz; sourceTree = "<group>"; };
+		F2890609293A98E100254245 /* UserM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserM.swift; sourceTree = "<group>"; };
+		F289060B293A9C6800254245 /* ResLocModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResLocModel.swift; sourceTree = "<group>"; };
 		F2930304291D8EFE0020E16C /* ConsumerSettingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerSettingTab.swift; sourceTree = "<group>"; };
+		F2943B7B2941FAB900DA91A3 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		F29B1C2E2905C69500303829 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F29B1C312908265700303829 /* BossMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossMainView.swift; sourceTree = "<group>"; };
 		F29B1C3429082A2F00303829 /* RoleEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleEnum.swift; sourceTree = "<group>"; };
@@ -147,6 +163,9 @@
 		F2D41C952912AEC8001B8230 /* OrderCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCardModel.swift; sourceTree = "<group>"; };
 		F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionAndItemModel.swift; sourceTree = "<group>"; };
 		F2D41C992912B1A2001B8230 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		F2DB002D29476B540026E40F /* ConsumerARinMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerARinMenuView.swift; sourceTree = "<group>"; };
+		F2DB002F294773D80026E40F /* ConsumerMenuSingleCard2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerMenuSingleCard2View.swift; sourceTree = "<group>"; };
+		F2DB0035294899BB0026E40F /* model3_medium.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = model3_medium.usdz; sourceTree = "<group>"; };
 		F2EC9FC72912C99F00493A27 /* DiningRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningRoomView.swift; sourceTree = "<group>"; };
 		F2EC9FC92912CA1E00493A27 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		F2EC9FCB2913CEA700493A27 /* DiningRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiningRoomViewModel.swift; sourceTree = "<group>"; };
@@ -159,6 +178,7 @@
 			files = (
 				F2B7FD562919700700840E68 /* FirebaseAnalytics in Frameworks */,
 				F2B7FD5A2919700700840E68 /* FirebaseAuth in Frameworks */,
+				F27A52072936622E00048E6B /* FocusEntity in Frameworks */,
 				F2B7FD5C2919700700840E68 /* FirebaseDatabase in Frameworks */,
 				F2B7FD5E2919700700840E68 /* FirebaseFirestore in Frameworks */,
 				F2B7FD582919700700840E68 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
@@ -183,6 +203,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F205461229446EEA005EE1F9 /* CardViews */ = {
+			isa = PBXGroup;
+			children = (
+				F2DB002F294773D80026E40F /* ConsumerMenuSingleCard2View.swift */,
+				F29BC154291820CC00557956 /* ConsumerMenuSingleCardView.swift */,
+			);
+			path = CardViews;
+			sourceTree = "<group>";
+		};
 		F2091E6E2916F6CC00FFAFD0 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +262,8 @@
 				F2D41C952912AEC8001B8230 /* OrderCardModel.swift */,
 				F2D41C972912AF3A001B8230 /* MenuSectionAndItemModel.swift */,
 				F227C2182916992D00184384 /* TableModel.swift */,
+				F2890609293A98E100254245 /* UserM.swift */,
+				F289060B293A9C6800254245 /* ResLocModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,6 +299,7 @@
 		F253267628F5E45A002F5F36 /* ResService */ = {
 			isa = PBXGroup;
 			children = (
+				F27A51E729352C6400048E6B /* AR */,
 				F29BC14E2917F3A500557956 /* ViewModels */,
 				F2091E6E2916F6CC00FFAFD0 /* Protocols */,
 				F23D0ADC290A9AE7005C84F3 /* Model */,
@@ -339,11 +371,12 @@
 		F25E50B6292274B000F43ADF /* ConsumerMenu */ = {
 			isa = PBXGroup;
 			children = (
+				F205461229446EEA005EE1F9 /* CardViews */,
 				F29BC15229181E8000557956 /* ConsumerMainView.swift */,
-				F29BC154291820CC00557956 /* ConsumerMenuSingleCardView.swift */,
-				F29BC1562918256400557956 /* ConsumerMenuView.swift */,
 				F29BC1582918260200557956 /* ConsumerMenuSectionView.swift */,
+				F29BC1562918256400557956 /* ConsumerMenuView.swift */,
 				F2ABE0B129183735005D4EBD /* ConsumerMenuDetailView.swift */,
+				F2DB002D29476B540026E40F /* ConsumerARinMenuView.swift */,
 			);
 			path = ConsumerMenu;
 			sourceTree = "<group>";
@@ -364,6 +397,25 @@
 			children = (
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		F27A51E729352C6400048E6B /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				F27A51E829352FF000048E6B /* Models */,
+				F27A51F32936226200048E6B /* ARUIView.swift */,
+				F27A52032936465500048E6B /* ARModel.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		F27A51E829352FF000048E6B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F27A5208293676E300048E6B /* model1_medium.usdz */,
+				F2DB0035294899BB0026E40F /* model3_medium.usdz */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F29B1C302908264500303829 /* BossViews */ = {
@@ -400,6 +452,7 @@
 				F29B1C2E2905C69500303829 /* UserModel.swift */,
 				F2401994291E863800ADC818 /* UserOrderModel.swift */,
 				F25E50D1292597BB00F43ADF /* RestaurantLocationViewModel.swift */,
+				F2943B7B2941FAB900DA91A3 /* NotificationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -456,6 +509,7 @@
 				F2B7FD5B2919700700840E68 /* FirebaseDatabase */,
 				F2B7FD5D2919700700840E68 /* FirebaseFirestore */,
 				F2B7FD5F2919700700840E68 /* FirebaseStorage */,
+				F27A52062936622E00048E6B /* FocusEntity */,
 			);
 			productName = ResService;
 			productReference = F253267428F5E45A002F5F36 /* ResService.app */;
@@ -531,6 +585,7 @@
 			mainGroup = F253266B28F5E45A002F5F36;
 			packageReferences = (
 				F2B7FD542919700700840E68 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F27A52052936622E00048E6B /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = F253267528F5E45A002F5F36 /* Products */;
 			projectDirPath = "";
@@ -548,6 +603,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F27A5209293676E300048E6B /* model1_medium.usdz in Resources */,
+				F2DB0036294899BB0026E40F /* model3_medium.usdz in Resources */,
 				F253267F28F5E45A002F5F36 /* Preview Assets.xcassets in Resources */,
 				F253267C28F5E45A002F5F36 /* Assets.xcassets in Resources */,
 				F25326A428F5E9E6002F5F36 /* GoogleService-Info.plist in Resources */,
@@ -581,12 +638,14 @@
 				F2EC9FCC2913CEA700493A27 /* DiningRoomViewModel.swift in Sources */,
 				F29B1C3529082A2F00303829 /* RoleEnum.swift in Sources */,
 				F29BC15329181E8000557956 /* ConsumerMainView.swift in Sources */,
+				F27A52042936465500048E6B /* ARModel.swift in Sources */,
 				F25E50C72923EDBD00F43ADF /* OrderPreviewView.swift in Sources */,
 				F25326B028F7290D002F5F36 /* DishView.swift in Sources */,
 				F253267A28F5E45A002F5F36 /* ContentView.swift in Sources */,
 				F23D0ADB2909A287005C84F3 /* MenuViewModel.swift in Sources */,
 				F2D41C9A2912B1A2001B8230 /* Const.swift in Sources */,
 				F201A50028FAB28F0023FAE8 /* SelectTableView.swift in Sources */,
+				F289060C293A9C6800254245 /* ResLocModel.swift in Sources */,
 				F2EC9FCA2912CA1E00493A27 /* TableView.swift in Sources */,
 				F2B7FDA2291AF03800840E68 /* ConsumerTableView.swift in Sources */,
 				F25326B528F87358002F5F36 /* FunctionBoxView.swift in Sources */,
@@ -612,20 +671,25 @@
 				F29B1C2F2905C69500303829 /* UserModel.swift in Sources */,
 				F25E50B52921050D00F43ADF /* EmployeeDetailView.swift in Sources */,
 				F29B1C372908503800303829 /* MenuView.swift in Sources */,
+				F2DB002E29476B540026E40F /* ConsumerARinMenuView.swift in Sources */,
 				F2B7FDA0291AEF6100840E68 /* ConsumerDiningRoomView.swift in Sources */,
 				F2401997291E955500ADC818 /* RegisterView.swift in Sources */,
 				F240199E29200CE400ADC818 /* AddNewWorkerView.swift in Sources */,
 				F29BC1572918256400557956 /* ConsumerMenuView.swift in Sources */,
+				F289060A293A98E100254245 /* UserM.swift in Sources */,
 				F25326B228F82A71002F5F36 /* KitchenView.swift in Sources */,
+				F27A51F42936226200048E6B /* ARUIView.swift in Sources */,
 				F253267828F5E45A002F5F36 /* ResServiceApp.swift in Sources */,
 				F2EC9FC82912C99F00493A27 /* DiningRoomView.swift in Sources */,
 				F235591C2903F52A002AEF80 /* OrdersInKitchenViewModel.swift in Sources */,
 				F237CB9529055E5D003C1007 /* SignInView.swift in Sources */,
 				F2930305291D8EFE0020E16C /* ConsumerSettingTab.swift in Sources */,
 				F2C14386291418180043CB32 /* TableInManageDiningRoomView.swift in Sources */,
+				F2DB0030294773D80026E40F /* ConsumerMenuSingleCard2View.swift in Sources */,
 				F2D41C982912AF3A001B8230 /* MenuSectionAndItemModel.swift in Sources */,
 				F29BC155291820CC00557956 /* ConsumerMenuSingleCardView.swift in Sources */,
 				F25E50CF292543D200F43ADF /* ChangeLocationView.swift in Sources */,
+				F2943B7C2941FAB900DA91A3 /* NotificationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,13 +851,14 @@
 				DEVELOPMENT_TEAM = YKV2G5YRAW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ffssfd;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You need the camera to display ArKit content";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To place an order, you need permission to use your location for verification purposes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -818,13 +883,14 @@
 				DEVELOPMENT_TEAM = YKV2G5YRAW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ffssfd;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You need the camera to display ArKit content";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To place an order, you need permission to use your location for verification purposes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -956,6 +1022,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F27A52052936622E00048E6B /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
 		F2B7FD542919700700840E68 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -967,6 +1041,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F27A52062936622E00048E6B /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F27A52052936622E00048E6B /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
 		F2B7FD552919700700840E68 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F2B7FD542919700700840E68 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

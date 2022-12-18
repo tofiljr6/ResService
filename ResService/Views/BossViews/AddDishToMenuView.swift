@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseStorage
-import FirebaseFirestore
+import FirebaseFirestore // TODO: delete???
 
 enum DishCategory : String, CaseIterable {
     case starter = "starter"
@@ -25,7 +25,7 @@ struct AddDishToMenuView: View {
     @State private var newDishPrice : String = ""
     @State private var newDishDescription : String = ""
     @State private var newDishProducts : String = ""
-    @State private var newDishCategory : DishCategory = DishCategory.starter
+    @State private var newDishCategory : DishCategory = DishCategory.deserts
     
     @State var selectedImage : UIImage?
     @State var isPickerShowing : Bool = false
@@ -47,17 +47,26 @@ struct AddDishToMenuView: View {
                     Image(uiImage: selectedImage!)
                         .resizable()
                         .frame(width: 250, height: 250)
-                } else {
-                    Image(systemName: "photo")
-                        .resizable()
-                        .frame(width: 250, height: 250)
-                        .scaledToFit()
+                        .cornerRadius(5)
                 }
+//                else {
+//                    Image(systemName: "photo")
+//                        .resizable()
+//                        .frame(width: 250, height: 250)
+//                        .cornerRadius(5)
+//                        .scaledToFit()
+//                }
                 
                 Button {
                     isPickerShowing = true
                 } label: {
-                    Text("Select a  photo")
+                    ZStack {
+                        Rectangle()
+                            .cornerRadius(5)
+                            .frame(height: 50)
+                        Text("Select a  photo")
+                            .foregroundColor(.white)
+                    }
                 }
                 
                 Divider()
@@ -76,27 +85,29 @@ struct AddDishToMenuView: View {
             }
             
             Group {
-                Picker("Pick a category of new dish", selection: $newDishCategory) {
-                    ForEach(DishCategory.allCases, id: \.self) { item in
-                        Text(item.rawValue)
-                    }
-                }
-                
                 TextField("Name", text: $newDishName)
-                    .textFieldStyle(.plain)
+                    .textFieldStyle(.roundedBorder)
                 
                 TextField("Price", text: $newDishPrice)
-                    .textFieldStyle(.plain)
+                    .textFieldStyle(.roundedBorder)
                     .keyboardType(.decimalPad)
                 
                 TextField("Description", text: $newDishDescription)
-                    .textFieldStyle(.plain)
-                    .frame(height: 120)
+                    .textFieldStyle(.roundedBorder)
                 
-                TextField("Products inside", text: $newDishProducts)
-                    .textFieldStyle(.plain)
-                    .frame(height: 120)
-            }.padding().border(.blue)
+                VStack {
+                    Text("Select the type of dish for a new dish to be added to the menu")
+                        .font(.callout).multilineTextAlignment(.leading)
+                    
+                    Picker("Pick a category of new dish", selection: $newDishCategory) {
+                        ForEach(DishCategory.allCases, id: \.self) { item in
+                            Text(item.rawValue)
+                        }
+                    }.pickerStyle(WheelPickerStyle())
+                    .clipped()
+                    .labelsHidden()
+                }
+            }
             
             Spacer()
             
@@ -123,15 +134,14 @@ struct AddDishToMenuView: View {
                     print("bład")
                 }
             } label: {
-                Text("Save")
-                    .bold()
-                    .frame(width: 200, height: 40)
-                    .background(.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding(.top)
+                ZStack {
+                    Rectangle()
+                        .cornerRadius(5)
+                        .frame(height: 50)
+                    Text("Save")
+                        .foregroundColor(.white)
+                }
             }
-            
             Spacer()
         }.padding()
     }

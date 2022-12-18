@@ -62,11 +62,11 @@ struct BossMainView: View {
         
         switch val {
         case .some(.previewKitchen):
-            return AnyView(KitchenView().navigationBarTitleDisplayMode(.inline)
+            return AnyView(KitchenView().navigationBarTitleDisplayMode(.inline).navigationTitle("Kitchen")
                 .environmentObject(ordersInProgress)
                 .environmentObject(ordersInKitchen))
         case .some(.previewWaiter):
-            return AnyView(DiningRoomView().navigationBarTitleDisplayMode(.inline)
+            return AnyView(DiningRoomView().navigationBarTitleDisplayMode(.inline).navigationTitle("Waiter")
                 .environmentObject(userModel)
                 .environmentObject(diningRoom)
                 .environmentObject(menu)

@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseCore
+import UIKit
 
 @main
 struct ResServiceApp: App {
@@ -18,6 +19,17 @@ struct ResServiceApp: App {
     var body: some Scene {
         WindowGroup {
             SignInView()
+//            storyBoardView().ignoresSafeArea()
+//            ARUIView()
         }
     }
+}
+
+struct storyBoardView : UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(identifier: "Home")
+        return controller
+    }
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }

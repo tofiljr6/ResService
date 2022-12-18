@@ -16,6 +16,7 @@ let diningRoomCollectionName = "diningRoomCollection"
 let menuCollectionName = "menuCollection"
 let paramCollectionName = "param"
 let userCollectionName = "users"
+let notificationCollectionName = "notificationCollection"
 
 let paramUniqueOrderNumber = "noorder"
 let menuUniqueName = "menuUniqueID"
@@ -23,3 +24,6 @@ let tableUniqueID = "tableUniqueID"
 
 let manageTableViewWidth  : CGFloat = UIScreen.main.bounds.width
 let manageTableViewHeight : CGFloat = UIScreen.main.bounds.height * 0.90
+
+let production : Bool = true
+let loggin : Bool = false

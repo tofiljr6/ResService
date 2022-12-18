@@ -45,6 +45,7 @@ struct SignInView: View {
                 Group {
                     TextField("Email", text: $email)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .textInputAutocapitalization(.never)
                     
                     Rectangle()
                         .frame(width: 350, height: 1)
@@ -52,6 +53,7 @@ struct SignInView: View {
                     
                     SecureField("Password", text: $password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .textInputAutocapitalization(.never)
                 }.offset(y: 70)
                 
                 Button {
@@ -65,7 +67,7 @@ struct SignInView: View {
                                 .foregroundStyle(.linearGradient(colors: [.green, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
                         ).foregroundColor(.white)
                 }.padding(.top)
-                    .offset(y: 100)
+                    .offset(y: 50)
                 
                 
                 Button {
@@ -74,7 +76,7 @@ struct SignInView: View {
                     Text("Are you new? Create an account")
                         .bold()
                 }.padding(.top)
-                .offset(y: 200)
+                .offset(y: 80)
             }.frame(width: 350)
                 .sheet(isPresented: $createUserTabIsShowing) {
                     RegisterView(createUserTabIsShowing : $createUserTabIsShowing)
@@ -88,26 +90,19 @@ struct SignInView: View {
 //                        }
 //                    }
 //                }
-            Group {
+            if loggin {
+                Group {
                     Button("boss") {
                         email = "boss@gmail.com"
                         password = "123456"
-//                        userModel.login(email: email, password: password)
                         login()
                     }.offset(x: -50, y: -60)
-//                    Button("waiter") {
-//                        email = "tester@gmail.com"
-//                        password = "123456"
-//                        login()
-//                    }.offset(x: 50, y: -60)
                     Button("consumer") {
                         email = "user1@gmail.com"
                         password = "123456"
-//                        userModel.login(email: email, password: password)
                         login()
-//                        UserDefaults.standard.removeObject(forKey: "userUIDey")
-//                        UserDefaults.standard.synchronize()
                     }.offset(x: 50, y: -60)
+                }
             }
             
             Group {

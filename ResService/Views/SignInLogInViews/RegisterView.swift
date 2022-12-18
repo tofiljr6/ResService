@@ -27,7 +27,7 @@ struct RegisterView: View {
                 Text("Register")
                     .foregroundColor(.white)
                     .font(.system(size: 50, weight: .bold, design: .monospaced))
-                    .offset(x: -50, y: -150)
+                    .offset(x: -50, y: -135)
                 
                 VStack(spacing: 20) {
                     Group {
@@ -40,6 +40,7 @@ struct RegisterView: View {
                         
                         TextField("Email", text: $email)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .textInputAutocapitalization(.never)
                         
                         Rectangle()
                             .frame(width: 350, height: 1)
@@ -47,6 +48,7 @@ struct RegisterView: View {
                         
                         SecureField("Password", text: $password)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .textInputAutocapitalization(.never)
                         
                         
                         Button {

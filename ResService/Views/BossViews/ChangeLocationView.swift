@@ -25,8 +25,11 @@ struct MapView: UIViewRepresentable {
         mapView.delegate = context.coordinator
         
         // restauranc Loc
-        restaurantLOC.coordinate = restaurantLocationModel.restaurantCoordinates
-        self.mapView.addAnnotation(self.restaurantLOC)
+        if self.restaurantLocationModel.restaurantCoordinates.coordinate != nil {
+            restaurantLOC.coordinate = restaurantLocationModel.restaurantCoordinates.coordinate!
+            self.mapView.addAnnotation(self.restaurantLOC)
+        }
+        
         return mapView
     }
     

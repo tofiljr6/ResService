@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct UserOrderM  { // TODO: implement this
+    var listofOrder : [Int : Int]
+    var orderedList : [Int : Int]
+}
+
 class UserOrderModel : ObservableObject {
     @Published var listofOrder : [Int : Int] = [:]
     @Published var orderedList : [Int : Int] = [:]

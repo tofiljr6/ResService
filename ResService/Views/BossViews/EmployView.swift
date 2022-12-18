@@ -35,7 +35,7 @@ struct EmployView: View {
                 Image(systemName: "person.fill.badge.plus").foregroundColor(.green)
             }
         }.sheet(isPresented: $workerDetailsIsShowing) {
-            AddNewWorkerView().environmentObject(employViewModel)
+            AddNewWorkerView().environmentObject(employViewModel).presentationDetents([.fraction(0.70)])
         }
     }
 }

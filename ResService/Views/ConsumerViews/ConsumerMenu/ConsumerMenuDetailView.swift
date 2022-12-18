@@ -10,65 +10,80 @@ import SwiftUI
 struct ConsumerMenuDetailView: View {
     @ObservedObject var userModel : UserOrderModel
     @EnvironmentObject var menuViewModel : MenuViewModel
+    @Environment(\.colorScheme) var systemColorScheme
+    @State var isARshowing : Bool = false
     
     @State var dishAmount : Int = 0
     
     var dishDetail : Menu
-        
-    var body: some View {
+    
+    var body : some View {
         ScrollView {
             if menuViewModel.menuPhotos[dishDetail.dishID] != nil {
-                Image(uiImage: menuViewModel.menuPhotos[dishDetail.dishID]!)
-                    .resizable()
-                    .frame(height: 250)
-                    .scaledToFit()
+                ZStack {
+                    Image(uiImage: menuViewModel.menuPhotos[dishDetail.dishID]!)
+                        .resizable()
+                        .frame(height: 300)
+                        .scaledToFit()
+                        .ignoresSafeArea()
+                    if systemColorScheme == .light {
+                        LinearGradient(gradient: Gradient(colors: [.white, .clear, .clear, .clear, .clear]), startPoint: .top, endPoint: .bottom)
+                    } else {
+                        LinearGradient(gradient: Gradient(colors: [.black, .clear, .clear, .clear, .clear]), startPoint: .top, endPoint: .bottom)
+                    }
+                }
             } else {
-                Image(systemName: "xmark.octagon.fill")
-                    .resizable()
-                    .frame(height: 250)
+                Rectangle()
+                    .frame(height: 300)
                     .scaledToFit()
+                    .ignoresSafeArea()
             }
             
-            Spacer()
-            
             HStack {
-                Text(dishDetail.dishName)
-                    .font(.title)
+                Text("Price: \(dishDetail.dishPrice.description)")
+                    .font(.headline)
+                    .padding(.leading)
+                
                 Spacer()
-                Text(dishDetail.dishPrice.description)
-                    .font(.title)
-                    .foregroundColor(.gray)
-            }.padding()
-            
-            HStack {
-                Button(action: {
-                    // decresae dishes amount in order
-                    dishAmount -= 1
-                    userModel.addToOrder(menu: dishDetail.dishID, amount: dishAmount)
-                    if dishAmount <= 0 {
-                        dishAmount = 0
-                        userModel.deleteOrder(menu: dishDetail.dishID)
-                    }
-                }){ Image(systemName: "minus.circle").font(.title) }
                 
-                // display current amount of dishes
-                Text(userModel.getAmountToOrder(menu: dishDetail.dishID).description)
-                
-                Button(action: {
-                    // increase dishes amount in order
-                    dishAmount += 1
-                    userModel.addToOrder(menu: dishDetail.dishID, amount: dishAmount)
-                }){ Image(systemName: "plus.circle").font(.title) }
+                HStack{
+                    Button(action: {
+                        // decresae dishes amount in order
+                        dishAmount -= 1
+                        userModel.addToOrder(menu: dishDetail.dishID, amount: dishAmount)
+                        if dishAmount <= 0 {
+                            dishAmount = 0
+                            userModel.deleteOrder(menu: dishDetail.dishID)
+                        }
+                    }){ Image(systemName: "minus.circle").font(.title) }
+
+                    // display current amount of dishes
+                    Text(userModel.getAmountToOrder(menu: dishDetail.dishID).description)
+
+                    Button(action: {
+                        // increase dishes amount in order
+                        dishAmount += 1
+                        userModel.addToOrder(menu: dishDetail.dishID, amount: dishAmount)
+                    }){ Image(systemName: "plus.circle").font(.title) }
+                }.padding(.trailing)
             }
             
             Divider()
-            
-            Text(dishDetail.dishCategory)
             
             Text(dishDetail.dishDescription)
                 .padding()
                 .multilineTextAlignment(.leading)
             
+        }.navigationTitle(dishDetail.dishName)
+        .toolbar{
+            if dishDetail.armodel != "" {
+                NavigationLink(destination: ARUIView()) {
+                    Image(systemName: "camera.viewfinder")
+                        .foregroundColor(.yellow)
+                        .font(.title2)
+                        .padding(.leading)
+                }.navigationBarTitle(Text("Visualization"), displayMode: .inline)
+            }
         }
     }
 }
@@ -81,7 +96,8 @@ struct ConsumerMenuDetailView_Previews: PreviewProvider {
                                         dishProducts: "da",
                                         dishOrderInMenu: 1,
                                         dishCategory: "starter",
-                                        dishPhotoURL: UUID().uuidString)
+                                        dishPhotoURL: UUID().uuidString,
+                                        armodel: "armodel")
     static var menuViewModel : MenuViewModel = MenuViewModel()
     static var userOrderModel : UserOrderModel = UserOrderModel()
 

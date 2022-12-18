@@ -11,6 +11,7 @@ struct KitchenView: View {
     @EnvironmentObject var ordersInProgress : OrdersInProgressViewModel
     @EnvironmentObject var ordersInKitchen : OrdersInKitchenViewModel
     @EnvironmentObject var userModel : UserModel
+    @EnvironmentObject var notificationModel : NotificationViewModel
     
     var columns = [
         GridItem(.flexible(), spacing: 2),
@@ -21,6 +22,17 @@ struct KitchenView: View {
     var body: some View {
         if UIDevice.current.userInterfaceIdiom == .phone {
             VStack {
+                if userModel.role == "kitchen" {
+                    HStack{
+                        Spacer()
+                        Button {
+                            userModel.signout()
+                        } label: {
+                            Image(systemName: "person.badge.minus")
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
                 ScrollView {
                     ForEach(ordersInKitchen.P_ordersToDo, id: \.id) { item in
                         OrderCardView(orderInfo: item.info,dishes: item.dishes, color: .green)
@@ -29,12 +41,16 @@ struct KitchenView: View {
                                 print("Czekam 4 sekundy")
                                 Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { timer in
                                     ordersInKitchen.removeOrderFromList(order: item.info.orderNumber)
+                                    notificationModel.add(orderNumber: item.info.orderNumber, tableName: item.info.table)
                                     print("usunięty")
                                 }
                             }
                     }
                 }
             }.padding()
+            .fullScreenCover(isPresented: $userModel.userIsLoggedIn, content: {
+                SignInView()
+            })
         } else { // == .pad
             VStack(spacing: 20) {
                 HStack {
@@ -55,6 +71,7 @@ struct KitchenView: View {
                                 print("Do usunięcia zamówienie numer \(item.info.orderNumber) z godziny\(item.info.data)")
                                 print("Czekam 4 sekundy")
                                 Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { timer in
+                                    notificationModel.add(orderNumber: item.info.orderNumber, tableName: item.info.table)
                                     ordersInKitchen.removeOrderFromList(order: item.info.orderNumber)
                                     print("usunięty")
                                 }

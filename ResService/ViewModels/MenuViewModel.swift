@@ -50,24 +50,25 @@ final class MenuViewModel : ObservableObject {
             
             // retive all menus photos
             for menuDish in self.menuDishes {
-                
-//                let storageRef = Storage.storage().reference()
-//                let fileRef = storageRef.child("imagesOfDishes/\(menuDish.dishPhotoURL).jpg")
-//                fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-//                    if error == nil && data != nil {
-//                        if let image = UIImage(data: data!) {
-//                            DispatchQueue.main.async {
-//                                self.menuPhotos[menuDish.dishID] = image
-//                                print("Załadowano \(menuDish.dishID)")
-//                            }
-//                        }
-//                    }
-//                }
-                // only for testing to reduce using fb storage
-                let uiimageTestMode = ["photo", "photo.fill", "photo.on.rectangle", "text.below.photo"]
-                DispatchQueue.main.async {
-                    self.menuPhotos[menuDish.dishID] = UIImage(systemName: uiimageTestMode.randomElement()!)
-//                    print("\(menuDish.dishID) załadowano")
+                if production == true {
+                    let storageRef = Storage.storage().reference()
+                    let fileRef = storageRef.child("imagesOfDishes/\(menuDish.dishPhotoURL).jpg")
+                    fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                        if error == nil && data != nil {
+                            if let image = UIImage(data: data!) {
+                                DispatchQueue.main.async {
+                                    self.menuPhotos[menuDish.dishID] = image
+                                    print("Załadowano \(menuDish.dishID)")
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    // only for testing to reduce using fb storage
+                    let uiimageTestMode = ["photo", "photo.fill", "photo.on.rectangle", "text.below.photo"]
+                    DispatchQueue.main.async {
+                        self.menuPhotos[menuDish.dishID] = UIImage(systemName: uiimageTestMode.randomElement()!)
+                    }
                 }
             }
         })
@@ -116,6 +117,7 @@ final class MenuViewModel : ObservableObject {
         let ref = Database.database(url: dbURLConnection).reference().child(menuCollectionName)
         
         let newDish = [
+            "armodel": "",
             "dishID" : self.uniqueNewDishID,
             "dishName" : newDishName,
             "dishPrice" : newDishPrice,

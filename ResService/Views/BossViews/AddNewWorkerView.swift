@@ -20,33 +20,44 @@ struct AddNewWorkerView: View {
     @State private var role : RoleCategory = RoleCategory.waiter
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack() {
+            HStack {
+                Text("Add new employee")
+                    .font(.title)
+                    .bold()
+//                    .offset(y: -45)
+                Spacer()
+            }
+            
+            HStack {
+                Text("To add a new employee to your team you must enter their exact email address. Then, set what role the newly added employee is to play.")
+                    .font(.callout).multilineTextAlignment(.leading)
+            }
             
             
             HStack {
                 TextField("Email", text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                Button("Find") {
-                    // search
-                }
             }
-            
-            Text("To add a new employee to your team you must enter their exact email address.")
-                .font(.caption).multilineTextAlignment(.leading)
             
             Picker("Pick a category of new dish", selection: $role) {
                 ForEach(RoleCategory.allCases, id: \.self) { item in
                     Text(item.rawValue)
                 }
-            }.pickerStyle(.menu)
+            }.pickerStyle(WheelPickerStyle())
             
-            Text("Set what role the newly added employee is to play")
-                .font(.caption).multilineTextAlignment(.leading)
-            
-            Button("Add") {
-                print("click")
+            Button {
                 employViewModel.employ(email: email, role: role)
+            } label: {
+                ZStack {
+                    Rectangle()
+                        .cornerRadius(5)
+                        .frame(height: 50)
+                    Text("Add")
+                        .foregroundColor(.white)
+                }
             }
+
             
             
         }.navigationTitle("Employ")
@@ -56,6 +67,9 @@ struct AddNewWorkerView: View {
 
 struct AddNewWorkerView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewWorkerView().environmentObject(EmployViewModel())
+        Text("Background")
+            .sheet(isPresented: .constant(true)) {
+                AddNewWorkerView().environmentObject(EmployViewModel()).presentationDetents([.fraction(0.70)])
+            }
     }
 }

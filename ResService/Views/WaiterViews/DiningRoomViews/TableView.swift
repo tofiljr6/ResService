@@ -15,11 +15,14 @@ struct TableView: View {
     @EnvironmentObject var ordersInProgress : OrdersInProgressViewModel
     @EnvironmentObject var ordersInKitchen : OrdersInKitchenViewModel
     
-    var manageTableViewWidth  : CGFloat = UIScreen.main.bounds.width * 0.8
-    var manageTableViewHeight : CGFloat =  UIScreen.main.bounds.height * 0.8
     private let boxsize = CGFloat(50)
     private let paddingconst = CGFloat(10)
     
+    var w  : CGFloat = UIScreen.main.bounds.width * 1.00
+    var h : CGFloat?
+    var wo = manageTableViewWidth
+    var ho = manageTableViewHeight
+        
     var body: some View {
         NavigationLink(destination: { WaiterOrderView(tableInfo: tableInfo, diningRoomModel: diningRoom)
                                         .environmentObject(menuModel)
@@ -36,7 +39,13 @@ struct TableView: View {
                 Text(tableInfo.description)
                     .foregroundColor(.black)
             }
-        }.position(tableInfo.location)
+//            .position(x: (w / wo) * tableInfo.location.x,
+//                      y: ((h ?? UIScreen.main.bounds.height * 0.90 ) / ho) * tableInfo.location.y)
+        }.isDetailLink(false)
+//        .position(tableInfo.location)
+        .position(x: (w / wo) * tableInfo.location.x,
+                  y: ((h ?? UIScreen.main.bounds.height * 0.90 ) / ho) * tableInfo.location.y)
+
     }
 }
 

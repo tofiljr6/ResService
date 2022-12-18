@@ -10,11 +10,13 @@ import MapKit
 import Firebase
 
 
+
 final class RestaurantLocationViewModel : ObservableObject {
-    @Published var restaurantCoordinates : CLLocationCoordinate2D
+    @Published var restaurantCoordinates : RestaurantLocModel
     
     init() {
-        restaurantCoordinates = CLLocationCoordinate2D()
+        self.restaurantCoordinates = RestaurantLocModel(id: UUID())
+        
         
         let refparam = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
         refparam.observe(DataEventType.value, with: { snapshot in
@@ -24,14 +26,14 @@ final class RestaurantLocationViewModel : ObservableObject {
                 let long = paramsinfo["longitude"]! as! Float
                 let latidegress = CLLocationDegrees(lati)
                 let longdegress = CLLocationDegrees(long)
-                self.restaurantCoordinates = CLLocationCoordinate2D(latitude: latidegress, longitude: longdegress)
+                self.restaurantCoordinates.coordinate = CLLocationCoordinate2D(latitude: latidegress, longitude: longdegress)
             }
         })
         
     }
     
     func upToDateCoordinates(coordinates : CLLocationCoordinate2D) -> Void {
-        restaurantCoordinates = coordinates
+        self.restaurantCoordinates.coordinate = coordinates
         
         let refparam = Database.database(url: dbURLConnection).reference().child(paramCollectionName)
         refparam.updateChildValues(["latitude" : Float(coordinates.latitude),
